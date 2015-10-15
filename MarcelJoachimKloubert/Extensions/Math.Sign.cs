@@ -29,9 +29,7 @@
 
 namespace MarcelJoachimKloubert.Extensions
 {
-    /// <summary>
-    /// Sign()
-    /// </summary>
+    // Sign()
     static partial class MJKCoreExtensionMethods
     {
         #region Methods (14)

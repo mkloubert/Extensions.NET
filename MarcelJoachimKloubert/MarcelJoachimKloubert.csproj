@@ -70,7 +70,13 @@
     <Compile Include="Extensions\Math.Sign.cs">
       <DependentUpon>Math.cs</DependentUpon>
     </Compile>
+    <Compile Include="Extensions\Math.Sin.cs">
+      <DependentUpon>Math.cs</DependentUpon>
+    </Compile>
     <Compile Include="Extensions\NumberSign.cs" />
+    <Compile Include="Extensions\Math.SinH.cs">
+      <DependentUpon>Math.cs</DependentUpon>
+    </Compile>
     <Compile Include="Extensions\Values.cs" />
     <Compile Include="Extensions\Values.IsNotNull.cs">
       <DependentUpon>Values.cs</DependentUpon>

@@ -32,9 +32,7 @@ using System.Collections.Generic;
 
 namespace MarcelJoachimKloubert.Extensions
 {
-    /// <summary>
-    /// ForAll()
-    /// </summary>
+    // ForAll()
     static partial class MJKCoreExtensionMethods
     {
         #region CLASS: ItemExecutionContext<TItem, TState>

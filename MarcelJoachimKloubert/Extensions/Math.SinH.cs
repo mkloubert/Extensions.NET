@@ -31,37 +31,30 @@ using System;
 
 namespace MarcelJoachimKloubert.Extensions
 {
-    // IsNull()
+    // SinH()
     static partial class MJKCoreExtensionMethods
     {
         #region Methods (2)
 
         /// <summary>
-        /// Checks if an object is <see langword="null" /> or not.
+        /// Returns the hyperbolic sine of the specified angle.
         /// </summary>
-        /// <typeparam name="TObj">Type of the object.</typeparam>
-        /// <param name="obj">The object to check.</param>
-        /// <returns>
-        /// Is <see langword="null" /> or not.
-        /// </returns>
-        public static bool IsNull<TObj>(this TObj obj)
-            where TObj : class
+        /// <param name="angle">The angle.</param>
+        /// <returns>The hyperbolic sin of <paramref name="angle" />.</returns>
+        public static double SinH(this double angle)
         {
-            return obj == null;
+            return Math.Sinh(angle);
         }
 
         /// <summary>
-        /// Checks if a value is <see langword="null" /> or not.
+        /// Returns the hyperbolic sine of the specified angle.
         /// </summary>
-        /// <typeparam name="TValue">Type of the value.</typeparam>
-        /// <param name="value">The value to check.</param>
-        /// <returns>
-        /// Is <see langword="null" /> or not.
-        /// </returns>
-        public static bool IsNull<TValue>(this Nullable<TValue> value)
-            where TValue : struct
+        /// <param name="angle">The angle.</param>
+        /// /// <returns>The hyperbolic sin of <paramref name="angle" /> or <see langword="null" /> if <paramref name="angle" />
+        /// is <see langword="null" />.</returns>
+        public static double? SinH(this double? angle)
         {
-            return !value.HasValue;
+            return angle.HasValue ? SinH(angle.Value) : (double?)null;
         }
 
         #endregion Methods (2)

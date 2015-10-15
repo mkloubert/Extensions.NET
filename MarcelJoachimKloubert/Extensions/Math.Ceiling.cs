@@ -31,33 +31,10 @@ using System;
 
 namespace MarcelJoachimKloubert.Extensions
 {
-    /// <summary>
-    /// Ceiling()
-    /// </summary>
+    // Ceiling()
     static partial class MJKCoreExtensionMethods
     {
-        #region Methods (6)
-
-        /// <summary>
-        /// Returns the smallest integral value that is greater than or equal to the specified number.
-        /// </summary>
-        /// <param name="value">The input value.</param>
-        /// <returns>The output value.</returns>
-        public static float Ceiling(this float value)
-        {
-            return (float)Math.Ceiling(value);
-        }
-
-        /// <summary>
-        /// Returns the smallest integral value that is greater than or equal to the specified number.
-        /// </summary>
-        /// <param name="value">The input value.</param>
-        /// <returns>The output value or <see langword="null" /> if <paramref name="value" />
-        /// is <see langword="null" />.</returns>
-        public static float? Ceiling(this float? value)
-        {
-            return value.HasValue ? Ceiling(value.Value) : (float?)null;
-        }
+        #region Methods (4)
 
         /// <summary>
         /// Returns the smallest integral value that is greater than or equal to the specified number.
@@ -101,6 +78,6 @@ namespace MarcelJoachimKloubert.Extensions
             return value.HasValue ? Ceiling(value.Value) : (decimal?)null;
         }
 
-        #endregion Methods (6)
+        #endregion Methods (4)
     }
 }

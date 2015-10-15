@@ -29,9 +29,7 @@
 
 namespace MarcelJoachimKloubert.Extensions
 {
-    /// <summary>
-    /// Extension methods for collections and sequences.
-    /// </summary>
+    // Extension methods for collections and sequences.
     static partial class MJKCoreExtensionMethods
     {
     }

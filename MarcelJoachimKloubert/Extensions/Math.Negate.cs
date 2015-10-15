@@ -29,9 +29,7 @@
 
 namespace MarcelJoachimKloubert.Extensions
 {
-    /// <summary>
-    /// Negate()
-    /// </summary>
+    // Negate()
     static partial class MJKCoreExtensionMethods
     {
         #region Methods (14)
