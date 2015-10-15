@@ -40,7 +40,7 @@ namespace MarcelJoachimKloubert.Extensions
         /// Returns the hyperbolic cosine of the specified angle.
         /// </summary>
         /// <param name="angle">The angle.</param>
-        /// <returns>The sin of <paramref name="angle" />.</returns>
+        /// <returns>The hyperbolic cosine of <paramref name="angle" />.</returns>
         public static double CosH(this double angle)
         {
             return Math.Cosh(angle);
@@ -50,7 +50,7 @@ namespace MarcelJoachimKloubert.Extensions
         /// Returns the hyperbolic cosine of the specified angle.
         /// </summary>
         /// <param name="angle">The angle.</param>
-        /// <returns>The sin of <paramref name="angle" /> or <see langword="null" /> if <paramref name="angle" />
+        /// <returns>The hyperbolic cosine of <paramref name="angle" /> or <see langword="null" /> if <paramref name="angle" />
         /// is <see langword="null" />.</returns>
         public static double? CosH(this double? angle)
         {

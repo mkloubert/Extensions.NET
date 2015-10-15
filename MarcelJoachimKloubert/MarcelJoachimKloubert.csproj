@@ -46,6 +46,15 @@
     <None Include="MarcelJoachimKloubert.Extensions.snk" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\Math.ACos.cs">
+      <DependentUpon>Math.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\Math.ASin.cs">
+      <DependentUpon>Math.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\Math.BigMul.cs">
+      <DependentUpon>Math.cs</DependentUpon>
+    </Compile>
     <Compile Include="Extensions\Math.CosH.cs">
       <DependentUpon>Math.cs</DependentUpon>
     </Compile>
@@ -67,7 +76,9 @@
       <DependentUpon>Math.cs</DependentUpon>
     </Compile>
     <Compile Include="Extensions\Math.cs" />
-    <Compile Include="Extensions\Math.Exp.cs" />
+    <Compile Include="Extensions\Math.Exp.cs">
+      <DependentUpon>Math.cs</DependentUpon>
+    </Compile>
     <Compile Include="Extensions\Math.Floor.cs">
       <DependentUpon>Math.cs</DependentUpon>
     </Compile>

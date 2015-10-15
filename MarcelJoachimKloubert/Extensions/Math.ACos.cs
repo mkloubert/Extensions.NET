@@ -31,30 +31,30 @@ using System;
 
 namespace MarcelJoachimKloubert.Extensions
 {
-    // Cos()
+    // ACos()
     static partial class MJKCoreExtensionMethods
     {
         #region Methods (2)
 
         /// <summary>
-        /// Returns the cosine of the specified angle.
+        /// Returns the angle whose cosine is the specified number.
         /// </summary>
-        /// <param name="angle">The angle.</param>
-        /// <returns>The cosine of <paramref name="angle" />.</returns>
-        public static double Cos(this double angle)
+        /// <param name="cos">The cosine.</param>
+        /// <returns>The angle of <paramref name="cos" />.</returns>
+        public static double ACos(this double cos)
         {
-            return Math.Cos(angle);
+            return Math.Acos(cos);
         }
 
         /// <summary>
-        /// Returns the cosine of the specified angle.
+        /// Returns the angle whose cosine is the specified number.
         /// </summary>
-        /// <param name="angle">The angle.</param>
-        /// <returns>The cosine of <paramref name="angle" /> or <see langword="null" /> if <paramref name="angle" />
+        /// <param name="cos">The angle.</param>
+        /// <returns>The angle of <paramref name="cos" /> or <see langword="null" /> if <paramref name="cos" />
         /// is <see langword="null" />.</returns>
-        public static double? Cos(this double? angle)
+        public static double? ACos(this double? cos)
         {
-            return angle.HasValue ? Cos(angle.Value) : (double?)null;
+            return cos.HasValue ? ACos(cos.Value) : (double?)null;
         }
 
         #endregion Methods (2)

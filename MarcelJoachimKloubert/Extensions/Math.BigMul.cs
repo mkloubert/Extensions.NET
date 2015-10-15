@@ -31,32 +31,53 @@ using System;
 
 namespace MarcelJoachimKloubert.Extensions
 {
-    // Cos()
+    // BigMul()
     static partial class MJKCoreExtensionMethods
     {
-        #region Methods (2)
+        #region Methods (3)
 
         /// <summary>
-        /// Returns the cosine of the specified angle.
+        /// Produces the full product of two numbers.
         /// </summary>
-        /// <param name="angle">The angle.</param>
-        /// <returns>The cosine of <paramref name="angle" />.</returns>
-        public static double Cos(this double angle)
+        /// <param name="value">The input value.</param>
+        /// <param name="b">The number to multiply.</param>
+        /// <returns>
+        /// The output value.
+        /// </returns>
+        public static long BigMul(this int value, int b)
         {
-            return Math.Cos(angle);
+            return Math.BigMul(value, b);
         }
 
         /// <summary>
-        /// Returns the cosine of the specified angle.
+        /// Produces the full product of two numbers.
         /// </summary>
-        /// <param name="angle">The angle.</param>
-        /// <returns>The cosine of <paramref name="angle" /> or <see langword="null" /> if <paramref name="angle" />
-        /// is <see langword="null" />.</returns>
-        public static double? Cos(this double? angle)
+        /// <param name="value">The input value.</param>
+        /// <param name="b">The number to multiply.</param>
+        /// <returns>
+        /// The output value or <see langword="null" /> if <paramref name="b" />
+        /// is <see langword="null" />.
+        /// </returns>
+        public static long? BigMul(this int value, int? b)
         {
-            return angle.HasValue ? Cos(angle.Value) : (double?)null;
+            return BigMul((int?)value, b);
         }
 
-        #endregion Methods (2)
+        /// <summary>
+        /// Produces the full product of two numbers.
+        /// </summary>
+        /// <param name="value">The input value.</param>
+        /// <param name="b">The number to multiply.</param>
+        /// <returns>
+        /// The output value or <see langword="null" /> if at least
+        /// one value is <see langword="null" />.
+        /// </returns>
+        public static long? BigMul(this int? value, int? b)
+        {
+            return (value.HasValue && b.HasValue) ? BigMul(value.Value, b.Value)
+                                                  : (long?)null;
+        }
+
+        #endregion Methods (3)
     }
 }
