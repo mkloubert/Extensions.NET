@@ -27,6 +27,8 @@
  *                                                                                                                    *
  **********************************************************************************************************************/
 
+using System;
+
 namespace MarcelJoachimKloubert.Extensions
 {
     // Sign()
@@ -41,12 +43,7 @@ namespace MarcelJoachimKloubert.Extensions
         /// <returns>The sign.</returns>
         public static NumberSign Sign(this sbyte value)
         {
-            if (value == 0)
-            {
-                return NumberSign.Zero;
-            }
-
-            return value > 0 ? NumberSign.Positive : NumberSign.Negative;
+            return (NumberSign)Math.Sign(value);
         }
 
         /// <summary>
@@ -66,12 +63,7 @@ namespace MarcelJoachimKloubert.Extensions
         /// <returns>The sign.</returns>
         public static NumberSign Sign(this short value)
         {
-            if (value == 0)
-            {
-                return NumberSign.Zero;
-            }
-
-            return value > 0 ? NumberSign.Positive : NumberSign.Negative;
+            return (NumberSign)Math.Sign(value);
         }
 
         /// <summary>
@@ -91,12 +83,7 @@ namespace MarcelJoachimKloubert.Extensions
         /// <returns>The sign.</returns>
         public static NumberSign Sign(this int value)
         {
-            if (value == 0)
-            {
-                return NumberSign.Zero;
-            }
-
-            return value > 0 ? NumberSign.Positive : NumberSign.Negative;
+            return (NumberSign)Math.Sign(value);
         }
 
         /// <summary>
@@ -116,12 +103,7 @@ namespace MarcelJoachimKloubert.Extensions
         /// <returns>The sign.</returns>
         public static NumberSign Sign(this long value)
         {
-            if (value == 0)
-            {
-                return NumberSign.Zero;
-            }
-
-            return value > 0 ? NumberSign.Positive : NumberSign.Negative;
+            return (NumberSign)Math.Sign(value);
         }
 
         /// <summary>
@@ -156,7 +138,7 @@ namespace MarcelJoachimKloubert.Extensions
                 return NumberSign.PositiveInfinity;
             }
 
-            return value > 0f ? NumberSign.Positive : NumberSign.Negative;
+            return (NumberSign)Math.Sign(value);
         }
 
         /// <summary>
@@ -191,7 +173,7 @@ namespace MarcelJoachimKloubert.Extensions
                 return NumberSign.PositiveInfinity;
             }
 
-            return value > 0d ? NumberSign.Positive : NumberSign.Negative;
+            return (NumberSign)Math.Sign(value);
         }
 
         /// <summary>
@@ -211,12 +193,7 @@ namespace MarcelJoachimKloubert.Extensions
         /// <returns>The sign.</returns>
         public static NumberSign Sign(this decimal value)
         {
-            if (value == decimal.Zero)
-            {
-                return NumberSign.Zero;
-            }
-
-            return value > 0m ? NumberSign.Positive : NumberSign.Negative;
+            return (NumberSign)Math.Sign(value);
         }
 
         /// <summary>

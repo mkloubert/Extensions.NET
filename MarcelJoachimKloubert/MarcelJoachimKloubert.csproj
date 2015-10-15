@@ -44,6 +44,9 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\Math.CosH.cs">
+      <DependentUpon>Math.cs</DependentUpon>
+    </Compile>
     <Compile Include="Extensions\Collections.AsArray.cs">
       <DependentUpon>Collections.cs</DependentUpon>
     </Compile>
@@ -56,6 +59,9 @@
       <DependentUpon>Math.cs</DependentUpon>
     </Compile>
     <Compile Include="Extensions\Math.Ceiling.cs">
+      <DependentUpon>Math.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\Math.Cos.cs">
       <DependentUpon>Math.cs</DependentUpon>
     </Compile>
     <Compile Include="Extensions\Math.cs" />
