@@ -49,6 +49,10 @@
     <Compile Include="Extensions\DateTime.Walk.cs">
       <DependentUpon>DateTime.cs</DependentUpon>
     </Compile>
+    <Compile Include="Extensions\IO.cs" />
+    <Compile Include="Extensions\IO.ReadLines.cs">
+      <DependentUpon>IO.cs</DependentUpon>
+    </Compile>
     <Compile Include="Extensions\Math.ACos.cs">
       <DependentUpon>Math.cs</DependentUpon>
     </Compile>
@@ -138,6 +142,10 @@
     </Compile>
     <Compile Include="Extensions\NumberSign.cs" />
     <Compile Include="Extensions\DateTime.cs" />
+    <Compile Include="Extensions\Strings.cs" />
+    <Compile Include="Extensions\Strings.ToUnsecureString.cs">
+      <DependentUpon>Strings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Extensions\Values.AsString.cs">
       <DependentUpon>Values.cs</DependentUpon>
     </Compile>
