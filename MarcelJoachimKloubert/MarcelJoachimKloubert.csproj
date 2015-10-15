@@ -65,7 +65,11 @@
       <DependentUpon>Math.cs</DependentUpon>
     </Compile>
     <Compile Include="Extensions\Math.cs" />
+    <Compile Include="Extensions\Math.Exp.cs" />
     <Compile Include="Extensions\Math.Floor.cs">
+      <DependentUpon>Math.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\Math.IEEERemainder.cs">
       <DependentUpon>Math.cs</DependentUpon>
     </Compile>
     <Compile Include="Extensions\Math.Log.cs">
