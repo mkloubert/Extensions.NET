@@ -56,6 +56,9 @@
       <DependentUpon>Math.cs</DependentUpon>
     </Compile>
     <Compile Include="Extensions\Math.cs" />
+    <Compile Include="Extensions\Math.Negate.cs">
+      <DependentUpon>Math.cs</DependentUpon>
+    </Compile>
     <Compile Include="Extensions\Math.Sign.cs">
       <DependentUpon>Math.cs</DependentUpon>
     </Compile>
