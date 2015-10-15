@@ -44,6 +44,9 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\DateTime.Walk.cs">
+      <DependentUpon>DateTime.cs</DependentUpon>
+    </Compile>
     <Compile Include="Extensions\Math.ACos.cs">
       <DependentUpon>Math.cs</DependentUpon>
     </Compile>
@@ -53,7 +56,9 @@
     <Compile Include="Extensions\Math.ATan.cs">
       <DependentUpon>Math.cs</DependentUpon>
     </Compile>
-    <Compile Include="Extensions\Math.ATan2.cs" />
+    <Compile Include="Extensions\Math.ATan2.cs">
+      <DependentUpon>Math.cs</DependentUpon>
+    </Compile>
     <Compile Include="Extensions\Math.BigMul.cs">
       <DependentUpon>Math.cs</DependentUpon>
     </Compile>
@@ -130,6 +135,10 @@
       <DependentUpon>Math.cs</DependentUpon>
     </Compile>
     <Compile Include="Extensions\NumberSign.cs" />
+    <Compile Include="Extensions\DateTime.cs" />
+    <Compile Include="Extensions\Values.AsString.cs">
+      <DependentUpon>Values.cs</DependentUpon>
+    </Compile>
     <Compile Include="Extensions\Values.cs" />
     <Compile Include="Extensions\Values.IsNotNull.cs">
       <DependentUpon>Values.cs</DependentUpon>
