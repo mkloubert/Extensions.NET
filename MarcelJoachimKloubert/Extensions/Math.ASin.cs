@@ -31,30 +31,30 @@ using System;
 
 namespace MarcelJoachimKloubert.Extensions
 {
-    // Cos()
+    // ASin()
     static partial class MJKCoreExtensionMethods
     {
         #region Methods (2)
 
         /// <summary>
-        /// Returns the cosine of the specified angle.
+        /// Returns the angle whose sine is the specified number.
         /// </summary>
-        /// <param name="angle">The angle.</param>
-        /// <returns>The cosine of <paramref name="angle" />.</returns>
-        public static double Cos(this double angle)
+        /// <param name="sin">The sine.</param>
+        /// <returns>The sin of <paramref name="sin" />.</returns>
+        public static double ASin(this double sin)
         {
-            return Math.Cos(angle);
+            return Math.Asin(sin);
         }
 
         /// <summary>
-        /// Returns the cosine of the specified angle.
+        /// Returns the angle whose sine is the specified number.
         /// </summary>
-        /// <param name="angle">The angle.</param>
-        /// <returns>The cosine of <paramref name="angle" /> or <see langword="null" /> if <paramref name="angle" />
+        /// <param name="sin">The sine.</param>
+        /// <returns>The sin of <paramref name="sin" /> or <see langword="null" /> if <paramref name="sin" />
         /// is <see langword="null" />.</returns>
-        public static double? Cos(this double? angle)
+        public static double? ASin(this double? sin)
         {
-            return angle.HasValue ? Cos(angle.Value) : (double?)null;
+            return sin.HasValue ? ASin(sin.Value) : (double?)null;
         }
 
         #endregion Methods (2)
