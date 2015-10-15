@@ -31,30 +31,30 @@ using System;
 
 namespace MarcelJoachimKloubert.Extensions
 {
-    // ASin()
+    // ATan()
     static partial class MJKCoreExtensionMethods
     {
         #region Methods (2)
 
         /// <summary>
-        /// Returns the angle whose sine is the specified number.
+        /// Returns the angle whose tangent is the specified number.
         /// </summary>
-        /// <param name="sin">The sine.</param>
-        /// <returns>The angle of <paramref name="sin" />.</returns>
-        public static double ASin(this double sin)
+        /// <param name="tan">The tangent.</param>
+        /// <returns>The angle of <paramref name="tan" />.</returns>
+        public static double ATan(this double tan)
         {
-            return Math.Asin(sin);
+            return Math.Atan(tan);
         }
 
         /// <summary>
-        /// Returns the angle whose sine is the specified number.
+        /// Returns the angle whose tangent is the specified number.
         /// </summary>
-        /// <param name="sin">The sine.</param>
-        /// <returns>The angle of <paramref name="sin" /> or <see langword="null" /> if <paramref name="sin" />
+        /// <param name="tan">The tangent.</param>
+        /// <returns>The angle of <paramref name="tan" /> or <see langword="null" /> if <paramref name="tan" />
         /// is <see langword="null" />.</returns>
-        public static double? ASin(this double? sin)
+        public static double? ATan(this double? tan)
         {
-            return sin.HasValue ? ASin(sin.Value) : (double?)null;
+            return tan.HasValue ? ATan(tan.Value) : (double?)null;
         }
 
         #endregion Methods (2)

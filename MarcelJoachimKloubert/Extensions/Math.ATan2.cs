@@ -31,30 +31,33 @@ using System;
 
 namespace MarcelJoachimKloubert.Extensions
 {
-    // ASin()
+    // ATan2()
     static partial class MJKCoreExtensionMethods
     {
         #region Methods (2)
 
         /// <summary>
-        /// Returns the angle whose sine is the specified number.
+        /// Returns the angle whose tangent is the quotient of two specified numbers.
         /// </summary>
-        /// <param name="sin">The sine.</param>
-        /// <returns>The angle of <paramref name="sin" />.</returns>
-        public static double ASin(this double sin)
+        /// <param name="y">The y coordinate.</param>
+        /// <param name="x">The x coordinate.</param>
+        /// <returns>The angle.</returns>
+        public static double ATan2(this double y, double x)
         {
-            return Math.Asin(sin);
+            return Math.Atan2(y, x);
         }
 
         /// <summary>
-        /// Returns the angle whose sine is the specified number.
+        /// Returns the angle whose tangent is the quotient of two specified numbers.
         /// </summary>
-        /// <param name="sin">The sine.</param>
-        /// <returns>The angle of <paramref name="sin" /> or <see langword="null" /> if <paramref name="sin" />
+        /// <param name="y">The y coordinate.</param>
+        /// <param name="x">The x coordinate.</param>
+        /// <returns>The angle.</returns>
+        /// <returns>The angle or <see langword="null" /> if <paramref name="y" />
         /// is <see langword="null" />.</returns>
-        public static double? ASin(this double? sin)
+        public static double? ATan2(this double? y, double x)
         {
-            return sin.HasValue ? ASin(sin.Value) : (double?)null;
+            return y.HasValue ? ATan2(y.Value, x) : (double?)null;
         }
 
         #endregion Methods (2)

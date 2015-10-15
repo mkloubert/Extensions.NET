@@ -34,7 +34,7 @@ namespace MarcelJoachimKloubert.Extensions
     // BigMul()
     static partial class MJKCoreExtensionMethods
     {
-        #region Methods (3)
+        #region Methods (2)
 
         /// <summary>
         /// Produces the full product of two numbers.
@@ -55,29 +55,15 @@ namespace MarcelJoachimKloubert.Extensions
         /// <param name="value">The input value.</param>
         /// <param name="b">The number to multiply.</param>
         /// <returns>
-        /// The output value or <see langword="null" /> if <paramref name="b" />
+        /// The output value or <see langword="null" /> if <paramref name="value" />
         /// is <see langword="null" />.
         /// </returns>
-        public static long? BigMul(this int value, int? b)
+        public static long? BigMul(this int? value, int b)
         {
-            return BigMul((int?)value, b);
+            return value.HasValue ? BigMul(value.Value, b)
+                                  : (long?)null;
         }
 
-        /// <summary>
-        /// Produces the full product of two numbers.
-        /// </summary>
-        /// <param name="value">The input value.</param>
-        /// <param name="b">The number to multiply.</param>
-        /// <returns>
-        /// The output value or <see langword="null" /> if at least
-        /// one value is <see langword="null" />.
-        /// </returns>
-        public static long? BigMul(this int? value, int? b)
-        {
-            return (value.HasValue && b.HasValue) ? BigMul(value.Value, b.Value)
-                                                  : (long?)null;
-        }
-
-        #endregion Methods (3)
+        #endregion Methods (2)
     }
 }

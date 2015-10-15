@@ -52,6 +52,10 @@
     <Compile Include="Extensions\Math.ASin.cs">
       <DependentUpon>Math.cs</DependentUpon>
     </Compile>
+    <Compile Include="Extensions\Math.ATan.cs">
+      <DependentUpon>Math.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\Math.ATan2.cs" />
     <Compile Include="Extensions\Math.BigMul.cs">
       <DependentUpon>Math.cs</DependentUpon>
     </Compile>
