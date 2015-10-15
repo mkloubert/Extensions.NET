@@ -50,7 +50,7 @@ namespace MarcelJoachimKloubert.Extensions
         /// Returns the tangent of the specified angle.
         /// </summary>
         /// <param name="angle">The angle.</param>
-        /// /// <returns>The tangent of <paramref name="angle" /> or <see langword="null" /> if <paramref name="angle" />
+        /// <returns>The tangent of <paramref name="angle" /> or <see langword="null" /> if <paramref name="angle" />
         /// is <see langword="null" />.</returns>
         public static double? Tan(this double? angle)
         {
