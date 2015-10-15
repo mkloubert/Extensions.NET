@@ -41,13 +41,10 @@ namespace MarcelJoachimKloubert.Extensions
         /// </summary>
         /// <param name="value">The input value.</param>
         /// <param name="digits">The number of fractional digits in the return value.</param>
-        /// <param name="mode">
-        /// Specification for how to round <paramref name="value" /> if it is midway between two other numbers.
-        /// </param>
         /// <returns>The output value.</returns>
-        public static double Round(this double value, int digits = 0, MidpointRounding mode = MidpointRounding.ToEven)
+        public static double Round(this double value, int digits = 0)
         {
-            return Math.Round(value, digits, mode);
+            return Math.Round(value, digits);
         }
 
         /// <summary>
@@ -55,14 +52,11 @@ namespace MarcelJoachimKloubert.Extensions
         /// </summary>
         /// <param name="value">The input value.</param>
         /// <param name="digits">The number of fractional digits in the return value.</param>
-        /// <param name="mode">
-        /// Specification for how to round <paramref name="value" /> if it is midway between two other numbers.
-        /// </param>
         /// <returns>The output value or <see langword="null" /> if <paramref name="value" />
         /// is <see langword="null" />.</returns>
-        public static double? Round(this double? value, int digits = 0, MidpointRounding mode = MidpointRounding.ToEven)
+        public static double? Round(this double? value, int digits = 0)
         {
-            return value.HasValue ? Round(value.Value, digits, mode) : (double?)null;
+            return value.HasValue ? Round(value.Value, digits) : (double?)null;
         }
 
         /// <summary>
@@ -70,13 +64,10 @@ namespace MarcelJoachimKloubert.Extensions
         /// </summary>
         /// <param name="value">The input value.</param>
         /// <param name="decimals">The number of decimal places in the return value.</param>
-        /// <param name="mode">
-        /// Specification for how to round <paramref name="value" /> if it is midway between two other numbers.
-        /// </param>
         /// <returns>The output value.</returns>
-        public static decimal Round(this decimal value, int decimals = 0, MidpointRounding mode = MidpointRounding.ToEven)
+        public static decimal Round(this decimal value, int decimals = 0)
         {
-            return Math.Round(value, decimals, mode);
+            return Math.Round(value, decimals);
         }
 
         /// <summary>
@@ -84,14 +75,11 @@ namespace MarcelJoachimKloubert.Extensions
         /// </summary>
         /// <param name="value">The input value.</param>
         /// <param name="decimals">The number of decimal places in the return value.</param>
-        /// <param name="mode">
-        /// Specification for how to round <paramref name="value" /> if it is midway between two other numbers.
-        /// </param>
         /// <returns>The output value or <see langword="null" /> if <paramref name="value" />
         /// is <see langword="null" />.</returns>
-        public static decimal? Round(this decimal? value, int decimals = 0, MidpointRounding mode = MidpointRounding.ToEven)
+        public static decimal? Round(this decimal? value, int decimals = 0)
         {
-            return value.HasValue ? Round(value.Value, decimals, mode) : (decimal?)null;
+            return value.HasValue ? Round(value.Value, decimals) : (decimal?)null;
         }
 
         #endregion Methods (4)
