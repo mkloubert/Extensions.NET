@@ -39,11 +39,11 @@ namespace MarcelJoachimKloubert.Extensions
         #region Methods (44)
 
         /// <summary>
-        /// Returns the minumum value.
+        /// Returns the maximum value.
         /// </summary>
         /// <param name="value">The first value.</param>
         /// <param name="others">The other values.</param>
-        /// <returns>The minimum value.</returns>
+        /// <returns>The maximum value.</returns>
         /// <exception cref="ArgumentNullException">
         /// <paramref name="others" /> is <see langword="null" />.
         /// </exception>
@@ -54,11 +54,11 @@ namespace MarcelJoachimKloubert.Extensions
         }
 
         /// <summary>
-        /// Returns the minumum value.
+        /// Returns the maximum value.
         /// </summary>
         /// <param name="value">The first value.</param>
         /// <param name="other">One or more other value.</param>
-        /// <returns>The minimum value.</returns>
+        /// <returns>The maximum value.</returns>
         /// <exception cref="ArgumentNullException">
         /// <paramref name="other" /> is <see langword="null" />.
         /// </exception>
@@ -68,11 +68,11 @@ namespace MarcelJoachimKloubert.Extensions
         }
 
         /// <summary>
-        /// Returns the minumum value.
+        /// Returns the maximum value.
         /// </summary>
         /// <param name="value">The first value.</param>
         /// <param name="others">The other values.</param>
-        /// <returns>The minimum value.</returns>
+        /// <returns>The maximum value.</returns>
         /// <exception cref="ArgumentNullException">
         /// <paramref name="others" /> is <see langword="null" />.
         /// </exception>
@@ -83,11 +83,11 @@ namespace MarcelJoachimKloubert.Extensions
         }
 
         /// <summary>
-        /// Returns the minumum value.
+        /// Returns the maximum value.
         /// </summary>
         /// <param name="value">The first value.</param>
         /// <param name="other">One or more other value.</param>
-        /// <returns>The minimum value.</returns>
+        /// <returns>The maximum value.</returns>
         /// <exception cref="ArgumentNullException">
         /// <paramref name="other" /> is <see langword="null" />.
         /// </exception>
@@ -97,11 +97,11 @@ namespace MarcelJoachimKloubert.Extensions
         }
 
         /// <summary>
-        /// Returns the minumum value.
+        /// Returns the maximum value.
         /// </summary>
         /// <param name="value">The first value.</param>
         /// <param name="others">The other values.</param>
-        /// <returns>The minimum value.</returns>
+        /// <returns>The maximum value.</returns>
         /// <exception cref="ArgumentNullException">
         /// <paramref name="others" /> is <see langword="null" />.
         /// </exception>
@@ -112,11 +112,11 @@ namespace MarcelJoachimKloubert.Extensions
         }
 
         /// <summary>
-        /// Returns the minumum value.
+        /// Returns the maximum value.
         /// </summary>
         /// <param name="value">The first value.</param>
         /// <param name="other">One or more other value.</param>
-        /// <returns>The minimum value.</returns>
+        /// <returns>The maximum value.</returns>
         /// <exception cref="ArgumentNullException">
         /// <paramref name="other" /> is <see langword="null" />.
         /// </exception>
@@ -126,11 +126,11 @@ namespace MarcelJoachimKloubert.Extensions
         }
 
         /// <summary>
-        /// Returns the minumum value.
+        /// Returns the maximum value.
         /// </summary>
         /// <param name="value">The first value.</param>
         /// <param name="others">The other values.</param>
-        /// <returns>The minimum value.</returns>
+        /// <returns>The maximum value.</returns>
         /// <exception cref="ArgumentNullException">
         /// <paramref name="others" /> is <see langword="null" />.
         /// </exception>
@@ -141,11 +141,11 @@ namespace MarcelJoachimKloubert.Extensions
         }
 
         /// <summary>
-        /// Returns the minumum value.
+        /// Returns the maximum value.
         /// </summary>
         /// <param name="value">The first value.</param>
         /// <param name="other">One or more other value.</param>
-        /// <returns>The minimum value.</returns>
+        /// <returns>The maximum value.</returns>
         /// <exception cref="ArgumentNullException">
         /// <paramref name="other" /> is <see langword="null" />.
         /// </exception>
@@ -155,11 +155,11 @@ namespace MarcelJoachimKloubert.Extensions
         }
 
         /// <summary>
-        /// Returns the minumum value.
+        /// Returns the maximum value.
         /// </summary>
         /// <param name="value">The first value.</param>
         /// <param name="others">The other values.</param>
-        /// <returns>The minimum value.</returns>
+        /// <returns>The maximum value.</returns>
         /// <exception cref="ArgumentNullException">
         /// <paramref name="others" /> is <see langword="null" />.
         /// </exception>
@@ -170,11 +170,11 @@ namespace MarcelJoachimKloubert.Extensions
         }
 
         /// <summary>
-        /// Returns the minumum value.
+        /// Returns the maximum value.
         /// </summary>
         /// <param name="value">The first value.</param>
         /// <param name="other">One or more other value.</param>
-        /// <returns>The minimum value.</returns>
+        /// <returns>The maximum value.</returns>
         /// <exception cref="ArgumentNullException">
         /// <paramref name="other" /> is <see langword="null" />.
         /// </exception>
@@ -184,11 +184,11 @@ namespace MarcelJoachimKloubert.Extensions
         }
 
         /// <summary>
-        /// Returns the minumum value.
+        /// Returns the maximum value.
         /// </summary>
         /// <param name="value">The first value.</param>
         /// <param name="others">The other values.</param>
-        /// <returns>The minimum value.</returns>
+        /// <returns>The maximum value.</returns>
         /// <exception cref="ArgumentNullException">
         /// <paramref name="others" /> is <see langword="null" />.
         /// </exception>
@@ -199,11 +199,11 @@ namespace MarcelJoachimKloubert.Extensions
         }
 
         /// <summary>
-        /// Returns the minumum value.
+        /// Returns the maximum value.
         /// </summary>
         /// <param name="value">The first value.</param>
         /// <param name="other">One or more other value.</param>
-        /// <returns>The minimum value.</returns>
+        /// <returns>The maximum value.</returns>
         /// <exception cref="ArgumentNullException">
         /// <paramref name="other" /> is <see langword="null" />.
         /// </exception>
@@ -213,11 +213,11 @@ namespace MarcelJoachimKloubert.Extensions
         }
 
         /// <summary>
-        /// Returns the minumum value.
+        /// Returns the maximum value.
         /// </summary>
         /// <param name="value">The first value.</param>
         /// <param name="others">The other values.</param>
-        /// <returns>The minimum value.</returns>
+        /// <returns>The maximum value.</returns>
         /// <exception cref="ArgumentNullException">
         /// <paramref name="others" /> is <see langword="null" />.
         /// </exception>
@@ -228,11 +228,11 @@ namespace MarcelJoachimKloubert.Extensions
         }
 
         /// <summary>
-        /// Returns the minumum value.
+        /// Returns the maximum value.
         /// </summary>
         /// <param name="value">The first value.</param>
         /// <param name="other">One or more other value.</param>
-        /// <returns>The minimum value.</returns>
+        /// <returns>The maximum value.</returns>
         /// <exception cref="ArgumentNullException">
         /// <paramref name="other" /> is <see langword="null" />.
         /// </exception>
@@ -242,11 +242,11 @@ namespace MarcelJoachimKloubert.Extensions
         }
 
         /// <summary>
-        /// Returns the minumum value.
+        /// Returns the maximum value.
         /// </summary>
         /// <param name="value">The first value.</param>
         /// <param name="others">The other values.</param>
-        /// <returns>The minimum value.</returns>
+        /// <returns>The maximum value.</returns>
         /// <exception cref="ArgumentNullException">
         /// <paramref name="others" /> is <see langword="null" />.
         /// </exception>
@@ -257,11 +257,11 @@ namespace MarcelJoachimKloubert.Extensions
         }
 
         /// <summary>
-        /// Returns the minumum value.
+        /// Returns the maximum value.
         /// </summary>
         /// <param name="value">The first value.</param>
         /// <param name="other">One or more other value.</param>
-        /// <returns>The minimum value.</returns>
+        /// <returns>The maximum value.</returns>
         /// <exception cref="ArgumentNullException">
         /// <paramref name="other" /> is <see langword="null" />.
         /// </exception>
@@ -271,11 +271,11 @@ namespace MarcelJoachimKloubert.Extensions
         }
 
         /// <summary>
-        /// Returns the minumum value.
+        /// Returns the maximum value.
         /// </summary>
         /// <param name="value">The first value.</param>
         /// <param name="others">The other values.</param>
-        /// <returns>The minimum value.</returns>
+        /// <returns>The maximum value.</returns>
         /// <exception cref="ArgumentNullException">
         /// <paramref name="others" /> is <see langword="null" />.
         /// </exception>
@@ -286,11 +286,11 @@ namespace MarcelJoachimKloubert.Extensions
         }
 
         /// <summary>
-        /// Returns the minumum value.
+        /// Returns the maximum value.
         /// </summary>
         /// <param name="value">The first value.</param>
         /// <param name="other">One or more other value.</param>
-        /// <returns>The minimum value.</returns>
+        /// <returns>The maximum value.</returns>
         /// <exception cref="ArgumentNullException">
         /// <paramref name="other" /> is <see langword="null" />.
         /// </exception>
@@ -300,11 +300,11 @@ namespace MarcelJoachimKloubert.Extensions
         }
 
         /// <summary>
-        /// Returns the minumum value.
+        /// Returns the maximum value.
         /// </summary>
         /// <param name="value">The first value.</param>
         /// <param name="others">The other values.</param>
-        /// <returns>The minimum value.</returns>
+        /// <returns>The maximum value.</returns>
         /// <exception cref="ArgumentNullException">
         /// <paramref name="others" /> is <see langword="null" />.
         /// </exception>
@@ -315,11 +315,11 @@ namespace MarcelJoachimKloubert.Extensions
         }
 
         /// <summary>
-        /// Returns the minumum value.
+        /// Returns the maximum value.
         /// </summary>
         /// <param name="value">The first value.</param>
         /// <param name="other">One or more other value.</param>
-        /// <returns>The minimum value.</returns>
+        /// <returns>The maximum value.</returns>
         /// <exception cref="ArgumentNullException">
         /// <paramref name="other" /> is <see langword="null" />.
         /// </exception>
@@ -329,11 +329,11 @@ namespace MarcelJoachimKloubert.Extensions
         }
 
         /// <summary>
-        /// Returns the minumum value.
+        /// Returns the maximum value.
         /// </summary>
         /// <param name="value">The first value.</param>
         /// <param name="others">The other values.</param>
-        /// <returns>The minimum value.</returns>
+        /// <returns>The maximum value.</returns>
         /// <exception cref="ArgumentNullException">
         /// <paramref name="others" /> is <see langword="null" />.
         /// </exception>
@@ -344,11 +344,11 @@ namespace MarcelJoachimKloubert.Extensions
         }
 
         /// <summary>
-        /// Returns the minumum value.
+        /// Returns the maximum value.
         /// </summary>
         /// <param name="value">The first value.</param>
         /// <param name="other">One or more other value.</param>
-        /// <returns>The minimum value.</returns>
+        /// <returns>The maximum value.</returns>
         /// <exception cref="ArgumentNullException">
         /// <paramref name="other" /> is <see langword="null" />.
         /// </exception>
@@ -358,11 +358,11 @@ namespace MarcelJoachimKloubert.Extensions
         }
 
         /// <summary>
-        /// Returns the minumum value.
+        /// Returns the maximum value.
         /// </summary>
         /// <param name="value">The first value.</param>
         /// <param name="others">The other values.</param>
-        /// <returns>The minimum value.</returns>
+        /// <returns>The maximum value.</returns>
         /// <exception cref="ArgumentNullException">
         /// <paramref name="others" /> is <see langword="null" />.
         /// </exception>
@@ -373,11 +373,11 @@ namespace MarcelJoachimKloubert.Extensions
         }
 
         /// <summary>
-        /// Returns the minumum value.
+        /// Returns the maximum value.
         /// </summary>
         /// <param name="value">The first value.</param>
         /// <param name="other">One or more other value.</param>
-        /// <returns>The minimum value.</returns>
+        /// <returns>The maximum value.</returns>
         /// <exception cref="ArgumentNullException">
         /// <paramref name="other" /> is <see langword="null" />.
         /// </exception>
@@ -387,11 +387,11 @@ namespace MarcelJoachimKloubert.Extensions
         }
 
         /// <summary>
-        /// Returns the minumum value.
+        /// Returns the maximum value.
         /// </summary>
         /// <param name="value">The first value.</param>
         /// <param name="others">The other values.</param>
-        /// <returns>The minimum value.</returns>
+        /// <returns>The maximum value.</returns>
         /// <exception cref="ArgumentNullException">
         /// <paramref name="others" /> is <see langword="null" />.
         /// </exception>
@@ -402,11 +402,11 @@ namespace MarcelJoachimKloubert.Extensions
         }
 
         /// <summary>
-        /// Returns the minumum value.
+        /// Returns the maximum value.
         /// </summary>
         /// <param name="value">The first value.</param>
         /// <param name="other">One or more other value.</param>
-        /// <returns>The minimum value.</returns>
+        /// <returns>The maximum value.</returns>
         /// <exception cref="ArgumentNullException">
         /// <paramref name="other" /> is <see langword="null" />.
         /// </exception>
@@ -416,11 +416,11 @@ namespace MarcelJoachimKloubert.Extensions
         }
 
         /// <summary>
-        /// Returns the minumum value.
+        /// Returns the maximum value.
         /// </summary>
         /// <param name="value">The first value.</param>
         /// <param name="others">The other values.</param>
-        /// <returns>The minimum value.</returns>
+        /// <returns>The maximum value.</returns>
         /// <exception cref="ArgumentNullException">
         /// <paramref name="others" /> is <see langword="null" />.
         /// </exception>
@@ -431,11 +431,11 @@ namespace MarcelJoachimKloubert.Extensions
         }
 
         /// <summary>
-        /// Returns the minumum value.
+        /// Returns the maximum value.
         /// </summary>
         /// <param name="value">The first value.</param>
         /// <param name="other">One or more other value.</param>
-        /// <returns>The minimum value.</returns>
+        /// <returns>The maximum value.</returns>
         /// <exception cref="ArgumentNullException">
         /// <paramref name="other" /> is <see langword="null" />.
         /// </exception>
@@ -445,11 +445,11 @@ namespace MarcelJoachimKloubert.Extensions
         }
 
         /// <summary>
-        /// Returns the minumum value.
+        /// Returns the maximum value.
         /// </summary>
         /// <param name="value">The first value.</param>
         /// <param name="others">The other values.</param>
-        /// <returns>The minimum value.</returns>
+        /// <returns>The maximum value.</returns>
         /// <exception cref="ArgumentNullException">
         /// <paramref name="others" /> is <see langword="null" />.
         /// </exception>
@@ -460,11 +460,11 @@ namespace MarcelJoachimKloubert.Extensions
         }
 
         /// <summary>
-        /// Returns the minumum value.
+        /// Returns the maximum value.
         /// </summary>
         /// <param name="value">The first value.</param>
         /// <param name="other">One or more other value.</param>
-        /// <returns>The minimum value.</returns>
+        /// <returns>The maximum value.</returns>
         /// <exception cref="ArgumentNullException">
         /// <paramref name="other" /> is <see langword="null" />.
         /// </exception>
@@ -474,11 +474,11 @@ namespace MarcelJoachimKloubert.Extensions
         }
 
         /// <summary>
-        /// Returns the minumum value.
+        /// Returns the maximum value.
         /// </summary>
         /// <param name="value">The first value.</param>
         /// <param name="others">The other values.</param>
-        /// <returns>The minimum value.</returns>
+        /// <returns>The maximum value.</returns>
         /// <exception cref="ArgumentNullException">
         /// <paramref name="others" /> is <see langword="null" />.
         /// </exception>
@@ -489,11 +489,11 @@ namespace MarcelJoachimKloubert.Extensions
         }
 
         /// <summary>
-        /// Returns the minumum value.
+        /// Returns the maximum value.
         /// </summary>
         /// <param name="value">The first value.</param>
         /// <param name="other">One or more other value.</param>
-        /// <returns>The minimum value.</returns>
+        /// <returns>The maximum value.</returns>
         /// <exception cref="ArgumentNullException">
         /// <paramref name="other" /> is <see langword="null" />.
         /// </exception>
@@ -503,11 +503,11 @@ namespace MarcelJoachimKloubert.Extensions
         }
 
         /// <summary>
-        /// Returns the minumum value.
+        /// Returns the maximum value.
         /// </summary>
         /// <param name="value">The first value.</param>
         /// <param name="others">The other values.</param>
-        /// <returns>The minimum value.</returns>
+        /// <returns>The maximum value.</returns>
         /// <exception cref="ArgumentNullException">
         /// <paramref name="others" /> is <see langword="null" />.
         /// </exception>
@@ -518,11 +518,11 @@ namespace MarcelJoachimKloubert.Extensions
         }
 
         /// <summary>
-        /// Returns the minumum value.
+        /// Returns the maximum value.
         /// </summary>
         /// <param name="value">The first value.</param>
         /// <param name="other">One or more other value.</param>
-        /// <returns>The minimum value.</returns>
+        /// <returns>The maximum value.</returns>
         /// <exception cref="ArgumentNullException">
         /// <paramref name="other" /> is <see langword="null" />.
         /// </exception>
@@ -532,11 +532,11 @@ namespace MarcelJoachimKloubert.Extensions
         }
 
         /// <summary>
-        /// Returns the minumum value.
+        /// Returns the maximum value.
         /// </summary>
         /// <param name="value">The first value.</param>
         /// <param name="others">The other values.</param>
-        /// <returns>The minimum value.</returns>
+        /// <returns>The maximum value.</returns>
         /// <exception cref="ArgumentNullException">
         /// <paramref name="others" /> is <see langword="null" />.
         /// </exception>
@@ -547,11 +547,11 @@ namespace MarcelJoachimKloubert.Extensions
         }
 
         /// <summary>
-        /// Returns the minumum value.
+        /// Returns the maximum value.
         /// </summary>
         /// <param name="value">The first value.</param>
         /// <param name="other">One or more other value.</param>
-        /// <returns>The minimum value.</returns>
+        /// <returns>The maximum value.</returns>
         /// <exception cref="ArgumentNullException">
         /// <paramref name="other" /> is <see langword="null" />.
         /// </exception>
@@ -561,11 +561,11 @@ namespace MarcelJoachimKloubert.Extensions
         }
 
         /// <summary>
-        /// Returns the minumum value.
+        /// Returns the maximum value.
         /// </summary>
         /// <param name="value">The first value.</param>
         /// <param name="others">The other values.</param>
-        /// <returns>The minimum value.</returns>
+        /// <returns>The maximum value.</returns>
         /// <exception cref="ArgumentNullException">
         /// <paramref name="others" /> is <see langword="null" />.
         /// </exception>
@@ -576,11 +576,11 @@ namespace MarcelJoachimKloubert.Extensions
         }
 
         /// <summary>
-        /// Returns the minumum value.
+        /// Returns the maximum value.
         /// </summary>
         /// <param name="value">The first value.</param>
         /// <param name="other">One or more other value.</param>
-        /// <returns>The minimum value.</returns>
+        /// <returns>The maximum value.</returns>
         /// <exception cref="ArgumentNullException">
         /// <paramref name="other" /> is <see langword="null" />.
         /// </exception>
@@ -590,11 +590,11 @@ namespace MarcelJoachimKloubert.Extensions
         }
 
         /// <summary>
-        /// Returns the minumum value.
+        /// Returns the maximum value.
         /// </summary>
         /// <param name="value">The first value.</param>
         /// <param name="others">The other values.</param>
-        /// <returns>The minimum value.</returns>
+        /// <returns>The maximum value.</returns>
         /// <exception cref="ArgumentNullException">
         /// <paramref name="others" /> is <see langword="null" />.
         /// </exception>
@@ -605,11 +605,11 @@ namespace MarcelJoachimKloubert.Extensions
         }
 
         /// <summary>
-        /// Returns the minumum value.
+        /// Returns the maximum value.
         /// </summary>
         /// <param name="value">The first value.</param>
         /// <param name="other">One or more other value.</param>
-        /// <returns>The minimum value.</returns>
+        /// <returns>The maximum value.</returns>
         /// <exception cref="ArgumentNullException">
         /// <paramref name="other" /> is <see langword="null" />.
         /// </exception>
@@ -619,11 +619,11 @@ namespace MarcelJoachimKloubert.Extensions
         }
 
         /// <summary>
-        /// Returns the minumum value.
+        /// Returns the maximum value.
         /// </summary>
         /// <param name="value">The first value.</param>
         /// <param name="others">The other values.</param>
-        /// <returns>The minimum value.</returns>
+        /// <returns>The maximum value.</returns>
         /// <exception cref="ArgumentNullException">
         /// <paramref name="others" /> is <see langword="null" />.
         /// </exception>
@@ -634,11 +634,11 @@ namespace MarcelJoachimKloubert.Extensions
         }
 
         /// <summary>
-        /// Returns the minumum value.
+        /// Returns the maximum value.
         /// </summary>
         /// <param name="value">The first value.</param>
         /// <param name="other">One or more other value.</param>
-        /// <returns>The minimum value.</returns>
+        /// <returns>The maximum value.</returns>
         /// <exception cref="ArgumentNullException">
         /// <paramref name="other" /> is <see langword="null" />.
         /// </exception>
@@ -648,11 +648,11 @@ namespace MarcelJoachimKloubert.Extensions
         }
 
         /// <summary>
-        /// Returns the minumum value.
+        /// Returns the maximum value.
         /// </summary>
         /// <param name="value">The first value.</param>
         /// <param name="others">The other values.</param>
-        /// <returns>The minimum value.</returns>
+        /// <returns>The maximum value.</returns>
         /// <exception cref="ArgumentNullException">
         /// <paramref name="others" /> is <see langword="null" />.
         /// </exception>
@@ -663,11 +663,11 @@ namespace MarcelJoachimKloubert.Extensions
         }
 
         /// <summary>
-        /// Returns the minumum value.
+        /// Returns the maximum value.
         /// </summary>
         /// <param name="value">The first value.</param>
         /// <param name="other">One or more other value.</param>
-        /// <returns>The minimum value.</returns>
+        /// <returns>The maximum value.</returns>
         /// <exception cref="ArgumentNullException">
         /// <paramref name="other" /> is <see langword="null" />.
         /// </exception>
