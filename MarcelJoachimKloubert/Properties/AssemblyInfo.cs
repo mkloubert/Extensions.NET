@@ -28,8 +28,7 @@
  **********************************************************************************************************************/
 
 using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
+using System.Resources;
 
 [assembly: AssemblyTitle("Extensions.NET")]
 [assembly: AssemblyDescription("Class library with powerful and useful extension methods.")]
@@ -40,9 +39,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
-[assembly: ComVisible(false)]
-
-[assembly: Guid("aa142ecc-1f07-4c78-9e90-6c60272e6b56")]
+[assembly: NeutralResourcesLanguage("en")]
 
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]

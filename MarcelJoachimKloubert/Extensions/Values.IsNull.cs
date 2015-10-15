@@ -39,17 +39,17 @@ namespace MarcelJoachimKloubert.Extensions
         #region Methods (2)
 
         /// <summary>
-        /// Checks if an object is <see langword="null" /> or <see cref="DBNull" />.
+        /// Checks if an object is <see langword="null" /> or not.
         /// </summary>
         /// <typeparam name="TObj">Type of the object.</typeparam>
         /// <param name="obj">The object to check.</param>
         /// <returns>
-        /// Is <see langword="null" />/<see cref="DBNull" /> or not.
+        /// Is <see langword="null" /> or not.
         /// </returns>
         public static bool IsNull<TObj>(this TObj obj)
             where TObj : class
         {
-            return (obj == null) || DBNull.Value.Equals(obj);
+            return obj == null;
         }
 
         /// <summary>
