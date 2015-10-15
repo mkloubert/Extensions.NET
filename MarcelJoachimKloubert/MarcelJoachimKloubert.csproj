@@ -68,6 +68,12 @@
     <Compile Include="Extensions\Math.Floor.cs">
       <DependentUpon>Math.cs</DependentUpon>
     </Compile>
+    <Compile Include="Extensions\Math.Log.cs">
+      <DependentUpon>Math.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\Math.Log10.cs">
+      <DependentUpon>Math.cs</DependentUpon>
+    </Compile>
     <Compile Include="Extensions\Math.Max.cs">
       <DependentUpon>Math.cs</DependentUpon>
     </Compile>
