@@ -70,6 +70,12 @@
     <Compile Include="Extensions\Math.Floor.cs">
       <DependentUpon>Math.cs</DependentUpon>
     </Compile>
+    <Compile Include="Extensions\Math.Max.cs">
+      <DependentUpon>Math.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\Math.Min.cs">
+      <DependentUpon>Math.cs</DependentUpon>
+    </Compile>
     <Compile Include="Extensions\Math.Negate.cs">
       <DependentUpon>Math.cs</DependentUpon>
     </Compile>
