@@ -31,9 +31,7 @@ using System;
 
 namespace MarcelJoachimKloubert.Extensions
 {
-    /// <summary>
-    /// Abs()
-    /// </summary>
+    // Abs()
     static partial class MJKCoreExtensionMethods
     {
         #region Methods (14)

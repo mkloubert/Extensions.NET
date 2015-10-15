@@ -33,9 +33,7 @@ using System.Linq;
 
 namespace MarcelJoachimKloubert.Extensions
 {
-    /// <summary>
-    /// AsArray
-    /// </summary>
+    /// AsArray()
     static partial class MJKCoreExtensionMethods
     {
         #region Methods (3)

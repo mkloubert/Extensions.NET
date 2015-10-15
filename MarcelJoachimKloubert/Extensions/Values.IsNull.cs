@@ -31,9 +31,7 @@ using System;
 
 namespace MarcelJoachimKloubert.Extensions
 {
-    /// <summary>
-    /// IsNull()
-    /// </summary>
+    // IsNull()
     static partial class MJKCoreExtensionMethods
     {
         #region Methods (2)
