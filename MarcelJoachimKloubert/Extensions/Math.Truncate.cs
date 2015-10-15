@@ -64,7 +64,7 @@ namespace MarcelJoachimKloubert.Extensions
         /// <returns>The output value.</returns>
         public static decimal Truncate(this decimal value)
         {
-            return Math.Truncate(value);
+            return decimal.Truncate(value);
         }
 
         /// <summary>
