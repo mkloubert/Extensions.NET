@@ -27,8 +27,6 @@
  *                                                                                                                    *
  **********************************************************************************************************************/
 
-using System;
-
 namespace MarcelJoachimKloubert.Extensions
 {
     // BigMul()
@@ -46,7 +44,7 @@ namespace MarcelJoachimKloubert.Extensions
         /// </returns>
         public static long BigMul(this int value, int b)
         {
-            return Math.BigMul(value, b);
+            return (long)value * (long)b;
         }
 
         /// <summary>
