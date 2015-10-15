@@ -57,7 +57,13 @@
     <Compile Include="Extensions\Math.Abs.cs">
       <DependentUpon>Math.cs</DependentUpon>
     </Compile>
+    <Compile Include="Extensions\Math.Ceiling.cs">
+      <DependentUpon>Math.cs</DependentUpon>
+    </Compile>
     <Compile Include="Extensions\Math.cs" />
+    <Compile Include="Extensions\Math.Floor.cs">
+      <DependentUpon>Math.cs</DependentUpon>
+    </Compile>
     <Compile Include="Extensions\Math.Negate.cs">
       <DependentUpon>Math.cs</DependentUpon>
     </Compile>
