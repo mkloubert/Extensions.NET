@@ -27,35 +27,12 @@
  *                                                                                                                    *
  **********************************************************************************************************************/
 
-using System;
-
 namespace MarcelJoachimKloubert.Extensions
 {
     // Truncate()
     static partial class MJKCoreExtensionMethods
     {
-        #region Methods (4)
-
-        /// <summary>
-        /// Calculates the integral part of a specified number.
-        /// </summary>
-        /// <param name="value">The input value.</param>
-        /// <returns>The output value.</returns>
-        public static double Truncate(this double value)
-        {
-            return Math.Truncate(value);
-        }
-
-        /// <summary>
-        /// Calculates the integral part of a specified number.
-        /// </summary>
-        /// <param name="value">The input value.</param>
-        /// <returns>The output value or <see langword="null" /> if <paramref name="value" />
-        /// is <see langword="null" />.</returns>
-        public static double? Truncate(this double? value)
-        {
-            return value.HasValue ? Truncate(value.Value) : (double?)null;
-        }
+        #region Methods (2)
 
         /// <summary>
         /// Calculates the integral part of a specified number.
@@ -64,7 +41,7 @@ namespace MarcelJoachimKloubert.Extensions
         /// <returns>The output value.</returns>
         public static decimal Truncate(this decimal value)
         {
-            return Math.Truncate(value);
+            return decimal.Truncate(value);
         }
 
         /// <summary>
@@ -78,6 +55,6 @@ namespace MarcelJoachimKloubert.Extensions
             return value.HasValue ? Truncate(value.Value) : (decimal?)null;
         }
 
-        #endregion Methods (4)
+        #endregion Methods (2)
     }
 }
