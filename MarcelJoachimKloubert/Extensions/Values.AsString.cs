@@ -27,7 +27,6 @@
  *                                                                                                                    *
  **********************************************************************************************************************/
 
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -43,24 +42,15 @@ namespace MarcelJoachimKloubert.Extensions
         /// Returns an object as string.
         /// </summary>
         /// <param name="obj">The object to cast / convert.</param>
-        /// <param name="dbNullAsNull">
-        /// Handle <see cref="DBNull" /> as <see langword="null" /> reference or not.
-        /// </param>
         /// <returns>
         /// <paramref name="obj" /> as string or <see langword="null" /> if <paramref name="obj" />
-        /// is <see langword="null" /> or <see cref="DBNull" /> (<paramref name="dbNullAsNull" /> must
-        /// be <see langword="true" /> in that case).
+        /// is <see langword="null" />.
         /// </returns>
-        public static string AsString(this object obj, bool dbNullAsNull = true)
+        public static string AsString(this object obj)
         {
             if (obj is string)
             {
                 return (string)obj;
-            }
-
-            if (dbNullAsNull && DBNull.Value.Equals(obj))
-            {
-                obj = null;
             }
 
             if (obj == null)
