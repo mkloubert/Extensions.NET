@@ -50,7 +50,7 @@ namespace MarcelJoachimKloubert.Extensions
         /// Returns the cosine of the specified angle.
         /// </summary>
         /// <param name="angle">The angle.</param>
-        /// /// <returns>The sin of <paramref name="angle" /> or <see langword="null" /> if <paramref name="angle" />
+        /// <returns>The sin of <paramref name="angle" /> or <see langword="null" /> if <paramref name="angle" />
         /// is <see langword="null" />.</returns>
         public static double? Cos(this double? angle)
         {

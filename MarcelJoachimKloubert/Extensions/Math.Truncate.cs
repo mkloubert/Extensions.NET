@@ -31,32 +31,53 @@ using System;
 
 namespace MarcelJoachimKloubert.Extensions
 {
-    // TanH()
+    // Truncate()
     static partial class MJKCoreExtensionMethods
     {
-        #region Methods (2)
+        #region Methods (4)
 
         /// <summary>
-        /// Returns the tangent of the specified angle.
+        /// Calculates the integral part of a specified number.
         /// </summary>
-        /// <param name="angle">The angle.</param>
-        /// <returns>The tangent of <paramref name="angle" />.</returns>
-        public static double TanH(this double angle)
+        /// <param name="value">The input value.</param>
+        /// <returns>The output value.</returns>
+        public static double Truncate(this double value)
         {
-            return Math.Tanh(angle);
+            return Math.Truncate(value);
         }
 
         /// <summary>
-        /// Returns the tangent of the specified angle.
+        /// Calculates the integral part of a specified number.
         /// </summary>
-        /// <param name="angle">The angle.</param>
-        /// <returns>The tangent of <paramref name="angle" /> or <see langword="null" /> if <paramref name="angle" />
+        /// <param name="value">The input value.</param>
+        /// <returns>The output value or <see langword="null" /> if <paramref name="value" />
         /// is <see langword="null" />.</returns>
-        public static double? TanH(this double? angle)
+        public static double? Truncate(this double? value)
         {
-            return angle.HasValue ? TanH(angle.Value) : (double?)null;
+            return value.HasValue ? Truncate(value.Value) : (double?)null;
         }
 
-        #endregion Methods (2)
+        /// <summary>
+        /// Calculates the integral part of a specified number.
+        /// </summary>
+        /// <param name="value">The input value.</param>
+        /// <returns>The output value.</returns>
+        public static decimal Truncate(this decimal value)
+        {
+            return Math.Truncate(value);
+        }
+
+        /// <summary>
+        /// Calculates the integral part of a specified number.
+        /// </summary>
+        /// <param name="value">The input value.</param>
+        /// <returns>The output value or <see langword="null" /> if <paramref name="value" />
+        /// is <see langword="null" />.</returns>
+        public static decimal? Truncate(this decimal? value)
+        {
+            return value.HasValue ? Truncate(value.Value) : (decimal?)null;
+        }
+
+        #endregion Methods (4)
     }
 }

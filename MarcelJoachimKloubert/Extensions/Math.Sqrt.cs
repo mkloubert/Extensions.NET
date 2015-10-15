@@ -31,30 +31,30 @@ using System;
 
 namespace MarcelJoachimKloubert.Extensions
 {
-    // TanH()
+    // Sqrt()
     static partial class MJKCoreExtensionMethods
     {
         #region Methods (2)
 
         /// <summary>
-        /// Returns the tangent of the specified angle.
+        /// Returns the square root of a specified number.
         /// </summary>
-        /// <param name="angle">The angle.</param>
-        /// <returns>The tangent of <paramref name="angle" />.</returns>
-        public static double TanH(this double angle)
+        /// <param name="value">The input value.</param>
+        /// <returns>The output value.</returns>
+        public static double Sqrt(this double value)
         {
-            return Math.Tanh(angle);
+            return Math.Sqrt(value);
         }
 
         /// <summary>
-        /// Returns the tangent of the specified angle.
+        /// Returns the square root of a specified number.
         /// </summary>
-        /// <param name="angle">The angle.</param>
-        /// <returns>The tangent of <paramref name="angle" /> or <see langword="null" /> if <paramref name="angle" />
+        /// <param name="value">The input value.</param>
+        /// <returns>The output value or <see langword="null" /> if <paramref name="value" />
         /// is <see langword="null" />.</returns>
-        public static double? TanH(this double? angle)
+        public static double? Sqrt(this double? value)
         {
-            return angle.HasValue ? TanH(angle.Value) : (double?)null;
+            return value.HasValue ? Sqrt(value.Value) : (double?)null;
         }
 
         #endregion Methods (2)
