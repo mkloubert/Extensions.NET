@@ -58,7 +58,7 @@ namespace MarcelJoachimKloubert.Extensions
         /// <returns>
         /// Is <see langword="null" /> or not.
         /// </returns>
-        public static bool IsNull<TValue>(this Nullable<TValue> value)
+        public static bool IsNull<TValue>(this TValue? value)
             where TValue : struct
         {
             return !value.HasValue;

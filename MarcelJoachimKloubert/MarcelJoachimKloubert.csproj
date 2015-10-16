@@ -158,6 +158,9 @@
     <Compile Include="Extensions\Values.AsString.cs">
       <DependentUpon>Values.cs</DependentUpon>
     </Compile>
+    <Compile Include="Extensions\Values.ChangeType.cs">
+      <DependentUpon>Values.cs</DependentUpon>
+    </Compile>
     <Compile Include="Extensions\Values.cs" />
     <Compile Include="Extensions\Values.IsNotNull.cs">
       <DependentUpon>Values.cs</DependentUpon>
