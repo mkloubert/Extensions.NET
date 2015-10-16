@@ -79,6 +79,6 @@ namespace MarcelJoachimKloubert.Extensions
                                    : defaultValueProvider(stack);
         }
 
-        #endregion Methods (1)
+        #endregion Methods (2)
     }
 }
