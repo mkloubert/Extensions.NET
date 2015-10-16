@@ -54,7 +54,15 @@
     <Compile Include="Extensions\Collections.PopAll.cs">
       <DependentUpon>Collections.cs</DependentUpon>
     </Compile>
-    <Compile Include="Extensions\Collections.PopOrDefault.cs" />
+    <Compile Include="Extensions\Collections.PopOrDefault.cs">
+      <DependentUpon>Collections.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\Collections.TryPeek.cs">
+      <DependentUpon>Collections.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\Collections.TryPop.cs">
+      <DependentUpon>Collections.cs</DependentUpon>
+    </Compile>
     <Compile Include="Extensions\DateTime.Walk.cs">
       <DependentUpon>DateTime.cs</DependentUpon>
     </Compile>
