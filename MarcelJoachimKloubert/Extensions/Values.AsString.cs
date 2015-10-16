@@ -90,6 +90,11 @@ namespace MarcelJoachimKloubert.Extensions
                 return ((XmlNode)obj).OuterXml;
             }
 
+            if (obj is XmlReader)
+            {
+                return ((XmlReader)obj).ReadOuterXml();
+            }
+
             return obj.ToString() ?? string.Empty;
         }
 
