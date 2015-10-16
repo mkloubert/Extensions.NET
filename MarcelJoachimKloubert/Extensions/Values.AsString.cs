@@ -31,6 +31,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Xml;
 
 namespace MarcelJoachimKloubert.Extensions
 {
@@ -82,6 +83,11 @@ namespace MarcelJoachimKloubert.Extensions
             if (obj is TextReader)
             {
                 return ((TextReader)obj).ReadToEnd();
+            }
+
+            if (obj is XmlNode)
+            {
+                return ((XmlNode)obj).OuterXml;
             }
 
             return obj.ToString() ?? string.Empty;
