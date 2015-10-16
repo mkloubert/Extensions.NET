@@ -46,6 +46,9 @@
     <None Include="MarcelJoachimKloubert.Extensions.snk" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\Collections.AddRange.cs">
+      <DependentUpon>Collections.cs</DependentUpon>
+    </Compile>
     <Compile Include="Extensions\Collections.IsEmpty.cs">
       <DependentUpon>Collections.cs</DependentUpon>
     </Compile>
@@ -59,6 +62,9 @@
       <DependentUpon>Collections.cs</DependentUpon>
     </Compile>
     <Compile Include="Extensions\Collections.PopOrDefault.cs">
+      <DependentUpon>Collections.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\Collections.SelectEntries.cs">
       <DependentUpon>Collections.cs</DependentUpon>
     </Compile>
     <Compile Include="Extensions\Collections.Shuffle.cs">
