@@ -46,6 +46,10 @@
     <None Include="MarcelJoachimKloubert.Extensions.snk" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\Cryptography.cs" />
+    <Compile Include="Extensions\Cryptography.Hash.cs">
+      <DependentUpon>Cryptography.cs</DependentUpon>
+    </Compile>
     <Compile Include="Extensions\Collections.AddRange.cs">
       <DependentUpon>Collections.cs</DependentUpon>
     </Compile>
