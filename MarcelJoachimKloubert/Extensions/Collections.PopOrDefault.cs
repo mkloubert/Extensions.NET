@@ -75,9 +75,10 @@ namespace MarcelJoachimKloubert.Extensions
                 throw new ArgumentNullException("defaultValueProvider");
             }
 
-            return stack.Count > 0 ? stack.Pop() : defaultValueProvider(stack);
+            return stack.Count > 0 ? stack.Pop()
+                                   : defaultValueProvider(stack);
         }
 
-        #endregion Methods (1)
+        #endregion Methods (2)
     }
 }
