@@ -187,6 +187,9 @@
     </Compile>
     <Compile Include="Extensions\NumberSign.cs" />
     <Compile Include="Extensions\DateTime.cs" />
+    <Compile Include="Extensions\Strings.AsChars.cs">
+      <DependentUpon>Strings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Extensions\Strings.cs" />
     <Compile Include="Extensions\Strings.ToUnsecureString.cs">
       <DependentUpon>Strings.cs</DependentUpon>
@@ -198,10 +201,22 @@
       <DependentUpon>Values.cs</DependentUpon>
     </Compile>
     <Compile Include="Extensions\Values.cs" />
+    <Compile Include="Extensions\Values.IsFalse.cs">
+      <DependentUpon>Values.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\Values.IsNotFalse.cs">
+      <DependentUpon>Values.cs</DependentUpon>
+    </Compile>
     <Compile Include="Extensions\Values.IsNotNull.cs">
       <DependentUpon>Values.cs</DependentUpon>
     </Compile>
+    <Compile Include="Extensions\Values.IsNotTrue.cs">
+      <DependentUpon>Values.cs</DependentUpon>
+    </Compile>
     <Compile Include="Extensions\Values.IsNull.cs">
+      <DependentUpon>Values.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\Values.IsTrue.cs">
       <DependentUpon>Values.cs</DependentUpon>
     </Compile>
     <Compile Include="Extensions\_Extensions.cs" />
