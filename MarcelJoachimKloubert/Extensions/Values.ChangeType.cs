@@ -34,7 +34,7 @@ namespace MarcelJoachimKloubert.Extensions
     // ChangeType()
     static partial class MJKCoreExtensionMethods
     {
-        #region Methods (3)
+        #region Methods (2)
 
         /// <summary>
         /// Converts an object.
@@ -54,23 +54,6 @@ namespace MarcelJoachimKloubert.Extensions
         /// Converts an object.
         /// </summary>
         /// <param name="obj">The object to convert.</param>
-        /// <param name="typeCode">The code of the target type.</param>
-        /// <param name="provider">The custom format provider to use.</param>
-        /// <returns>The converted object.</returns>
-        public static object ChangeType(this object obj, TypeCode typeCode, IFormatProvider provider = null)
-        {
-            if (provider == null)
-            {
-                return Convert.ChangeType(obj, typeCode);
-            }
-
-            return Convert.ChangeType(obj, typeCode, provider);
-        }
-
-        /// <summary>
-        /// Converts an object.
-        /// </summary>
-        /// <param name="obj">The object to convert.</param>
         /// <param name="targetType">The target type.</param>
         /// <param name="provider">The custom format provider to use.</param>
         /// <returns>The converted object.</returns>
@@ -79,14 +62,9 @@ namespace MarcelJoachimKloubert.Extensions
         /// </exception>
         public static object ChangeType(this object obj, Type targetType, IFormatProvider provider = null)
         {
-            if (provider == null)
-            {
-                return Convert.ChangeType(obj, targetType);
-            }
-
             return Convert.ChangeType(obj, targetType, provider);
         }
 
-        #endregion Methods (3)
+        #endregion Methods (2)
     }
 }
