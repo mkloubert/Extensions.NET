@@ -31,39 +31,62 @@ using System;
 
 namespace MarcelJoachimKloubert.Extensions
 {
-    // IsNull()
+    // ChangeType()
     static partial class MJKCoreExtensionMethods
     {
-        #region Methods (2)
+        #region Methods (3)
 
         /// <summary>
-        /// Checks if an object is <see langword="null" /> or not.
+        /// Converts an object.
         /// </summary>
-        /// <typeparam name="TObj">Type of the object.</typeparam>
-        /// <param name="obj">The object to check.</param>
-        /// <returns>
-        /// Is <see langword="null" /> or not.
-        /// </returns>
-        public static bool IsNull<TObj>(this TObj obj)
-            where TObj : class
+        /// <typeparam name="TTarget">The target type.</typeparam>
+        /// <param name="obj">The object to convert.</param>
+        /// <param name="provider">The custom format provider to use.</param>
+        /// <returns>The converted object.</returns>
+        public static TTarget ChangeType<TTarget>(this object obj, IFormatProvider provider = null)
         {
-            return obj == null;
+            return (TTarget)ChangeType(obj: obj,
+                                       targetType: typeof(TTarget),
+                                       provider: provider);
         }
 
         /// <summary>
-        /// Checks if a value is <see langword="null" /> or not.
+        /// Converts an object.
         /// </summary>
-        /// <typeparam name="TValue">Type of the value.</typeparam>
-        /// <param name="value">The value to check.</param>
-        /// <returns>
-        /// Is <see langword="null" /> or not.
-        /// </returns>
-        public static bool IsNull<TValue>(this TValue? value)
-            where TValue : struct
+        /// <param name="obj">The object to convert.</param>
+        /// <param name="typeCode">The code of the target type.</param>
+        /// <param name="provider">The custom format provider to use.</param>
+        /// <returns>The converted object.</returns>
+        public static object ChangeType(this object obj, TypeCode typeCode, IFormatProvider provider = null)
         {
-            return !value.HasValue;
+            if (provider == null)
+            {
+                return Convert.ChangeType(obj, typeCode);
+            }
+
+            return Convert.ChangeType(obj, typeCode, provider);
         }
 
-        #endregion Methods (2)
+        /// <summary>
+        /// Converts an object.
+        /// </summary>
+        /// <param name="obj">The object to convert.</param>
+        /// <param name="targetType">The target type.</param>
+        /// <param name="provider">The custom format provider to use.</param>
+        /// <returns>The converted object.</returns>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="targetType" /> is <see langword="null" />.
+        /// </exception>
+        public static object ChangeType(this object obj, Type targetType, IFormatProvider provider = null)
+        {
+            if (provider == null)
+            {
+                return Convert.ChangeType(obj, targetType);
+            }
+
+            return Convert.ChangeType(obj, targetType, provider);
+        }
+
+        #endregion Methods (3)
     }
 }
