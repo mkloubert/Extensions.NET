@@ -79,6 +79,18 @@
     <Compile Include="Extensions\Collections.TryPop.cs">
       <DependentUpon>Collections.cs</DependentUpon>
     </Compile>
+    <Compile Include="Extensions\Cryptography.MD5.cs">
+      <DependentUpon>Cryptography.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\Cryptography.SHA256.cs">
+      <DependentUpon>Cryptography.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\Cryptography.SHA384.cs">
+      <DependentUpon>Cryptography.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\Cryptography.SHA512.cs">
+      <DependentUpon>Cryptography.cs</DependentUpon>
+    </Compile>
     <Compile Include="Extensions\DateTime.Walk.cs">
       <DependentUpon>DateTime.cs</DependentUpon>
     </Compile>
