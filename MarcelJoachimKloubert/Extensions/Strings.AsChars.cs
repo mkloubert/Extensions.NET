@@ -45,7 +45,7 @@ namespace MarcelJoachimKloubert.Extensions
         /// </returns>
         public static IEnumerable<char> AsChars(this string str)
         {
-            return str != null ? str : null;
+            return str != null ? str.ToCharArray() : null;
         }
 
         #endregion Methods (1)
