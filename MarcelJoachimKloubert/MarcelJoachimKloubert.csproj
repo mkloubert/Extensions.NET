@@ -45,6 +45,15 @@
     <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\Collections.AsCollection.cs">
+      <DependentUpon>Collections.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\Collections.AsDictionary.cs">
+      <DependentUpon>Collections.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\Collections.AsList.cs">
+      <DependentUpon>Collections.cs</DependentUpon>
+    </Compile>
     <Compile Include="Extensions\Cryptography.cs" />
     <Compile Include="Extensions\Cryptography.Hash.cs">
       <DependentUpon>Cryptography.cs</DependentUpon>
