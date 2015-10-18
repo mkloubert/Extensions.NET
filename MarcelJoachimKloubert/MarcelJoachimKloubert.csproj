@@ -1,36 +1,182 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{43710A35-B22F-4D86-B869-9DE782D34F7F}</ProjectGuid>
+    <ProjectGuid>{0334CC4D-2A8D-45F9-9BD8-B523B966CECB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MarcelJoachimKloubert</RootNamespace>
     <AssemblyName>MarcelJoachimKloubert.Extensions</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetPlatformVersion>10.0.10240.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
+    <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>6</LangVersion>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <DocumentationFile>bin\Debug\MarcelJoachimKloubert.Extensions.xml</DocumentationFile>
-    <LangVersion>4</LangVersion>
+    <DocumentationFile>bin\Debug\MarcelJoachimKloubert.Extensions.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <PlatformTarget>ARM</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <PlatformTarget>ARM</PlatformTarget>
+    <OutputPath>bin\ARM\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <None Include="MarcelJoachimKloubert.Extensions.snk" />
+    <None Include="project.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Extensions\Collections.AddRange.cs" />
+    <Compile Include="Extensions\Collections.AsArray.cs" />
+    <Compile Include="Extensions\Collections.AsCollection.cs" />
+    <Compile Include="Extensions\Collections.AsDictionary.cs" />
+    <Compile Include="Extensions\Collections.AsList.cs" />
+    <Compile Include="Extensions\Collections.cs" />
+    <Compile Include="Extensions\Collections.ForAll.cs" />
+    <Compile Include="Extensions\Collections.IsEmpty.cs" />
+    <Compile Include="Extensions\Collections.IsNotEmpty.cs" />
+    <Compile Include="Extensions\Collections.PeekOrDefault.cs" />
+    <Compile Include="Extensions\Collections.PopAll.cs" />
+    <Compile Include="Extensions\Collections.PopOrDefault.cs" />
+    <Compile Include="Extensions\Collections.SelectEntries.cs" />
+    <Compile Include="Extensions\Collections.Shuffle.cs" />
+    <Compile Include="Extensions\Collections.TryPeek.cs" />
+    <Compile Include="Extensions\Collections.TryPop.cs" />
+    <Compile Include="Extensions\Cryptography.cs" />
+    <Compile Include="Extensions\DateTime.cs" />
+    <Compile Include="Extensions\DateTime.Walk.cs" />
+    <Compile Include="Extensions\IItemExecutionContext.cs" />
+    <Compile Include="Extensions\IO.cs" />
+    <Compile Include="Extensions\IO.ReadLines.cs" />
+    <Compile Include="Extensions\Math.Abs.cs" />
+    <Compile Include="Extensions\Math.ACos.cs" />
+    <Compile Include="Extensions\Math.ASin.cs" />
+    <Compile Include="Extensions\Math.ATan.cs" />
+    <Compile Include="Extensions\Math.ATan2.cs" />
+    <Compile Include="Extensions\Math.Ceiling.cs" />
+    <Compile Include="Extensions\Math.Cos.cs" />
+    <Compile Include="Extensions\Math.CosH.cs" />
+    <Compile Include="Extensions\Math.cs" />
+    <Compile Include="Extensions\Math.Exp.cs" />
+    <Compile Include="Extensions\Math.Floor.cs" />
+    <Compile Include="Extensions\Math.IEEERemainder.cs" />
+    <Compile Include="Extensions\Math.Log.cs" />
+    <Compile Include="Extensions\Math.Log10.cs" />
+    <Compile Include="Extensions\Math.Max.cs" />
+    <Compile Include="Extensions\Math.Min.cs" />
+    <Compile Include="Extensions\Math.Negate.cs" />
+    <Compile Include="Extensions\Math.Pow.cs" />
+    <Compile Include="Extensions\Math.Round.cs" />
+    <Compile Include="Extensions\Math.Sign.cs" />
+    <Compile Include="Extensions\Math.Sin.cs" />
+    <Compile Include="Extensions\Math.SinH.cs" />
+    <Compile Include="Extensions\Math.Sqrt.cs" />
+    <Compile Include="Extensions\Math.Tan.cs" />
+    <Compile Include="Extensions\Math.TanH.cs" />
+    <Compile Include="Extensions\Math.Truncate.cs" />
+    <Compile Include="Extensions\NumberSign.cs" />
+    <Compile Include="Extensions\Strings.AsChars.cs" />
+    <Compile Include="Extensions\Strings.cs" />
+    <Compile Include="Extensions\Values.AsString.cs" />
+    <Compile Include="Extensions\Values.ChangeType.cs" />
+    <Compile Include="Extensions\Values.cs" />
+    <Compile Include="Extensions\Values.IsFalse.cs" />
+    <Compile Include="Extensions\Values.IsNotFalse.cs" />
+    <Compile Include="Extensions\Values.IsNotNull.cs" />
+    <Compile Include="Extensions\Values.IsNotTrue.cs" />
+    <Compile Include="Extensions\Values.IsNull.cs" />
+    <Compile Include="Extensions\Values.IsTrue.cs" />
+    <Compile Include="Extensions\_Extensions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="Properties\MarcelJoachimKloubert.rd.xml" />
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
+    <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>true</SignAssembly>
@@ -38,206 +184,7 @@
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>MarcelJoachimKloubert.Extensions.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.XML" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Extensions\Collections.AsCollection.cs">
-      <DependentUpon>Collections.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Extensions\Collections.AsDictionary.cs">
-      <DependentUpon>Collections.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Extensions\Collections.AsList.cs">
-      <DependentUpon>Collections.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Extensions\Cryptography.cs" />
-    <Compile Include="Extensions\Cryptography.Hash.cs">
-      <DependentUpon>Cryptography.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Extensions\Collections.AddRange.cs">
-      <DependentUpon>Collections.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Extensions\Collections.IsEmpty.cs">
-      <DependentUpon>Collections.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Extensions\Collections.IsNotEmpty.cs">
-      <DependentUpon>Collections.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Extensions\Collections.PeekOrDefault.cs">
-      <DependentUpon>Collections.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Extensions\Collections.PopAll.cs">
-      <DependentUpon>Collections.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Extensions\Collections.PopOrDefault.cs">
-      <DependentUpon>Collections.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Extensions\Collections.SelectEntries.cs">
-      <DependentUpon>Collections.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Extensions\Collections.Shuffle.cs">
-      <DependentUpon>Collections.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Extensions\Collections.TryPeek.cs">
-      <DependentUpon>Collections.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Extensions\Collections.TryPop.cs">
-      <DependentUpon>Collections.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Extensions\Cryptography.MD5.cs">
-      <DependentUpon>Cryptography.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Extensions\Cryptography.SHA256.cs">
-      <DependentUpon>Cryptography.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Extensions\Cryptography.SHA384.cs">
-      <DependentUpon>Cryptography.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Extensions\Cryptography.SHA512.cs">
-      <DependentUpon>Cryptography.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Extensions\DateTime.Walk.cs">
-      <DependentUpon>DateTime.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Extensions\IO.cs" />
-    <Compile Include="Extensions\IO.ReadLines.cs">
-      <DependentUpon>IO.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Extensions\Math.ACos.cs">
-      <DependentUpon>Math.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Extensions\Math.ASin.cs">
-      <DependentUpon>Math.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Extensions\Math.ATan.cs">
-      <DependentUpon>Math.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Extensions\Math.ATan2.cs">
-      <DependentUpon>Math.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Extensions\Math.BigMul.cs">
-      <DependentUpon>Math.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Extensions\Math.CosH.cs">
-      <DependentUpon>Math.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Extensions\Collections.AsArray.cs">
-      <DependentUpon>Collections.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Extensions\Collections.cs" />
-    <Compile Include="Extensions\Collections.ForAll.cs">
-      <DependentUpon>Collections.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Extensions\IItemExecutionContext.cs" />
-    <Compile Include="Extensions\Math.Abs.cs">
-      <DependentUpon>Math.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Extensions\Math.Ceiling.cs">
-      <DependentUpon>Math.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Extensions\Math.Cos.cs">
-      <DependentUpon>Math.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Extensions\Math.cs" />
-    <Compile Include="Extensions\Math.Exp.cs">
-      <DependentUpon>Math.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Extensions\Math.Floor.cs">
-      <DependentUpon>Math.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Extensions\Math.IEEERemainder.cs">
-      <DependentUpon>Math.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Extensions\Math.Log.cs">
-      <DependentUpon>Math.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Extensions\Math.Log10.cs">
-      <DependentUpon>Math.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Extensions\Math.Max.cs">
-      <DependentUpon>Math.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Extensions\Math.Min.cs">
-      <DependentUpon>Math.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Extensions\Math.Negate.cs">
-      <DependentUpon>Math.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Extensions\Math.Pow.cs">
-      <DependentUpon>Math.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Extensions\Math.Round.cs">
-      <DependentUpon>Math.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Extensions\Math.Sign.cs">
-      <DependentUpon>Math.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Extensions\Math.Sin.cs">
-      <DependentUpon>Math.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Extensions\Math.Sqrt.cs">
-      <DependentUpon>Math.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Extensions\Math.Tan.cs">
-      <DependentUpon>Math.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Extensions\Math.TanH.cs">
-      <DependentUpon>Math.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Extensions\Math.Truncate.cs">
-      <DependentUpon>Math.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Extensions\Math.SinH.cs">
-      <DependentUpon>Math.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Extensions\NumberSign.cs" />
-    <Compile Include="Extensions\DateTime.cs" />
-    <Compile Include="Extensions\Strings.AsChars.cs">
-      <DependentUpon>Strings.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Extensions\Strings.cs" />
-    <Compile Include="Extensions\Strings.ToUnsecureString.cs">
-      <DependentUpon>Strings.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Extensions\Values.AsString.cs">
-      <DependentUpon>Values.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Extensions\Values.ChangeType.cs">
-      <DependentUpon>Values.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Extensions\Values.cs" />
-    <Compile Include="Extensions\Values.IsFalse.cs">
-      <DependentUpon>Values.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Extensions\Values.IsNotFalse.cs">
-      <DependentUpon>Values.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Extensions\Values.IsNotNull.cs">
-      <DependentUpon>Values.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Extensions\Values.IsNotTrue.cs">
-      <DependentUpon>Values.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Extensions\Values.IsNull.cs">
-      <DependentUpon>Values.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Extensions\Values.IsTrue.cs">
-      <DependentUpon>Values.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Extensions\_Extensions.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="..\LICENSE">
-      <Link>LICENSE</Link>
-    </EmbeddedResource>
-    <None Include="MarcelJoachimKloubert.Extensions.snk" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

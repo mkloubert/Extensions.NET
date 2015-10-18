@@ -59,11 +59,6 @@ namespace MarcelJoachimKloubert.Extensions
         /// <returns>The converted object.</returns>
         public static object ChangeType(this object obj, TypeCode typeCode, IFormatProvider provider = null)
         {
-            if (provider == null)
-            {
-                return Convert.ChangeType(obj, typeCode);
-            }
-
             return Convert.ChangeType(obj, typeCode, provider);
         }
 
