@@ -124,6 +124,7 @@
     <Compile Include="Extensions\Collections.PeekOrDefault.cs" />
     <Compile Include="Extensions\Collections.PopAll.cs" />
     <Compile Include="Extensions\Collections.PopOrDefault.cs" />
+    <Compile Include="Extensions\Collections.Randomize.cs" />
     <Compile Include="Extensions\Collections.SelectEntries.cs" />
     <Compile Include="Extensions\Collections.Shuffle.cs" />
     <Compile Include="Extensions\Collections.TryPeek.cs" />
