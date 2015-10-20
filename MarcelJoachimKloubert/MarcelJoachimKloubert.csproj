@@ -117,6 +117,7 @@
     <Compile Include="Extensions\Collections.AsDictionary.cs" />
     <Compile Include="Extensions\Collections.AsList.cs" />
     <Compile Include="Extensions\Collections.cs" />
+    <Compile Include="Extensions\Collections.DisposeAll.cs" />
     <Compile Include="Extensions\Collections.ForAll.cs" />
     <Compile Include="Extensions\Collections.IsEmpty.cs" />
     <Compile Include="Extensions\Collections.IsNotEmpty.cs" />
