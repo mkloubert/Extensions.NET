@@ -27,21 +27,43 @@
  *                                                                                                                    *
  **********************************************************************************************************************/
 
-using System.Reflection;
-using System.Runtime.InteropServices;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using MarcelJoachimKloubert.Extensions;
 
-[assembly: AssemblyTitle("Extensions.NET")]
-[assembly: AssemblyDescription("Class library with powerful and useful extension methods.")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Marcel Joachim Kloubert")]
-[assembly: AssemblyProduct("Extensions.NET")]
-[assembly: AssemblyCopyright("Copyright © 2015  Marcel Joachim Kloubert")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
+namespace MarcelJoachimKloubert.Extensions.Tests
+{
+    internal static class Program
+    {
+        #region Methods (1)
 
-[assembly: ComVisible(false)]
+        private static void Main(string[] args)
+        {
+            try
+            {
+                var taskCtx = Task.Factory.StartNewTask((ctx) =>
+                    {
+                        if (ctx != null)
+                        {
+                            
+                        }
+                    }, actionState: 12);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("[ERROR!]: {0}", ex.GetBaseException());
+            }
 
-[assembly: Guid("aa142ecc-1f07-4c78-9e90-6c60272e6b56")]
+            Console.WriteLine();
+            Console.WriteLine();
 
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+            Console.WriteLine("===== ENTER =====");
+            Console.ReadLine();
+        }
+
+        #endregion
+    }
+}

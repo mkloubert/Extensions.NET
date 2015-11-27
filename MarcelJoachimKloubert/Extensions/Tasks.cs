@@ -27,21 +27,10 @@
  *                                                                                                                    *
  **********************************************************************************************************************/
 
-using System.Reflection;
-using System.Runtime.InteropServices;
-
-[assembly: AssemblyTitle("Extensions.NET")]
-[assembly: AssemblyDescription("Class library with powerful and useful extension methods.")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Marcel Joachim Kloubert")]
-[assembly: AssemblyProduct("Extensions.NET")]
-[assembly: AssemblyCopyright("Copyright © 2015  Marcel Joachim Kloubert")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
-
-[assembly: ComVisible(false)]
-
-[assembly: Guid("aa142ecc-1f07-4c78-9e90-6c60272e6b56")]
-
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+namespace MarcelJoachimKloubert.Extensions
+{
+    // Extension methods for tasks.
+    static partial class MJKCoreExtensionMethods
+    {
+    }
+}

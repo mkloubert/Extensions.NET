@@ -27,21 +27,69 @@
  *                                                                                                                    *
  **********************************************************************************************************************/
 
-using System.Reflection;
-using System.Runtime.InteropServices;
+using System.Threading;
+using System.Threading.Tasks;
 
-[assembly: AssemblyTitle("Extensions.NET")]
-[assembly: AssemblyDescription("Class library with powerful and useful extension methods.")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Marcel Joachim Kloubert")]
-[assembly: AssemblyProduct("Extensions.NET")]
-[assembly: AssemblyCopyright("Copyright © 2015  Marcel Joachim Kloubert")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
+namespace MarcelJoachimKloubert.Extensions
+{
+    #region CLASS: TaskContext
 
-[assembly: ComVisible(false)]
+    internal class TaskContext : ITaskContext
+    {
+        #region Properties (3)
 
-[assembly: Guid("aa142ecc-1f07-4c78-9e90-6c60272e6b56")]
+        internal CancellationTokenSource CancellationSource { get; set; }
 
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+        public Task Task { get; internal set; }
+
+        internal TaskScheduler Scheduler { get; set; }
+
+        #endregion Properties (3)
+
+        #region Methods (3)
+
+        public void Cancel()
+        {
+            CancellationSource.Cancel();
+        }
+
+        public void Start()
+        {
+            if (Scheduler != null)
+            {
+                Task.Start(Scheduler);
+            }
+            else
+            {
+                Task.Start();
+            }
+        }
+
+        public void Wait()
+        {
+            Task.WaitAll(Task);
+        }
+
+        #endregion Methods (3)
+    }
+
+    #endregion CLASS: TaskContext
+
+    #region CLASS: TaskContext<TResult>
+
+    internal class TaskContext<TResult> : TaskContext, ITaskContext<TResult>
+    {
+        #region Properties (1)
+
+        public new Task<TResult> Task
+        {
+            get { return (Task<TResult>)base.Task; }
+
+            internal set { base.Task = value; }
+        }
+
+        #endregion Properties (1)
+    }
+
+    #endregion CLASS: TaskContext<TResult>
+}

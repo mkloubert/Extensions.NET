@@ -27,21 +27,101 @@
  *                                                                                                                    *
  **********************************************************************************************************************/
 
-using System.Reflection;
-using System.Runtime.InteropServices;
+using System;
 
-[assembly: AssemblyTitle("Extensions.NET")]
-[assembly: AssemblyDescription("Class library with powerful and useful extension methods.")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Marcel Joachim Kloubert")]
-[assembly: AssemblyProduct("Extensions.NET")]
-[assembly: AssemblyCopyright("Copyright © 2015  Marcel Joachim Kloubert")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
+namespace MarcelJoachimKloubert.Extensions
+{
+    // GetSimilarity()
+    static partial class MJKCoreExtensionMethods
+    {
+        #region Methods (1)
 
-[assembly: ComVisible(false)]
+        /// <summary>
+        /// Calculates the similarity between that string and another.
+        /// </summary>
+        /// <param name="str">The current string.</param>
+        /// <param name="other">The user string.</param>
+        /// <param name="ignoreCase">Ignore case or not.</param>
+        /// <param name="trim">Trim both strings or not.</param>
+        /// <returns>
+        /// A value that indicates the similarity (0 for 0% and 1 for 100%).
+        /// </returns>
+        public static double GetSimilarity(this string str, string other, bool ignoreCase = false, bool trim = false)
+        {
+            if (str == null && other == null)
+            {
+                return 1;
+            }
 
-[assembly: Guid("aa142ecc-1f07-4c78-9e90-6c60272e6b56")]
+            if (str == null ^ other == null)
+            {
+                return 0;
+            }
 
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+            if (ignoreCase)
+            {
+                str = str.ToLower();
+                other = other.ToLower();
+            }
+
+            if (trim)
+            {
+                str = str.Trim();
+                other = other.Trim();
+            }
+
+            var distance = 0;
+
+            // calculate levenstein distance
+            if (str != other)
+            {
+                var matrix = new int[str.Length + 1, other.Length + 1];
+
+                for (var i = 0; i <= str.Length; i++)
+                {
+                    // delete
+                    matrix[i, 0] = i;
+                }
+
+                for (var j = 0; j <= other.Length; j++)
+                {
+                    // insert
+                    matrix[0, j] = j;
+                }
+
+                for (var i = 0; i < str.Length; i++)
+                {
+                    for (var j = 0; j < other.Length; j++)
+                    {
+                        if (str[i] == other[j])
+                        {
+                            matrix[i + 1, j + 1] = matrix[i, j];
+                        }
+                        else
+                        {
+                            // delete or insert
+                            matrix[i + 1, j + 1] = Math.Min(matrix[i, j + 1] + 1, matrix[i + 1, j] + 1);
+
+                            // substitution
+                            matrix[i + 1, j + 1] = Math.Min(matrix[i + 1, j + 1], matrix[i, j] + 1);
+                        }
+                    }
+                }
+
+                distance = matrix[str.Length, other.Length];
+            }
+
+            if (distance == 0)
+            {
+                return 1D;
+            }
+
+            var longestLen = (double)Math.Max(str.Length, other.Length);
+            var percentage = (double)distance / longestLen;
+
+            return 1D - percentage;
+        }
+
+        #endregion Methods (1)
+    }
+}

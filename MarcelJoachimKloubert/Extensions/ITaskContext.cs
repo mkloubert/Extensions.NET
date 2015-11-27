@@ -27,21 +27,63 @@
  *                                                                                                                    *
  **********************************************************************************************************************/
 
-using System.Reflection;
-using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 
-[assembly: AssemblyTitle("Extensions.NET")]
-[assembly: AssemblyDescription("Class library with powerful and useful extension methods.")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Marcel Joachim Kloubert")]
-[assembly: AssemblyProduct("Extensions.NET")]
-[assembly: AssemblyCopyright("Copyright © 2015  Marcel Joachim Kloubert")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
+namespace MarcelJoachimKloubert.Extensions
+{
+    #region INTERFACE: ITaskContext
 
-[assembly: ComVisible(false)]
+    /// <summary>
+    /// Describes a context for a <see cref="Task" />.
+    /// </summary>
+    public interface ITaskContext
+    {
+        #region Properties (1)
 
-[assembly: Guid("aa142ecc-1f07-4c78-9e90-6c60272e6b56")]
+        /// <summary>
+        /// Gets the underlying task.
+        /// </summary>
+        Task Task { get; }
 
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+        #endregion Properties (1)
+
+        #region Methods (3)
+
+        /// <summary>
+        /// Cancels the task.
+        /// </summary>
+        void Cancel();
+
+        /// <summary>
+        /// Starts the task.
+        /// </summary>
+        void Start();
+
+        /// <summary>
+        /// Waits for the task.
+        /// </summary>
+        void Wait();
+
+        #endregion Methods (3)
+    }
+
+    #endregion INTERFACE: ITaskContext
+
+    #region INTERFACE: ITaskContext<TResult>
+
+    /// <summary>
+    /// Describes a context for a <see cref="Task" /> with a result.
+    /// </summary>
+    /// <typeparam name="TResult">Type of the result.</typeparam>
+    public interface ITaskContext<TResult> : ITaskContext
+    {
+        #region Properties (1)
+
+        /// <inheriteddoc />
+        new Task<TResult> Task { get; }
+
+        #endregion Properties (1)
+    }
+
+    #endregion INTERFACE: ITaskContext<TResult>
+}

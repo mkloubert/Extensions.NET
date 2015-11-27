@@ -27,21 +27,44 @@
  *                                                                                                                    *
  **********************************************************************************************************************/
 
-using System.Reflection;
-using System.Runtime.InteropServices;
+namespace MarcelJoachimKloubert.Extensions
+{
+    #region INTERFACE: ITaskExecutionContext
 
-[assembly: AssemblyTitle("Extensions.NET")]
-[assembly: AssemblyDescription("Class library with powerful and useful extension methods.")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Marcel Joachim Kloubert")]
-[assembly: AssemblyProduct("Extensions.NET")]
-[assembly: AssemblyCopyright("Copyright © 2015  Marcel Joachim Kloubert")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
+    /// <summary>
+    /// Describes an execution context for a task.
+    /// </summary>
+    public interface ITaskExecutionContext
+    {
+        #region Properties (1)
 
-[assembly: ComVisible(false)]
+        /// <summary>
+        /// Gets if cancellation request has been made or not.
+        /// </summary>
+        bool IsCancelling { get; }
 
-[assembly: Guid("aa142ecc-1f07-4c78-9e90-6c60272e6b56")]
+        #endregion Properties (1)
+    }
 
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+    #endregion INTERFACE: ITaskExecutionContext
+
+    #region INTERFACE: ITaskExecutionContext<TState>
+
+    /// <summary>
+    /// Describes an execution context for a task.
+    /// </summary>
+    /// <typeparam name="TState">Type fo the state object.</typeparam>
+    public interface ITaskExecutionContext<out TState> : ITaskExecutionContext
+    {
+        #region Properties (1)
+
+        /// <summary>
+        /// Gets the state object.
+        /// </summary>
+        TState State { get; }
+
+        #endregion Properties (1)
+    }
+
+    #endregion INTERFACE: ITaskExecutionContext<TState>
+}

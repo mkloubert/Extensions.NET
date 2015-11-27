@@ -27,21 +27,29 @@
  *                                                                                                                    *
  **********************************************************************************************************************/
 
-using System.Reflection;
-using System.Runtime.InteropServices;
+using System;
+using System.Threading;
 
-[assembly: AssemblyTitle("Extensions.NET")]
-[assembly: AssemblyDescription("Class library with powerful and useful extension methods.")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Marcel Joachim Kloubert")]
-[assembly: AssemblyProduct("Extensions.NET")]
-[assembly: AssemblyCopyright("Copyright © 2015  Marcel Joachim Kloubert")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
+namespace MarcelJoachimKloubert.Extensions
+{
+    internal class TaskExecutionContext<TState> : ITaskExecutionContext<TState>
+    {
+        #region Properties (4)
 
-[assembly: ComVisible(false)]
+        internal CancellationToken CancelToken { get; set; }
 
-[assembly: Guid("aa142ecc-1f07-4c78-9e90-6c60272e6b56")]
+        public bool IsCancelling
+        {
+            get { return CancelToken.IsCancellationRequested; }
+        }
 
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+        public TState State
+        {
+            get { return StateProvider(); }
+        }
+
+        internal Func<TState> StateProvider { get; set; }
+
+        #endregion Properties (4)
+    }
+}

@@ -197,9 +197,11 @@ namespace MarcelJoachimKloubert.Extensions
                     long index = -1;
                     while (enumerator.MoveNext())
                     {
-                        var ctx = new ItemExecutionContext<T, TState>();
-                        ctx.Cancel = false;
-                        ctx.ContinueOnError = true;
+                        var ctx = new ItemExecutionContext<T, TState>
+                            {
+                                Cancel = false,
+                                ContinueOnError = true
+                            };
 
                         try
                         {
