@@ -68,7 +68,7 @@ namespace MarcelJoachimKloubert.Extensions
         {
             if (asm == null)
             {
-                throw new ArgumentNullException("asm");
+                throw new ArgumentNullException(nameof(asm));
             }
 
             var stream = asm.GetManifestResourceStream(name);
@@ -102,7 +102,7 @@ namespace MarcelJoachimKloubert.Extensions
         {
             if (type == null)
             {
-                throw new ArgumentNullException("type");
+                throw new ArgumentNullException(nameof(type));
             }
 
             var ns = type.Namespace;
