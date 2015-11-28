@@ -28,7 +28,7 @@
  **********************************************************************************************************************/
 
 using System;
-using System.Data;
+using System.Data.Common;
 
 namespace MarcelJoachimKloubert.Extensions.Data
 {
@@ -45,11 +45,11 @@ namespace MarcelJoachimKloubert.Extensions.Data
         /// <exception cref="ArgumentNullException">
         /// <paramref name="conn" /> and/or <paramref name="action" /> is <see langword="null" />.
         /// </exception>
-        public static void InvokeForTransaction(this IDbConnection conn, Action<IDbTransaction> action)
+        public static void InvokeForTransaction(this DbConnection conn, Action<DbTransaction> action)
         {
             if (action == null)
             {
-                throw new ArgumentNullException("action");
+                throw new ArgumentNullException(nameof(action));
             }
 
             InvokeForTransaction(conn: conn,
@@ -66,8 +66,8 @@ namespace MarcelJoachimKloubert.Extensions.Data
         /// <exception cref="ArgumentNullException">
         /// <paramref name="conn" /> and/or <paramref name="action" /> is <see langword="null" />.
         /// </exception>
-        public static void InvokeForTransaction<TState>(this IDbConnection conn,
-                                                        Action<IDbTransaction, TState> action, TState actionState)
+        public static void InvokeForTransaction<TState>(this DbConnection conn,
+                                                        Action<DbTransaction, TState> action, TState actionState)
         {
             InvokeForTransaction(conn: conn,
                                  action: action, actionStateFactory: (t) => actionState);
@@ -83,22 +83,22 @@ namespace MarcelJoachimKloubert.Extensions.Data
         /// <exception cref="ArgumentNullException">
         /// <paramref name="conn" />, <paramref name="action" /> and/or <paramref name="actionStateFactory" /> is <see langword="null" />.
         /// </exception>
-        public static void InvokeForTransaction<TState>(this IDbConnection conn,
-                                                        Action<IDbTransaction, TState> action, Func<IDbTransaction, TState> actionStateFactory)
+        public static void InvokeForTransaction<TState>(this DbConnection conn,
+                                                        Action<DbTransaction, TState> action, Func<DbTransaction, TState> actionStateFactory)
         {
             if (conn == null)
             {
-                throw new ArgumentNullException("conn");
+                throw new ArgumentNullException(nameof(conn));
             }
 
             if (action == null)
             {
-                throw new ArgumentNullException("action");
+                throw new ArgumentNullException(nameof(action));
             }
 
             if (actionStateFactory == null)
             {
-                throw new ArgumentNullException("actionStateFactory");
+                throw new ArgumentNullException(nameof(actionStateFactory));
             }
 
             InvokeForTransaction(
@@ -111,10 +111,10 @@ namespace MarcelJoachimKloubert.Extensions.Data
                         return (object)null;
                     },
                 funcState: new
-                    {
-                        Action = action,
-                        StateFactory = actionStateFactory,
-                    });
+                {
+                    Action = action,
+                    StateFactory = actionStateFactory,
+                });
         }
 
         /// <summary>
@@ -127,11 +127,11 @@ namespace MarcelJoachimKloubert.Extensions.Data
         /// <exception cref="ArgumentNullException">
         /// <paramref name="conn" /> and/or <paramref name="func" /> is <see langword="null" />.
         /// </exception>
-        public static TResult InvokeForTransaction<TResult>(this IDbConnection conn, Func<IDbTransaction, TResult> func)
+        public static TResult InvokeForTransaction<TResult>(this DbConnection conn, Func<DbTransaction, TResult> func)
         {
             if (func == null)
             {
-                throw new ArgumentNullException("func");
+                throw new ArgumentNullException(nameof(func));
             }
 
             return InvokeForTransaction(conn: conn,
@@ -150,8 +150,8 @@ namespace MarcelJoachimKloubert.Extensions.Data
         /// <exception cref="ArgumentNullException">
         /// <paramref name="conn" /> and/or <paramref name="func" /> is <see langword="null" />.
         /// </exception>
-        public static TResult InvokeForTransaction<TState, TResult>(this IDbConnection conn,
-                                                                    Func<IDbTransaction, TState, TResult> func, TState funcState)
+        public static TResult InvokeForTransaction<TState, TResult>(this DbConnection conn,
+                                                                    Func<DbTransaction, TState, TResult> func, TState funcState)
         {
             return InvokeForTransaction(conn: conn,
                                         func: func, funcStateFactory: (t) => funcState);
@@ -169,22 +169,22 @@ namespace MarcelJoachimKloubert.Extensions.Data
         /// <exception cref="ArgumentNullException">
         /// <paramref name="conn" />, <paramref name="func" /> and/or <paramref name="funcStateFactory" /> is <see langword="null" />.
         /// </exception>
-        public static TResult InvokeForTransaction<TState, TResult>(this IDbConnection conn,
-                                                                    Func<IDbTransaction, TState, TResult> func, Func<IDbTransaction, TState> funcStateFactory)
+        public static TResult InvokeForTransaction<TState, TResult>(this DbConnection conn,
+                                                                    Func<DbTransaction, TState, TResult> func, Func<DbTransaction, TState> funcStateFactory)
         {
             if (conn == null)
             {
-                throw new ArgumentNullException("conn");
+                throw new ArgumentNullException(nameof(conn));
             }
 
             if (func == null)
             {
-                throw new ArgumentNullException("func");
+                throw new ArgumentNullException(nameof(func));
             }
 
             if (funcStateFactory == null)
             {
-                throw new ArgumentNullException("funcStateFactory");
+                throw new ArgumentNullException(nameof(funcStateFactory));
             }
 
             var transaction = conn.BeginTransaction();
