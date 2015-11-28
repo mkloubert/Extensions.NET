@@ -65,6 +65,7 @@
     <Compile Include="Extensions\Collections.Randomize.cs">
       <DependentUpon>Collections.cs</DependentUpon>
     </Compile>
+    <Compile Include="Extensions\Components.cs" />
     <Compile Include="Extensions\Convert.cs" />
     <Compile Include="Extensions\Convert.ToDecimal.cs">
       <DependentUpon>Convert.cs</DependentUpon>
