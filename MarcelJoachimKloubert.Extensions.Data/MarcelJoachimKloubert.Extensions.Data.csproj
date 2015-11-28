@@ -114,6 +114,9 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\Data\Records.Build.cs" />
+    <Compile Include="Extensions\Data\Records.BuildAll.cs" />
+    <Compile Include="Extensions\Data\Records.cs" />
     <Compile Include="Extensions\Data\Values.cs" />
     <Compile Include="Extensions\Data\Values.FromDbValue.cs" />
     <Compile Include="Extensions\Data\Values.ToDbValue.cs" />
