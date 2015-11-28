@@ -57,6 +57,9 @@
     <Compile Include="Extensions\Collections.DisposeAll.cs">
       <DependentUpon>Collections.cs</DependentUpon>
     </Compile>
+    <Compile Include="Extensions\Collections.PushRange.cs">
+      <DependentUpon>Collections.cs</DependentUpon>
+    </Compile>
     <Compile Include="Extensions\Collections.Randomize.cs">
       <DependentUpon>Collections.cs</DependentUpon>
     </Compile>
@@ -217,6 +220,10 @@
     <Compile Include="Extensions\Math.SinH.cs">
       <DependentUpon>Math.cs</DependentUpon>
     </Compile>
+    <Compile Include="Extensions\Net.SetBasicAuth.cs">
+      <DependentUpon>Net.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\Net.cs" />
     <Compile Include="Extensions\NumberSign.cs" />
     <Compile Include="Extensions\DateTime.cs" />
     <Compile Include="Extensions\Strings.AsChars.cs">
