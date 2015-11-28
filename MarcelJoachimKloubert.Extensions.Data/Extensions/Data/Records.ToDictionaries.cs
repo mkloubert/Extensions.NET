@@ -29,7 +29,7 @@
 
 using System;
 using System.Collections.Generic;
-using System.Data;
+using System.Data.Common;
 
 namespace MarcelJoachimKloubert.Extensions.Data
 {
@@ -46,7 +46,7 @@ namespace MarcelJoachimKloubert.Extensions.Data
         /// <exception cref="ArgumentNullException">
         /// <paramref name="reader" /> is <see langword="null" />.
         /// </exception>
-        public static IEnumerable<Dictionary<string, object>> ToDictionaries(this IDataReader reader)
+        public static IEnumerable<Dictionary<string, object>> ToDictionaries(this DbDataReader reader)
         {
             return ToDictionaries<Dictionary<string, object>>(reader);
         }
@@ -60,12 +60,12 @@ namespace MarcelJoachimKloubert.Extensions.Data
         /// <exception cref="ArgumentNullException">
         /// <paramref name="reader" /> is <see langword="null" />.
         /// </exception>
-        public static IEnumerable<TDict> ToDictionaries<TDict>(this IDataReader reader)
+        public static IEnumerable<TDict> ToDictionaries<TDict>(this DbDataReader reader)
             where TDict : global::System.Collections.Generic.IDictionary<string, object>, new()
         {
             if (reader == null)
             {
-                throw new ArgumentNullException("reader");
+                throw new ArgumentNullException(nameof(reader));
             }
 
             while (reader.Read())

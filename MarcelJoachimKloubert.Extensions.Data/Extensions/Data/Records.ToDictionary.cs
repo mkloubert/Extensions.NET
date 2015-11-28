@@ -29,7 +29,7 @@
 
 using System;
 using System.Collections.Generic;
-using System.Data;
+using System.Data.Common;
 
 namespace MarcelJoachimKloubert.Extensions.Data
 {
@@ -46,7 +46,7 @@ namespace MarcelJoachimKloubert.Extensions.Data
         /// <exception cref="ArgumentNullException">
         /// <paramref name="rec" /> is <see langword="null" />.
         /// </exception>
-        public static Dictionary<string, object> ToDictionary(this IDataRecord rec)
+        public static Dictionary<string, object> ToDictionary(this DbDataReader rec)
         {
             return ToDictionary<Dictionary<string, object>>(rec);
         }
@@ -60,12 +60,12 @@ namespace MarcelJoachimKloubert.Extensions.Data
         /// <exception cref="ArgumentNullException">
         /// <paramref name="rec" /> is <see langword="null" />.
         /// </exception>
-        public static TDict ToDictionary<TDict>(this IDataRecord rec)
+        public static TDict ToDictionary<TDict>(this DbDataReader rec)
             where TDict : global::System.Collections.Generic.IDictionary<string, object>, new()
         {
             if (rec == null)
             {
-                throw new ArgumentNullException("rec");
+                throw new ArgumentNullException(nameof(rec));
             }
 
             var result = new TDict();
