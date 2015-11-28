@@ -31,8 +31,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Runtime.InteropServices;
-using System.Security;
 using System.Text;
 
 namespace MarcelJoachimKloubert.Extensions
@@ -40,7 +38,7 @@ namespace MarcelJoachimKloubert.Extensions
     // SetBasicAuth()
     static partial class MJKCoreExtensionMethods
     {
-        #region Methods (3)
+        #region Methods (2)
 
         /// <summary>
         /// Sets up a <see cref="WebRequest" /> for basic authorization.
@@ -67,7 +65,7 @@ namespace MarcelJoachimKloubert.Extensions
                                          userName, password);
 
             request.Headers["Authorization"] = string.Format("Basic {0}",
-                                                             Convert.ToBase64String(Encoding.ASCII
+                                                             Convert.ToBase64String(Encoding.GetEncoding("ASCII")
                                                                                             .GetBytes(authInfo)));
         }
 
@@ -98,51 +96,10 @@ namespace MarcelJoachimKloubert.Extensions
 
             SetBasicAuth(request: request,
                          userName: user,
-                         password: pwdArray != null ? Encoding.ASCII
+                         password: pwdArray != null ? Encoding.GetEncoding("ASCII")
                                                               .GetString(pwdArray, 0, pwdArray.Length) : null);
         }
 
-        /// <summary>
-        /// Sets up a <see cref="WebRequest" /> for basic authorization.
-        /// </summary>
-        /// <param name="request">The underlying request.</param>
-        /// <param name="uname">The username.</param>
-        /// <param name="secPwd">The password.</param>
-        /// <exception cref="ArgumentNullException"><paramref name="request" /> is <see langword="null" />.</exception>
-        /// <exception cref="FormatException"><paramref name="uname" /> contains invalid char(s).</exception>
-        public static void SetBasicAuth(this WebRequest request, string uname, SecureString secPwd)
-        {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request");
-            }
-
-            string pwd = null;
-            try
-            {
-                if (secPwd != null)
-                {
-                    var ptr = IntPtr.Zero;
-                    try
-                    {
-                        ptr = Marshal.SecureStringToGlobalAllocUnicode(secPwd);
-                        pwd = Marshal.PtrToStringUni(ptr);
-                    }
-                    finally
-                    {
-                        Marshal.ZeroFreeGlobalAllocUnicode(ptr);
-                    }
-                }
-
-                SetBasicAuth(request: request,
-                             userName: uname, password: pwd);
-            }
-            finally
-            {
-                pwd = null;
-            }
-        }
-
-        #endregion Methods (3)
+        #endregion Methods (2)
     }
 }
