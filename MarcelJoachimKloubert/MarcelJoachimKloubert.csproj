@@ -119,7 +119,13 @@
     <Compile Include="Extensions\IO.InvokeForStream.cs">
       <DependentUpon>IO.cs</DependentUpon>
     </Compile>
+    <Compile Include="Extensions\IO.ReadBuffered.cs">
+      <DependentUpon>IO.cs</DependentUpon>
+    </Compile>
     <Compile Include="Extensions\IO.ReadLines.cs">
+      <DependentUpon>IO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\IO.ReadSingleByte.cs">
       <DependentUpon>IO.cs</DependentUpon>
     </Compile>
     <Compile Include="Extensions\ITaskContext.cs" />
