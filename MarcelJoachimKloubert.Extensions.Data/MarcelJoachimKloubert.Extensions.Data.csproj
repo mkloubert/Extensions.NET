@@ -44,6 +44,10 @@
     <Reference Include="System.Data" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\Data\Connections.cs" />
+    <Compile Include="Extensions\Data\Connections.InvokeForTransaction.cs">
+      <DependentUpon>Connections.cs</DependentUpon>
+    </Compile>
     <Compile Include="Extensions\Data\Records.BuildAll.cs">
       <DependentUpon>Records.cs</DependentUpon>
     </Compile>
