@@ -55,12 +55,12 @@ namespace MarcelJoachimKloubert.Extensions
         {
             if (stream == null)
             {
-                throw new ArgumentNullException("stream");
+                throw new ArgumentNullException(nameof(stream));
             }
 
             if (bufferSize < 1)
             {
-                throw new ArgumentOutOfRangeException("bufferSize", bufferSize, "Must be 1 at least!");
+                throw new ArgumentOutOfRangeException(nameof(bufferSize), bufferSize, "Must be 1 at least!");
             }
 
             var buffer = new byte[bufferSize];

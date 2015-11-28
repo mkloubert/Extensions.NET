@@ -49,7 +49,7 @@ namespace MarcelJoachimKloubert.Extensions
         {
             if (stream == null)
             {
-                throw new ArgumentNullException("stream");
+                throw new ArgumentNullException(nameof(stream));
             }
 
             var result = stream.ReadByte();
