@@ -5,3 +5,5 @@
 /.vs/MarcelJoachimKloubert/v14/.suo
 /MarcelJoachimKloubert.sln.DotSettings.user
 /MarcelJoachimKloubert/project.lock.json
+/MarcelJoachimKloubert.Extensions.Tests/bin
+/MarcelJoachimKloubert.Extensions.Tests/obj
