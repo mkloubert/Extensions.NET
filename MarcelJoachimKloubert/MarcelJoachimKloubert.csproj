@@ -133,6 +133,40 @@
     <Compile Include="Extensions\Collections.Randomize.cs">
       <DependentUpon>Collections.cs</DependentUpon>
     </Compile>
+    <Compile Include="Extensions\Convert.cs" />
+    <Compile Include="Extensions\Convert.ToDecimal.cs">
+      <DependentUpon>Convert.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\Convert.ToSByte.cs">
+      <DependentUpon>Convert.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\Convert.ToSingle.cs">
+      <DependentUpon>Convert.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\Convert.ToInt64.cs">
+      <DependentUpon>Convert.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\Convert.ToInt32.cs">
+      <DependentUpon>Convert.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\Convert.ToDouble.cs">
+      <DependentUpon>Convert.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\Convert.ToUInt64.cs">
+      <DependentUpon>Convert.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\Convert.ToUInt32.cs">
+      <DependentUpon>Convert.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\Convert.ToUInt16.cs">
+      <DependentUpon>Convert.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\Convert.ToInt16.cs">
+      <DependentUpon>Convert.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\Convert.ToByte.cs">
+      <DependentUpon>Convert.cs</DependentUpon>
+    </Compile>
     <Compile Include="Extensions\Cryptography.cs" />
     <Compile Include="Extensions\Collections.AddRange.cs">
       <DependentUpon>Collections.cs</DependentUpon>
