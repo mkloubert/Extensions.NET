@@ -114,8 +114,12 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Extensions\Data\Records.Build.cs" />
-    <Compile Include="Extensions\Data\Records.BuildAll.cs" />
+    <Compile Include="Extensions\Data\Records.BuildAll.cs">
+      <DependentUpon>Records.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\Data\Records.Build.cs">
+      <DependentUpon>Records.cs</DependentUpon>
+    </Compile>
     <Compile Include="Extensions\Data\Records.cs" />
     <Compile Include="Extensions\Data\Records.ToDictionaries.cs">
       <DependentUpon>Records.cs</DependentUpon>
@@ -124,11 +128,14 @@
       <DependentUpon>Records.cs</DependentUpon>
     </Compile>
     <Compile Include="Extensions\Data\Values.cs" />
-    <Compile Include="Extensions\Data\Values.FromDbValue.cs" />
-    <Compile Include="Extensions\Data\Values.ToDbValue.cs" />
+    <Compile Include="Extensions\Data\Values.ToDbValue.cs">
+      <DependentUpon>Values.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\Data\Values.FromDbValue.cs">
+      <DependentUpon>Values.cs</DependentUpon>
+    </Compile>
     <Compile Include="Extensions\Data\_Extensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Content Include="Properties\MarcelJoachimKloubert.Extensions.Data.rd.xml" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
