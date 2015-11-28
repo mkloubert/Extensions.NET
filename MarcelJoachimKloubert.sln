@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarcelJoachimKloubert.Exten
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarcelJoachimKloubert.Extensions.Data", "MarcelJoachimKloubert.Extensions.Data\MarcelJoachimKloubert.Extensions.Data.csproj", "{F3105324-C568-4AC8-B4FC-BC6A6120B570}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarcelJoachimKloubert.Extensions.Windows.Forms", "MarcelJoachimKloubert.Extensions.Windows.Forms\MarcelJoachimKloubert.Extensions.Windows.Forms.csproj", "{EBAE180B-49F5-4CF6-8B7A-A63CA9083FA3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{F3105324-C568-4AC8-B4FC-BC6A6120B570}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F3105324-C568-4AC8-B4FC-BC6A6120B570}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F3105324-C568-4AC8-B4FC-BC6A6120B570}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBAE180B-49F5-4CF6-8B7A-A63CA9083FA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBAE180B-49F5-4CF6-8B7A-A63CA9083FA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBAE180B-49F5-4CF6-8B7A-A63CA9083FA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBAE180B-49F5-4CF6-8B7A-A63CA9083FA3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
