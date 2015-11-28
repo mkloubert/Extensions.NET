@@ -95,13 +95,7 @@
     <Compile Include="Extensions\DateTime.Walk.cs">
       <DependentUpon>DateTime.cs</DependentUpon>
     </Compile>
-    <Compile Include="Extensions\IO.GUnzip.cs">
-      <DependentUpon>IO.cs</DependentUpon>
-    </Compile>
     <Compile Include="Extensions\IO.cs" />
-    <Compile Include="Extensions\IO.GZip.cs">
-      <DependentUpon>IO.cs</DependentUpon>
-    </Compile>
     <Compile Include="Extensions\IO.InvokeForStream.cs">
       <DependentUpon>IO.cs</DependentUpon>
     </Compile>
