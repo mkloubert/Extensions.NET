@@ -60,7 +60,7 @@ namespace MarcelJoachimKloubert.Extensions
 
             if (bufferSize < 1)
             {
-                throw new ArgumentOutOfRangeException("bufferSize", bufferSize, "Must be 1 at least!");
+                throw new ArgumentOutOfRangeException("bufferSize");
             }
 
             var buffer = new byte[bufferSize];
