@@ -117,6 +117,12 @@
     <Compile Include="Extensions\Data\Records.Build.cs" />
     <Compile Include="Extensions\Data\Records.BuildAll.cs" />
     <Compile Include="Extensions\Data\Records.cs" />
+    <Compile Include="Extensions\Data\Records.ToDictionaries.cs">
+      <DependentUpon>Records.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\Data\Records.ToDictionary.cs">
+      <DependentUpon>Records.cs</DependentUpon>
+    </Compile>
     <Compile Include="Extensions\Data\Values.cs" />
     <Compile Include="Extensions\Data\Values.FromDbValue.cs" />
     <Compile Include="Extensions\Data\Values.ToDbValue.cs" />
