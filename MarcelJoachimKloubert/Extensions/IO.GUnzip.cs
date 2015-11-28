@@ -132,17 +132,17 @@ namespace MarcelJoachimKloubert.Extensions
         {
             if (src == null)
             {
-                throw new ArgumentNullException("src");
+                throw new ArgumentNullException(nameof(src));
             }
 
             if (dest == null)
             {
-                throw new ArgumentNullException("dest");
+                throw new ArgumentNullException(nameof(dest));
             }
 
             if (bufferSize < 1)
             {
-                throw new ArgumentOutOfRangeException("bufferSize", bufferSize, "Must be 1 at least!");
+                throw new ArgumentOutOfRangeException(nameof(bufferSize), bufferSize, "Must be 1 at least!");
             }
 
             try

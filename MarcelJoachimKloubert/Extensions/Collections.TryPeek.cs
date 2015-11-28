@@ -73,12 +73,12 @@ namespace MarcelJoachimKloubert.Extensions
         {
             if (stack == null)
             {
-                throw new ArgumentNullException("stack");
+                throw new ArgumentNullException(nameof(stack));
             }
 
             if (defaultValueProvider == null)
             {
-                throw new ArgumentNullException("defaultValueProvider");
+                throw new ArgumentNullException(nameof(defaultValueProvider));
             }
 
             if (stack.Count > 0)

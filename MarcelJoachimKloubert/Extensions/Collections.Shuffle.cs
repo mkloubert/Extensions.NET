@@ -50,7 +50,7 @@ namespace MarcelJoachimKloubert.Extensions
         {
             if (list == null)
             {
-                throw new ArgumentNullException("list");
+                throw new ArgumentNullException(nameof(list));
             }
 
             rand = rand ?? new Random();

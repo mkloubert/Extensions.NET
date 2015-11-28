@@ -50,7 +50,7 @@ namespace MarcelJoachimKloubert.Extensions
         {
             if (stack == null)
             {
-                throw new ArgumentNullException("stack");
+                throw new ArgumentNullException(nameof(stack));
             }
 
             while (stack.Count > 0)

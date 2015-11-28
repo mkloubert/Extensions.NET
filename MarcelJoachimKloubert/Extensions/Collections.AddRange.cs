@@ -63,12 +63,12 @@ namespace MarcelJoachimKloubert.Extensions
         {
             if (coll == null)
             {
-                throw new ArgumentNullException("coll");
+                throw new ArgumentNullException(nameof(coll));
             }
 
             if (items == null)
             {
-                throw new ArgumentNullException("items");
+                throw new ArgumentNullException(nameof(items));
             }
 
             if (coll is List<T>)

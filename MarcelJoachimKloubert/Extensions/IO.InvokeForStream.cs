@@ -55,7 +55,7 @@ namespace MarcelJoachimKloubert.Extensions
         {
             if (action == null)
             {
-                throw new ArgumentNullException("action");
+                throw new ArgumentNullException(nameof(action));
             }
 
             InvokeForStream(stream: stream,
@@ -113,12 +113,12 @@ namespace MarcelJoachimKloubert.Extensions
         {
             if (action == null)
             {
-                throw new ArgumentNullException("action");
+                throw new ArgumentNullException(nameof(action));
             }
 
             if (actionStateFactory == null)
             {
-                throw new ArgumentNullException("actionStateFactory");
+                throw new ArgumentNullException(nameof(actionStateFactory));
             }
 
             InvokeForStream(stream: stream,
@@ -158,7 +158,7 @@ namespace MarcelJoachimKloubert.Extensions
         {
             if (func == null)
             {
-                throw new ArgumentNullException("func");
+                throw new ArgumentNullException(nameof(func));
             }
 
             return InvokeForStream(stream: stream,
@@ -219,17 +219,17 @@ namespace MarcelJoachimKloubert.Extensions
         {
             if (stream == null)
             {
-                throw new ArgumentNullException("stream");
+                throw new ArgumentNullException(nameof(stream));
             }
 
             if (func == null)
             {
-                throw new ArgumentNullException("func");
+                throw new ArgumentNullException(nameof(func));
             }
 
             if (funcStateFactory == null)
             {
-                throw new ArgumentNullException("funcStateFactory");
+                throw new ArgumentNullException(nameof(funcStateFactory));
             }
 
             long? oldPosition = null;

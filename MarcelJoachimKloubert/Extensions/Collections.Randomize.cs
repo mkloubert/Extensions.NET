@@ -53,7 +53,7 @@ namespace MarcelJoachimKloubert.Extensions
         {
             if (seq == null)
             {
-                throw new ArgumentNullException("seq");
+                throw new ArgumentNullException(nameof(seq));
             }
 
             rand = rand ?? new Random();

@@ -53,7 +53,7 @@ namespace MarcelJoachimKloubert.Extensions
         {
             if (dict == null)
             {
-                throw new ArgumentNullException("dict");
+                throw new ArgumentNullException(nameof(dict));
             }
 
             var e = dict.GetEnumerator();

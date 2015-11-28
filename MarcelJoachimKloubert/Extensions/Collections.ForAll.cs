@@ -104,7 +104,7 @@ namespace MarcelJoachimKloubert.Extensions
         {
             if (action == null)
             {
-                throw new ArgumentNullException("action");
+                throw new ArgumentNullException(nameof(action));
             }
 
             return ForAll(seq: seq,
@@ -173,17 +173,17 @@ namespace MarcelJoachimKloubert.Extensions
         {
             if (seq == null)
             {
-                throw new ArgumentNullException("seq");
+                throw new ArgumentNullException(nameof(seq));
             }
 
             if (action == null)
             {
-                throw new ArgumentNullException("action");
+                throw new ArgumentNullException(nameof(action));
             }
 
             if (actionStateFactory == null)
             {
-                throw new ArgumentNullException("actionStateFactory");
+                throw new ArgumentNullException(nameof(actionStateFactory));
             }
 
             var exceptions = new List<Exception>();
