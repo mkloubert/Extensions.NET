@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0334CC4D-2A8D-45F9-9BD8-B523B966CECB}</ProjectGuid>
+    <ProjectGuid>{9E743F48-51F9-408B-83DF-CD07D7748549}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MarcelJoachimKloubert</RootNamespace>
-    <AssemblyName>MarcelJoachimKloubert.Extensions</AssemblyName>
+    <RootNamespace>MarcelJoachimKloubert.Extensions.Data</RootNamespace>
+    <AssemblyName>MarcelJoachimKloubert.Extensions.Data</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.10240.0</TargetPlatformVersion>
@@ -26,9 +26,9 @@
     <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <LangVersion>6</LangVersion>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <DocumentationFile>bin\Debug\MarcelJoachimKloubert.Extensions.XML</DocumentationFile>
+    <DocumentationFile>bin\Debug\MarcelJoachimKloubert.Extensions.Data.XML</DocumentationFile>
+    <LangVersion>6</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -110,90 +110,16 @@
     <EmbeddedResource Include="..\LICENSE">
       <Link>LICENSE</Link>
     </EmbeddedResource>
-    <None Include="MarcelJoachimKloubert.Extensions.snk" />
+    <None Include="MarcelJoachimKloubert.Extensions.Data.snk" />
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Extensions\Collections.AddRange.cs" />
-    <Compile Include="Extensions\Collections.AsArray.cs" />
-    <Compile Include="Extensions\Collections.AsCollection.cs" />
-    <Compile Include="Extensions\Collections.AsDictionary.cs" />
-    <Compile Include="Extensions\Collections.AsList.cs" />
-    <Compile Include="Extensions\Collections.cs" />
-    <Compile Include="Extensions\Collections.DisposeAll.cs" />
-    <Compile Include="Extensions\Collections.ForAll.cs" />
-    <Compile Include="Extensions\Collections.IsEmpty.cs" />
-    <Compile Include="Extensions\Collections.IsNotEmpty.cs" />
-    <Compile Include="Extensions\Collections.PeekOrDefault.cs" />
-    <Compile Include="Extensions\Collections.PopAll.cs" />
-    <Compile Include="Extensions\Collections.PopOrDefault.cs" />
-    <Compile Include="Extensions\Collections.PushRange.cs" />
-    <Compile Include="Extensions\Collections.Randomize.cs" />
-    <Compile Include="Extensions\Collections.SelectEntries.cs" />
-    <Compile Include="Extensions\Collections.Shuffle.cs" />
-    <Compile Include="Extensions\Collections.TryPeek.cs" />
-    <Compile Include="Extensions\Collections.TryPop.cs" />
-    <Compile Include="Extensions\Cryptography.cs" />
-    <Compile Include="Extensions\DateTime.cs" />
-    <Compile Include="Extensions\DateTime.Walk.cs" />
-    <Compile Include="Extensions\IItemExecutionContext.cs" />
-    <Compile Include="Extensions\IO.cs" />
-    <Compile Include="Extensions\IO.GUnzip.cs" />
-    <Compile Include="Extensions\IO.GZip.cs" />
-    <Compile Include="Extensions\IO.InvokeForStream.cs" />
-    <Compile Include="Extensions\IO.ReadBuffered.cs" />
-    <Compile Include="Extensions\IO.ReadLines.cs" />
-    <Compile Include="Extensions\IO.ReadSingleByte.cs" />
-    <Compile Include="Extensions\ITaskContext.cs" />
-    <Compile Include="Extensions\ITaskExecutionContext.cs" />
-    <Compile Include="Extensions\Math.Abs.cs" />
-    <Compile Include="Extensions\Math.ACos.cs" />
-    <Compile Include="Extensions\Math.ASin.cs" />
-    <Compile Include="Extensions\Math.ATan.cs" />
-    <Compile Include="Extensions\Math.ATan2.cs" />
-    <Compile Include="Extensions\Math.Ceiling.cs" />
-    <Compile Include="Extensions\Math.Cos.cs" />
-    <Compile Include="Extensions\Math.CosH.cs" />
-    <Compile Include="Extensions\Math.cs" />
-    <Compile Include="Extensions\Math.Exp.cs" />
-    <Compile Include="Extensions\Math.Floor.cs" />
-    <Compile Include="Extensions\Math.IEEERemainder.cs" />
-    <Compile Include="Extensions\Math.Log.cs" />
-    <Compile Include="Extensions\Math.Log10.cs" />
-    <Compile Include="Extensions\Math.Max.cs" />
-    <Compile Include="Extensions\Math.Min.cs" />
-    <Compile Include="Extensions\Math.Negate.cs" />
-    <Compile Include="Extensions\Math.Pow.cs" />
-    <Compile Include="Extensions\Math.Round.cs" />
-    <Compile Include="Extensions\Math.Sign.cs" />
-    <Compile Include="Extensions\Math.Sin.cs" />
-    <Compile Include="Extensions\Math.SinH.cs" />
-    <Compile Include="Extensions\Math.Sqrt.cs" />
-    <Compile Include="Extensions\Math.Tan.cs" />
-    <Compile Include="Extensions\Math.TanH.cs" />
-    <Compile Include="Extensions\Math.Truncate.cs" />
-    <Compile Include="Extensions\Net.cs" />
-    <Compile Include="Extensions\Net.SetBasicAuth.cs" />
-    <Compile Include="Extensions\NumberSign.cs" />
-    <Compile Include="Extensions\Strings.AsChars.cs" />
-    <Compile Include="Extensions\Strings.cs" />
-    <Compile Include="Extensions\Strings.GetSimilarity.cs" />
-    <Compile Include="Extensions\TaskContext.cs" />
-    <Compile Include="Extensions\TaskExecutionContext.cs" />
-    <Compile Include="Extensions\Tasks.cs" />
-    <Compile Include="Extensions\Tasks.StartNewTask.cs" />
-    <Compile Include="Extensions\Values.AsString.cs" />
-    <Compile Include="Extensions\Values.ChangeType.cs" />
-    <Compile Include="Extensions\Values.cs" />
-    <Compile Include="Extensions\Values.IsFalse.cs" />
-    <Compile Include="Extensions\Values.IsNotFalse.cs" />
-    <Compile Include="Extensions\Values.IsNotNull.cs" />
-    <Compile Include="Extensions\Values.IsNotTrue.cs" />
-    <Compile Include="Extensions\Values.IsNull.cs" />
-    <Compile Include="Extensions\Values.IsTrue.cs" />
-    <Compile Include="Extensions\_Extensions.cs" />
+    <Compile Include="Extensions\Data\Values.cs" />
+    <Compile Include="Extensions\Data\Values.FromDbValue.cs" />
+    <Compile Include="Extensions\Data\Values.ToDbValue.cs" />
+    <Compile Include="Extensions\Data\_Extensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Content Include="Properties\MarcelJoachimKloubert.rd.xml" />
+    <Content Include="Properties\MarcelJoachimKloubert.Extensions.Data.rd.xml" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
@@ -202,7 +128,7 @@
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>MarcelJoachimKloubert.Extensions.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>MarcelJoachimKloubert.Extensions.Data.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

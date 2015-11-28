@@ -28,71 +28,55 @@
  **********************************************************************************************************************/
 
 using System;
-using System.Collections.Generic;
+using System.Data.Common;
 
-namespace MarcelJoachimKloubert.Extensions
+namespace MarcelJoachimKloubert.Extensions.Data
 {
-    // DisposeAll()
-    static partial class MJKCoreExtensionMethods
+    // FromDbValue()
+    static partial class MJKDataExtensionMethods
     {
         #region Methods (2)
 
         /// <summary>
-        /// Disposes all <see cref="IDisposable" /> items of a sequence.
+        /// Reads a value from a data record.
         /// </summary>
-        /// <typeparam name="T">Type of the items.</typeparam>
-        /// <param name="seq">The sequence.</param>
-        /// <param name="returnAll">Return also the disposed objects or not.</param>
-        /// <param name="returnNull">Return also the <see langword="null" /> references or not.</param>
-        /// <returns>
-        /// The new sequence or <see langword="null" /> if <paramref name="seq" /> is <see langword="null" />.
-        /// </returns>
-        /// <remarks>
-        /// A delayed sequence is returned what means that objects will only disposed when you walk through <paramref name="seq" />.
-        /// </remarks>
-        public static IEnumerable<T> DisposeAll<T>(this IEnumerable<T> seq, bool returnAll = false, bool returnNull = false)
+        /// <typeparam name="T">Target type.</typeparam>
+        /// <param name="rec">The record from where to read the value from.</param>
+        /// <param name="name">The name of the field inside the data record where the value is stored.</param>
+        /// <returns>The value.</returns>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="rec" /> is <see langword="null" />.
+        /// </exception>
+        public static T FromDbValue<T>(this DbDataReader rec, string name)
         {
-            if (seq == null)
+            if (rec == null)
             {
-                return null;
+                throw new ArgumentNullException(nameof(rec));
             }
-            
-            return DisposeAllInner<T>(seq,
-                                      returnAll: returnAll, returnNull: returnNull);
+
+            return FromDbValue<T>(rec,
+                                  rec.GetOrdinal(name));
         }
 
-        private static IEnumerable<T> DisposeAllInner<T>(this IEnumerable<T> seq, bool returnAll, bool returnNull)
+        /// <summary>
+        /// Reads a value from a data record.
+        /// </summary>
+        /// <typeparam name="T">Target type.</typeparam>
+        /// <param name="rec">The record from where to read the value from.</param>
+        /// <param name="ordinal">The ordinal of the field inside the data record where the value is stored.</param>
+        /// <returns>The value.</returns>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="rec" /> is <see langword="null" />.
+        /// </exception>
+        public static T FromDbValue<T>(this DbDataReader rec, int ordinal)
         {
-            using (var e = seq.GetEnumerator())
+            if (rec == null)
             {
-                while (e.MoveNext())
-                {
-                    var current = e.Current;
-
-                    bool doReturnItem;
-
-                    if (null != current)
-                    {
-                        doReturnItem = true;
-
-                        if (current is IDisposable)
-                        {
-                            doReturnItem = returnAll;
-
-                            ((IDisposable)current).Dispose();
-                        }
-                    }
-                    else
-                    {
-                        doReturnItem = returnNull;
-                    }
-
-                    if (doReturnItem)
-                    {
-                        yield return current;
-                    }
-                }
+                throw new ArgumentNullException(nameof(rec));
             }
+
+            return rec.IsDBNull(ordinal) ? default(T)
+                                         : (T)rec.GetValue(ordinal);
         }
 
         #endregion Methods (2)

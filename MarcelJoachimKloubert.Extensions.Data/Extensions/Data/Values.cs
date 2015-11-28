@@ -27,74 +27,10 @@
  *                                                                                                                    *
  **********************************************************************************************************************/
 
-using System;
-using System.Collections.Generic;
-
-namespace MarcelJoachimKloubert.Extensions
+namespace MarcelJoachimKloubert.Extensions.Data
 {
-    // DisposeAll()
-    static partial class MJKCoreExtensionMethods
+    // value extension methods
+    static partial class MJKDataExtensionMethods
     {
-        #region Methods (2)
-
-        /// <summary>
-        /// Disposes all <see cref="IDisposable" /> items of a sequence.
-        /// </summary>
-        /// <typeparam name="T">Type of the items.</typeparam>
-        /// <param name="seq">The sequence.</param>
-        /// <param name="returnAll">Return also the disposed objects or not.</param>
-        /// <param name="returnNull">Return also the <see langword="null" /> references or not.</param>
-        /// <returns>
-        /// The new sequence or <see langword="null" /> if <paramref name="seq" /> is <see langword="null" />.
-        /// </returns>
-        /// <remarks>
-        /// A delayed sequence is returned what means that objects will only disposed when you walk through <paramref name="seq" />.
-        /// </remarks>
-        public static IEnumerable<T> DisposeAll<T>(this IEnumerable<T> seq, bool returnAll = false, bool returnNull = false)
-        {
-            if (seq == null)
-            {
-                return null;
-            }
-            
-            return DisposeAllInner<T>(seq,
-                                      returnAll: returnAll, returnNull: returnNull);
-        }
-
-        private static IEnumerable<T> DisposeAllInner<T>(this IEnumerable<T> seq, bool returnAll, bool returnNull)
-        {
-            using (var e = seq.GetEnumerator())
-            {
-                while (e.MoveNext())
-                {
-                    var current = e.Current;
-
-                    bool doReturnItem;
-
-                    if (null != current)
-                    {
-                        doReturnItem = true;
-
-                        if (current is IDisposable)
-                        {
-                            doReturnItem = returnAll;
-
-                            ((IDisposable)current).Dispose();
-                        }
-                    }
-                    else
-                    {
-                        doReturnItem = returnNull;
-                    }
-
-                    if (doReturnItem)
-                    {
-                        yield return current;
-                    }
-                }
-            }
-        }
-
-        #endregion Methods (2)
     }
 }

@@ -27,74 +27,21 @@
  *                                                                                                                    *
  **********************************************************************************************************************/
 
-using System;
-using System.Collections.Generic;
+using System.Reflection;
+using System.Runtime.InteropServices;
 
-namespace MarcelJoachimKloubert.Extensions
-{
-    // DisposeAll()
-    static partial class MJKCoreExtensionMethods
-    {
-        #region Methods (2)
+[assembly: AssemblyTitle("Extensions.Data.NET")]
+[assembly: AssemblyDescription("Class library with powerful and useful ADO.NET extension methods.")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("Marcel Joachim Kloubert")]
+[assembly: AssemblyProduct("Extensions.Data.NET")]
+[assembly: AssemblyCopyright("Copyright © 2015  Marcel Joachim Kloubert")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
 
-        /// <summary>
-        /// Disposes all <see cref="IDisposable" /> items of a sequence.
-        /// </summary>
-        /// <typeparam name="T">Type of the items.</typeparam>
-        /// <param name="seq">The sequence.</param>
-        /// <param name="returnAll">Return also the disposed objects or not.</param>
-        /// <param name="returnNull">Return also the <see langword="null" /> references or not.</param>
-        /// <returns>
-        /// The new sequence or <see langword="null" /> if <paramref name="seq" /> is <see langword="null" />.
-        /// </returns>
-        /// <remarks>
-        /// A delayed sequence is returned what means that objects will only disposed when you walk through <paramref name="seq" />.
-        /// </remarks>
-        public static IEnumerable<T> DisposeAll<T>(this IEnumerable<T> seq, bool returnAll = false, bool returnNull = false)
-        {
-            if (seq == null)
-            {
-                return null;
-            }
-            
-            return DisposeAllInner<T>(seq,
-                                      returnAll: returnAll, returnNull: returnNull);
-        }
+[assembly: ComVisible(false)]
 
-        private static IEnumerable<T> DisposeAllInner<T>(this IEnumerable<T> seq, bool returnAll, bool returnNull)
-        {
-            using (var e = seq.GetEnumerator())
-            {
-                while (e.MoveNext())
-                {
-                    var current = e.Current;
+[assembly: Guid("2a9674e6-455b-4592-9d8d-b159fd692f34")]
 
-                    bool doReturnItem;
-
-                    if (null != current)
-                    {
-                        doReturnItem = true;
-
-                        if (current is IDisposable)
-                        {
-                            doReturnItem = returnAll;
-
-                            ((IDisposable)current).Dispose();
-                        }
-                    }
-                    else
-                    {
-                        doReturnItem = returnNull;
-                    }
-
-                    if (doReturnItem)
-                    {
-                        yield return current;
-                    }
-                }
-            }
-        }
-
-        #endregion Methods (2)
-    }
-}
+[assembly: AssemblyVersion("1.0.0.0")]
+[assembly: AssemblyFileVersion("1.0.0.0")]
