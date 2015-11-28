@@ -137,7 +137,9 @@
     <Compile Include="Extensions\IO.GUnzip.cs" />
     <Compile Include="Extensions\IO.GZip.cs" />
     <Compile Include="Extensions\IO.InvokeForStream.cs" />
+    <Compile Include="Extensions\IO.ReadBuffered.cs" />
     <Compile Include="Extensions\IO.ReadLines.cs" />
+    <Compile Include="Extensions\IO.ReadSingleByte.cs" />
     <Compile Include="Extensions\ITaskContext.cs" />
     <Compile Include="Extensions\ITaskExecutionContext.cs" />
     <Compile Include="Extensions\Math.Abs.cs" />
