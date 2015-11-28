@@ -46,9 +46,6 @@
     <None Include="MarcelJoachimKloubert.Extensions.snk" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Extensions\AppDomain.CreateUnwrappedInstanceOf.cs">
-      <DependentUpon>AppDomain.cs</DependentUpon>
-    </Compile>
     <Compile Include="Extensions\AppDomain.cs" />
     <Compile Include="Extensions\Collections.AsCollection.cs">
       <DependentUpon>Collections.cs</DependentUpon>
