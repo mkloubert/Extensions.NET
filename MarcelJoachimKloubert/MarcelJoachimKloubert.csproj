@@ -124,6 +124,7 @@
     <Compile Include="Extensions\Collections.PeekOrDefault.cs" />
     <Compile Include="Extensions\Collections.PopAll.cs" />
     <Compile Include="Extensions\Collections.PopOrDefault.cs" />
+    <Compile Include="Extensions\Collections.PushRange.cs" />
     <Compile Include="Extensions\Collections.Randomize.cs" />
     <Compile Include="Extensions\Collections.SelectEntries.cs" />
     <Compile Include="Extensions\Collections.Shuffle.cs" />
@@ -168,6 +169,8 @@
     <Compile Include="Extensions\Math.Tan.cs" />
     <Compile Include="Extensions\Math.TanH.cs" />
     <Compile Include="Extensions\Math.Truncate.cs" />
+    <Compile Include="Extensions\Net.cs" />
+    <Compile Include="Extensions\Net.SetBasicAuth.cs" />
     <Compile Include="Extensions\NumberSign.cs" />
     <Compile Include="Extensions\Strings.AsChars.cs" />
     <Compile Include="Extensions\Strings.cs" />
