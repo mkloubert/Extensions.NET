@@ -127,6 +127,9 @@
     <Compile Include="Extensions\Collections.DisposeAll.cs">
       <DependentUpon>Collections.cs</DependentUpon>
     </Compile>
+    <Compile Include="Extensions\Collections.Invert.cs">
+      <DependentUpon>Collections.cs</DependentUpon>
+    </Compile>
     <Compile Include="Extensions\Collections.NoNulls.cs">
       <DependentUpon>Collections.cs</DependentUpon>
     </Compile>
@@ -352,7 +355,22 @@
       <DependentUpon>Values.cs</DependentUpon>
     </Compile>
     <Compile Include="Extensions\Values.cs" />
+    <Compile Include="Extensions\Values.IsBetween.cs">
+      <DependentUpon>Values.cs</DependentUpon>
+    </Compile>
     <Compile Include="Extensions\Values.IsFalse.cs">
+      <DependentUpon>Values.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\Values.IsLessOrEqual.cs">
+      <DependentUpon>Values.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\Values.IsGreaterOrEqual.cs">
+      <DependentUpon>Values.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\Values.IsGreaterThan.cs">
+      <DependentUpon>Values.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\Values.IsLessThan.cs">
       <DependentUpon>Values.cs</DependentUpon>
     </Compile>
     <Compile Include="Extensions\Values.IsNotFalse.cs">
