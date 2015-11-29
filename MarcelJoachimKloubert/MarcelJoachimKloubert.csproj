@@ -127,13 +127,22 @@
     <Compile Include="Extensions\Collections.DisposeAll.cs">
       <DependentUpon>Collections.cs</DependentUpon>
     </Compile>
+    <Compile Include="Extensions\Collections.NoNulls.cs">
+      <DependentUpon>Collections.cs</DependentUpon>
+    </Compile>
     <Compile Include="Extensions\Collections.PushRange.cs">
       <DependentUpon>Collections.cs</DependentUpon>
     </Compile>
     <Compile Include="Extensions\Collections.Randomize.cs">
       <DependentUpon>Collections.cs</DependentUpon>
     </Compile>
+    <Compile Include="Extensions\Collections.RemoveWhere.cs">
+      <DependentUpon>Collections.cs</DependentUpon>
+    </Compile>
     <Compile Include="Extensions\Collections.TryGetValue.cs">
+      <DependentUpon>Collections.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\Collections.Without.cs">
       <DependentUpon>Collections.cs</DependentUpon>
     </Compile>
     <Compile Include="Extensions\Components.cs" />
