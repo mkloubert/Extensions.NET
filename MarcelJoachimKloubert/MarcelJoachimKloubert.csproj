@@ -317,6 +317,12 @@
     <Compile Include="Extensions\Values.IsTrue.cs">
       <DependentUpon>Values.cs</DependentUpon>
     </Compile>
+    <Compile Include="Extensions\Values.ToYesNoString.cs">
+      <DependentUpon>Values.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\Values.ToNumber.cs">
+      <DependentUpon>Values.cs</DependentUpon>
+    </Compile>
     <Compile Include="Extensions\_Extensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
