@@ -44,6 +44,13 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\Windows\Forms\Controls.cs" />
+    <Compile Include="Extensions\Windows\Forms\Controls.EnumerateControls.cs">
+      <DependentUpon>Controls.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\Windows\Forms\Controls.SendMessage.cs">
+      <DependentUpon>Controls.cs</DependentUpon>
+    </Compile>
     <Compile Include="Extensions\Windows\Forms\_Extensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
