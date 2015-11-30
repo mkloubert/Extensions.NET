@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarcelJoachimKloubert.Exten
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarcelJoachimKloubert.Extensions.Xml", "MarcelJoachimKloubert.Extensions.Xml\MarcelJoachimKloubert.Extensions.Xml.csproj", "{DD0BE835-B1AB-430B-8126-DC9A6C32B79C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarcelJoachimKloubert.Extensions.Tests", "MarcelJoachimKloubert.Extensions.Tests\MarcelJoachimKloubert.Extensions.Tests.csproj", "{D4EF6F4E-5AAB-45C5-9158-22ECEF5C12FD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +71,26 @@ Global
 		{DD0BE835-B1AB-430B-8126-DC9A6C32B79C}.Release|x64.Build.0 = Release|x64
 		{DD0BE835-B1AB-430B-8126-DC9A6C32B79C}.Release|x86.ActiveCfg = Release|x86
 		{DD0BE835-B1AB-430B-8126-DC9A6C32B79C}.Release|x86.Build.0 = Release|x86
+		{D4EF6F4E-5AAB-45C5-9158-22ECEF5C12FD}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{D4EF6F4E-5AAB-45C5-9158-22ECEF5C12FD}.Debug|ARM.ActiveCfg = Debug|ARM
+		{D4EF6F4E-5AAB-45C5-9158-22ECEF5C12FD}.Debug|ARM.Build.0 = Debug|ARM
+		{D4EF6F4E-5AAB-45C5-9158-22ECEF5C12FD}.Debug|ARM.Deploy.0 = Debug|ARM
+		{D4EF6F4E-5AAB-45C5-9158-22ECEF5C12FD}.Debug|x64.ActiveCfg = Debug|x64
+		{D4EF6F4E-5AAB-45C5-9158-22ECEF5C12FD}.Debug|x64.Build.0 = Debug|x64
+		{D4EF6F4E-5AAB-45C5-9158-22ECEF5C12FD}.Debug|x64.Deploy.0 = Debug|x64
+		{D4EF6F4E-5AAB-45C5-9158-22ECEF5C12FD}.Debug|x86.ActiveCfg = Debug|x86
+		{D4EF6F4E-5AAB-45C5-9158-22ECEF5C12FD}.Debug|x86.Build.0 = Debug|x86
+		{D4EF6F4E-5AAB-45C5-9158-22ECEF5C12FD}.Debug|x86.Deploy.0 = Debug|x86
+		{D4EF6F4E-5AAB-45C5-9158-22ECEF5C12FD}.Release|Any CPU.ActiveCfg = Release|x86
+		{D4EF6F4E-5AAB-45C5-9158-22ECEF5C12FD}.Release|ARM.ActiveCfg = Release|ARM
+		{D4EF6F4E-5AAB-45C5-9158-22ECEF5C12FD}.Release|ARM.Build.0 = Release|ARM
+		{D4EF6F4E-5AAB-45C5-9158-22ECEF5C12FD}.Release|ARM.Deploy.0 = Release|ARM
+		{D4EF6F4E-5AAB-45C5-9158-22ECEF5C12FD}.Release|x64.ActiveCfg = Release|x64
+		{D4EF6F4E-5AAB-45C5-9158-22ECEF5C12FD}.Release|x64.Build.0 = Release|x64
+		{D4EF6F4E-5AAB-45C5-9158-22ECEF5C12FD}.Release|x64.Deploy.0 = Release|x64
+		{D4EF6F4E-5AAB-45C5-9158-22ECEF5C12FD}.Release|x86.ActiveCfg = Release|x86
+		{D4EF6F4E-5AAB-45C5-9158-22ECEF5C12FD}.Release|x86.Build.0 = Release|x86
+		{D4EF6F4E-5AAB-45C5-9158-22ECEF5C12FD}.Release|x86.Deploy.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

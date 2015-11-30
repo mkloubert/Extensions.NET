@@ -18,14 +18,12 @@ Set of useful extensions methods written in C#.
 * AsString
 * ATan
 * ATan2
-* BigMul
 * Build
 * Ceiling
 * ChangeType
 * Cos
 * CosH
 * CreateInstance
-* CreateUnwrappedInstanceOf
 * DisposeAll
 * Exp
 * Floor
@@ -35,10 +33,8 @@ Set of useful extensions methods written in C#.
 * GetSimilarity
 * GUnzip
 * GZip
-* Hash
 * IEEERemainder
 * InvokeForStream
-* InvokeSafe
 * IsBetween
 * IsEmpty
 * IsFalse
@@ -56,7 +52,6 @@ Set of useful extensions methods written in C#.
 * Log10
 * MakePassword
 * Max
-* MD5
 * Merge
 * Min
 * Negate
@@ -74,9 +69,6 @@ Set of useful extensions methods written in C#.
 * Round
 * SelectEntries
 * SetBasicAuth
-* SHA256
-* SHA384
-* SHA512
 * Shuffle
 * Sign
 * Sin
@@ -101,7 +93,6 @@ Set of useful extensions methods written in C#.
 * ToUInt16
 * ToUInt32
 * ToUInt64
-* ToUnsecureString
 * ToYesNoString
 * Truncate
 * TryGetValue
@@ -121,18 +112,6 @@ Set of useful extensions methods written in C#.
 * ToDbValue
 * ToDictionaries
 * ToDictionary
-
-### MarcelJoachimKloubert.Extensions.Drawing
-
-* GetManifestResourceImage
-* Grayscale
-
-### MarcelJoachimKloubert.Extensions.Windows.Forms
-
-* EnumerateControls
-* HideTabs
-* SendMessage
-* ShowTabs
 
 ### MarcelJoachimKloubert.Extensions.Xml
 
