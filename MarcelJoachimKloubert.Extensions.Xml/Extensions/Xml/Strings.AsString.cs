@@ -27,34 +27,23 @@
  *                                                                                                                    *
  **********************************************************************************************************************/
 
-namespace MarcelJoachimKloubert.Extensions
+using System.Xml;
+
+namespace MarcelJoachimKloubert.Extensions.Xml
 {
-    // IsLessThan()
-    static partial class MJKCoreExtensionMethods
+    // AsString()
+    static partial class MJKXmlExtensionMethods
     {
         #region Methods (1)
 
         /// <summary>
-        /// Checks if a value is less than another.
+        /// Returns a <see cref="XmlNode" /> as string.
         /// </summary>
-        /// <typeparam name="T">Type of the value.</typeparam>
-        /// <param name="value">The value to check.</param>
-        /// <param name="other">The value that should compared with <paramref name="value" />.</param>
-        /// <returns>Is less than or not.</returns>
-        public static bool IsLessThan<T>(this T value, T other)
-            where T : global::System.IComparable<T>, global::System.IComparable
+        /// <param name="node">The input value.</param>
+        /// <returns>The output value.</returns>
+        public static string AsString(this XmlNode node)
         {
-            if (value != null)
-            {
-                return value.CompareTo(other) < 0;
-            }
-
-            if (other != null)
-            {
-                return other.CompareTo(value) > 0;
-            }
-            
-            return false;
+            return node?.OuterXml;
         }
 
         #endregion Methods (1)

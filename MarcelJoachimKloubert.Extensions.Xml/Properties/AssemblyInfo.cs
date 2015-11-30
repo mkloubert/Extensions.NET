@@ -27,36 +27,21 @@
  *                                                                                                                    *
  **********************************************************************************************************************/
 
-namespace MarcelJoachimKloubert.Extensions
-{
-    // IsLessThan()
-    static partial class MJKCoreExtensionMethods
-    {
-        #region Methods (1)
+using System.Reflection;
+using System.Runtime.InteropServices;
 
-        /// <summary>
-        /// Checks if a value is less than another.
-        /// </summary>
-        /// <typeparam name="T">Type of the value.</typeparam>
-        /// <param name="value">The value to check.</param>
-        /// <param name="other">The value that should compared with <paramref name="value" />.</param>
-        /// <returns>Is less than or not.</returns>
-        public static bool IsLessThan<T>(this T value, T other)
-            where T : global::System.IComparable<T>, global::System.IComparable
-        {
-            if (value != null)
-            {
-                return value.CompareTo(other) < 0;
-            }
+[assembly: AssemblyTitle("Extensions.XML.NET")]
+[assembly: AssemblyDescription("Class library with powerful and useful XML extension methods.")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("Marcel Joachim Kloubert")]
+[assembly: AssemblyProduct("Extensions.XML.NET")]
+[assembly: AssemblyCopyright("Copyright © 2015  Marcel Joachim Kloubert")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
 
-            if (other != null)
-            {
-                return other.CompareTo(value) > 0;
-            }
-            
-            return false;
-        }
+[assembly: ComVisible(false)]
 
-        #endregion Methods (1)
-    }
-}
+[assembly: Guid("c624db6d-4de3-44b1-8eb4-080b48ca4b7f")]
+
+[assembly: AssemblyVersion("1.0.0.0")]
+[assembly: AssemblyFileVersion("1.0.0.0")]

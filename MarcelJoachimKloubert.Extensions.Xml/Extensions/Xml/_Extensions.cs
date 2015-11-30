@@ -27,36 +27,12 @@
  *                                                                                                                    *
  **********************************************************************************************************************/
 
-namespace MarcelJoachimKloubert.Extensions
+namespace MarcelJoachimKloubert.Extensions.Xml
 {
-    // IsLessThan()
-    static partial class MJKCoreExtensionMethods
+    /// <summary>
+    /// XML extension methods.
+    /// </summary>
+    public static partial class MJKXmlExtensionMethods
     {
-        #region Methods (1)
-
-        /// <summary>
-        /// Checks if a value is less than another.
-        /// </summary>
-        /// <typeparam name="T">Type of the value.</typeparam>
-        /// <param name="value">The value to check.</param>
-        /// <param name="other">The value that should compared with <paramref name="value" />.</param>
-        /// <returns>Is less than or not.</returns>
-        public static bool IsLessThan<T>(this T value, T other)
-            where T : global::System.IComparable<T>, global::System.IComparable
-        {
-            if (value != null)
-            {
-                return value.CompareTo(other) < 0;
-            }
-
-            if (other != null)
-            {
-                return other.CompareTo(value) > 0;
-            }
-            
-            return false;
-        }
-
-        #endregion Methods (1)
     }
 }
