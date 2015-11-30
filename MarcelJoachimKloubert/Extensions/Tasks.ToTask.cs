@@ -30,6 +30,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace MarcelJoachimKloubert.Extensions
@@ -1361,7 +1362,7 @@ namespace MarcelJoachimKloubert.Extensions
                     var d = (Delegate)taskArgs[0];
                     var a = (object[])taskArgs[1];
 
-                    return (TResult)d.Method
+                    return (TResult)d.GetMethodInfo()
                                      .Invoke(obj: d.Target,
                                              parameters: a);
                 },
