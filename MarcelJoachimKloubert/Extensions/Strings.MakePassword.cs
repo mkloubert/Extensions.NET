@@ -27,103 +27,79 @@
  *                                                                                                                    *
  **********************************************************************************************************************/
 
-using MarcelJoachimKloubert.Extensions.Data;
-using MarcelJoachimKloubert.Extensions.Windows.Forms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
+using System.Text;
 
-namespace MarcelJoachimKloubert.Extensions.Tests
+namespace MarcelJoachimKloubert.Extensions
 {
-    internal class Test
+    // MakePassword()
+    static partial class MJKCoreExtensionMethods
     {
-        public string A = "1";
-        private string b = "2";
+        #region Methods (2)
 
-        public void C()
+        /// <summary>
+        /// Creates a password from that string.
+        /// </summary>
+        /// <param name="str">The possible chars for the password.</param>
+        /// <param name="size">The size.</param>
+        /// <param name="rand">The custom randomizer to use.</param>
+        /// <returns>The created password.</returns>
+        /// <remarks>
+        /// Result is <see langword="null" /> if <paramref name="str" /> is also <see langword="null" />.
+        /// </remarks>
+        /// <remarks>
+        /// Result is empty if <paramref name="str" /> is also empty.
+        /// </remarks>
+        public static string MakePassword(this string str, int size = 8, Random rand = null)
         {
-            Console.WriteLine("3");
+            return MakePassword(chars: str, size: size,
+                                rand: rand);
         }
 
-        private int D()
+        /// <summary>
+        /// Creates a password from that char sequence.
+        /// </summary>
+        /// <param name="chars">The possible chars for the password.</param>
+        /// <param name="size">The size.</param>
+        /// <param name="rand">The custom randomizer to use.</param>
+        /// <returns>The created password.</returns>
+        /// <remarks>
+        /// Result is <see langword="null" /> if <paramref name="chars" /> is also <see langword="null" />.
+        /// </remarks>
+        /// <remarks>
+        /// Result is empty if <paramref name="chars" /> is also empty.
+        /// </remarks>
+        public static string MakePassword(this IEnumerable<char> chars, int size = 8, Random rand = null)
         {
-            return 4;
-        }
-
-        private float E { get; set; }
-
-        public double F { get { return 6; } }
-
-        public int G(int a)
-        {
-            return a*2;
-        }
-    }
-
-    internal static class Program
-    {
-        #region Methods (1)
-
-        [STAThread]
-        private static void Main(string[] args)
-        {
-            try
+            if (size < 0)
             {
-                var i = typeof(int).CreateInstance<int>();
-
-                var methods = Enumerable.Empty<Type>()
-                                        .Concat(new Type[] { typeof(MJKCoreExtensionMethods) })
-                                        .Concat(new Type[] { typeof(MJKDataExtensionMethods) })
-                                        .Concat(new Type[] { typeof(MJKWinFormsExtensionMethods) })
-                                        .SelectMany(x => x.GetMethods(BindingFlags.Static | BindingFlags.Public))
-                                        .Where(x => x.GetCustomAttributes(typeof(ExtensionAttribute), true).Length > 0)
-                                        .OrderBy(x => x.Name, StringComparer.InvariantCultureIgnoreCase)
-                                        .ToArray();
-
-                Console.WriteLine(methods.Length);
-
-                var t = new Test().AsDynamic();
-
-                Console.WriteLine(t.A);
-                t.A = "11";
-                Console.WriteLine(t.A);
-
-                t.C();
-                Console.WriteLine(t.G(20));
-
-                var dict = new Dictionary<string, object>();
-                dict["a"] = "45dnjdsank";
-
-                var o = dict.Build(d =>
-                    {
-                        return new Test()
-                        {
-                            A = (string)d["a"],
-                        };
-                    });
-
-                var taskCtx = Task.Factory.StartNewTask((ctx) =>
-                    {
-                        if (ctx != null)
-                        {
-                        }
-                    }, actionState: 12);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("[ERROR!]: {0}", ex.GetBaseException());
+                throw new ArgumentOutOfRangeException("size", size, "Must be 0 at least!");
             }
 
-            Console.WriteLine();
-            Console.WriteLine();
+            if (chars == null)
+            {
+                return null;
+            }
 
-            Console.WriteLine("===== ENTER =====");
-            Console.ReadLine();
+            var charArray = chars as char[] ?? chars.ToArray();
+            if (charArray.Length < 1)
+            {
+                return string.Empty;
+            }
+
+            rand = rand ?? new Random();
+
+            var result = new StringBuilder();
+            for (var i = 0; i < size; i++)
+            {
+                result.Append(charArray[rand.Next(0, charArray.Length)]);
+            }
+
+            return result.ToString();
         }
 
-        #endregion Methods (1)
+        #endregion Methods (2)
     }
 }

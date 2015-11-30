@@ -27,103 +27,67 @@
  *                                                                                                                    *
  **********************************************************************************************************************/
 
-using MarcelJoachimKloubert.Extensions.Data;
-using MarcelJoachimKloubert.Extensions.Windows.Forms;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
 
-namespace MarcelJoachimKloubert.Extensions.Tests
+namespace MarcelJoachimKloubert.Extensions
 {
-    internal class Test
+    // Build()
+    static partial class MJKCoreExtensionMethods
     {
-        public string A = "1";
-        private string b = "2";
+        #region Methods (2)
 
-        public void C()
+        /// <summary>
+        /// Builds an object from a common dictionary.
+        /// </summary>
+        /// <typeparam name="T">Type of the object to return.</typeparam>
+        /// <typeparam name="TDict">Type of the dictionary.</typeparam>
+        /// <param name="dict">The dictionary.</param>
+        /// <param name="factory">The function that build the object to return.</param>
+        /// <param name="defValue">The result if <paramref name="dict" /> is <see langword="null" />.</param>
+        /// <returns>The return of <paramref name="factory" />.</returns>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="factory" /> is <see langword="null" />.
+        /// </exception>
+        public static T Build<TDict, T>(this TDict dict,
+                                        Func<TDict, T> factory, T defValue = default(T))
+            where TDict : global::System.Collections.IDictionary,
+                          global::System.Collections.Generic.IDictionary<string, object>
         {
-            Console.WriteLine("3");
+            return Build(dict: dict,
+                         factory: factory, defValueProvider: () => defValue);
         }
 
-        private int D()
+        /// <summary>
+        /// Builds an object from a common dictionary.
+        /// </summary>
+        /// <typeparam name="T">Type of the object to return.</typeparam>
+        /// <typeparam name="TDict">Type of the dictionary.</typeparam>
+        /// <param name="dict">The dictionary.</param>
+        /// <param name="factory">The function that build the object to return.</param>
+        /// <param name="defValueProvider">The function that provides the result if <paramref name="dict" /> is <see langword="null" />.</param>
+        /// <returns>The return of <paramref name="factory" />.</returns>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="factory" /> and/or <paramref name="defValueProvider" /> is <see langword="null" />.
+        /// </exception>
+        public static T Build<TDict, T>(this TDict dict,
+                                        Func<TDict, T> factory, Func<T> defValueProvider)
+            where TDict : global::System.Collections.IDictionary,
+                          global::System.Collections.Generic.IDictionary<string, object>
         {
-            return 4;
-        }
-
-        private float E { get; set; }
-
-        public double F { get { return 6; } }
-
-        public int G(int a)
-        {
-            return a*2;
-        }
-    }
-
-    internal static class Program
-    {
-        #region Methods (1)
-
-        [STAThread]
-        private static void Main(string[] args)
-        {
-            try
+            if (factory == null)
             {
-                var i = typeof(int).CreateInstance<int>();
-
-                var methods = Enumerable.Empty<Type>()
-                                        .Concat(new Type[] { typeof(MJKCoreExtensionMethods) })
-                                        .Concat(new Type[] { typeof(MJKDataExtensionMethods) })
-                                        .Concat(new Type[] { typeof(MJKWinFormsExtensionMethods) })
-                                        .SelectMany(x => x.GetMethods(BindingFlags.Static | BindingFlags.Public))
-                                        .Where(x => x.GetCustomAttributes(typeof(ExtensionAttribute), true).Length > 0)
-                                        .OrderBy(x => x.Name, StringComparer.InvariantCultureIgnoreCase)
-                                        .ToArray();
-
-                Console.WriteLine(methods.Length);
-
-                var t = new Test().AsDynamic();
-
-                Console.WriteLine(t.A);
-                t.A = "11";
-                Console.WriteLine(t.A);
-
-                t.C();
-                Console.WriteLine(t.G(20));
-
-                var dict = new Dictionary<string, object>();
-                dict["a"] = "45dnjdsank";
-
-                var o = dict.Build(d =>
-                    {
-                        return new Test()
-                        {
-                            A = (string)d["a"],
-                        };
-                    });
-
-                var taskCtx = Task.Factory.StartNewTask((ctx) =>
-                    {
-                        if (ctx != null)
-                        {
-                        }
-                    }, actionState: 12);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("[ERROR!]: {0}", ex.GetBaseException());
+                throw new ArgumentNullException("factory");
             }
 
-            Console.WriteLine();
-            Console.WriteLine();
+            if (defValueProvider == null)
+            {
+                throw new ArgumentNullException("defValueProvider");
+            }
 
-            Console.WriteLine("===== ENTER =====");
-            Console.ReadLine();
+            return dict == null ? defValueProvider()
+                                : factory(dict);
         }
 
-        #endregion Methods (1)
+        #endregion Methods (2)
     }
 }
