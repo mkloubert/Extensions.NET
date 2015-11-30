@@ -22,6 +22,7 @@ Set of useful extensions methods written in C#.
 * AsCollection
 * AsDictionary
 * AsDynamic
+* AsGeneric
 * ASin
 * AsList
 * AsString
