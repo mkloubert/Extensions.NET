@@ -34,7 +34,7 @@ namespace MarcelJoachimKloubert.Extensions.Xml
     // AsString()
     static partial class MJKXmlExtensionMethods
     {
-        #region Methods (1)
+        #region Methods (2)
 
         /// <summary>
         /// Returns a <see cref="XmlNode" /> as string.
@@ -46,6 +46,18 @@ namespace MarcelJoachimKloubert.Extensions.Xml
             return node?.OuterXml;
         }
 
-        #endregion Methods (1)
+        /// <summary>
+        /// Returns the content of an <see cref="XmlReader" /> as string.
+        /// </summary>
+        /// <param name="reader">The reader.</param>
+        /// <returns>
+        /// The content of the reader or <see langword="null" /> if <paramref name="reader" /> is <see langword="null" />.
+        /// </returns>
+        public static string AsString(this XmlReader reader)
+        {
+            return reader?.ReadOuterXml();
+        }
+
+        #endregion Methods (2)
     }
 }
