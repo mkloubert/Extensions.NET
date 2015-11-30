@@ -85,6 +85,9 @@
     <Compile Include="Extensions\Convert.ToDecimal.cs">
       <DependentUpon>Convert.cs</DependentUpon>
     </Compile>
+    <Compile Include="Extensions\Convert.ToGuid.cs">
+      <DependentUpon>Convert.cs</DependentUpon>
+    </Compile>
     <Compile Include="Extensions\Convert.ToSByte.cs">
       <DependentUpon>Convert.cs</DependentUpon>
     </Compile>
@@ -148,6 +151,10 @@
     </Compile>
     <Compile Include="Extensions\DateTime.Walk.cs">
       <DependentUpon>DateTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\Exceptions.cs" />
+    <Compile Include="Extensions\Exceptions.Merge.cs">
+      <DependentUpon>Exceptions.cs</DependentUpon>
     </Compile>
     <Compile Include="Extensions\IO.cs" />
     <Compile Include="Extensions\IO.InvokeForStream.cs">
