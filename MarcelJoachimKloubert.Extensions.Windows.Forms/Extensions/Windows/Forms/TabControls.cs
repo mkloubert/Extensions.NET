@@ -27,78 +27,18 @@
  *                                                                                                                    *
  **********************************************************************************************************************/
 
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace MarcelJoachimKloubert.Extensions.Windows.Forms
 {
-    // EnumerateControls()
+    // Extension methods for Windows Forms tab controls
     static partial class MJKWinFormsExtensionMethods
     {
-        #region Methods (4)
+        #region Fields (1)
 
-        /// <summary>
-        /// Returns a sequence of controls of a specific type from the collection of a control.
-        /// </summary>
-        /// <param name="ctrl">The underlying control.</param>
-        /// <returns>The child controls of <paramref name="ctrl" />.</returns>
-        /// <exception cref="NullReferenceException">
-        /// <paramref name="ctrl" /> is <see langword="null" />.
-        /// </exception>
-        public static IEnumerable<Control> EnumerateControls(this Control ctrl)
-        {
-            if (ctrl == null)
-            {
-                throw new ArgumentNullException("ctrl");
-            }
+        private static readonly IDictionary<TabControl, object[]> _HIDE_SHOW_TABS = new Dictionary<TabControl, object[]>();
 
-            return EnumerateControls(coll: ctrl.Controls);
-        }
-
-        /// <summary>
-        /// Returns a sequence of controls.
-        /// </summary>
-        /// <param name="coll">The underlying collection.</param>
-        /// <returns>The controls.</returns>
-        public static IEnumerable<Control> EnumerateControls(this Control.ControlCollection coll)
-        {
-            return EnumerateControls<Control>(coll: coll);
-        }
-
-        /// <summary>
-        /// Returns a sequence of controls of a specific type from the collection of a control.
-        /// </summary>
-        /// <typeparam name="TCtrl">The type of controls that should be filtered out.</typeparam>
-        /// <param name="ctrl">The underlying control.</param>
-        /// <returns>The child controls of <paramref name="ctrl" />.</returns>
-        /// <exception cref="NullReferenceException">
-        /// <paramref name="ctrl" /> is <see langword="null" />.
-        /// </exception>
-        public static IEnumerable<TCtrl> EnumerateControls<TCtrl>(this Control ctrl)
-            where TCtrl : global::System.Windows.Forms.Control
-        {
-            return EnumerateControls<TCtrl>(coll: ctrl.Controls);
-        }
-
-        /// <summary>
-        /// Returns a sequence of controls of a specific type.
-        /// </summary>
-        /// <typeparam name="TCtrl">The type of controls that should be filtered out.</typeparam>
-        /// <param name="coll">The underlying collection.</param>
-        /// <returns>The controls.</returns>
-        public static IEnumerable<TCtrl> EnumerateControls<TCtrl>(this Control.ControlCollection coll)
-            where TCtrl : global::System.Windows.Forms.Control
-        {
-            if (coll == null)
-            {
-                return Enumerable.Empty<TCtrl>();
-            }
-
-            return coll.OfType<TCtrl>();
-        }
-
-        #endregion Methods (4)
+        #endregion Fields (1)
     }
 }

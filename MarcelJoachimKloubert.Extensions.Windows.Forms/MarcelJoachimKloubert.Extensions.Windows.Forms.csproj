@@ -41,6 +41,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
@@ -51,6 +52,13 @@
     <Compile Include="Extensions\Windows\Forms\Controls.SendMessage.cs">
       <DependentUpon>Controls.cs</DependentUpon>
     </Compile>
+    <Compile Include="Extensions\Windows\Forms\TabControls.ShowTabs.cs">
+      <DependentUpon>TabControls.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\Windows\Forms\TabControls.HideTabs.cs">
+      <DependentUpon>TabControls.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\Windows\Forms\TabControls.cs" />
     <Compile Include="Extensions\Windows\Forms\_Extensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
