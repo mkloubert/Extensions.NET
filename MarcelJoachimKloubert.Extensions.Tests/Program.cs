@@ -36,6 +36,7 @@ using System.Drawing;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MarcelJoachimKloubert.Extensions.Xml;
@@ -71,6 +72,16 @@ namespace MarcelJoachimKloubert.Extensions.Tests
     {
         #region Methods (1)
 
+        static void Test1()
+        {
+            Thread.Sleep(5000);
+        }
+
+        static void Test2()
+        {
+            var f = 1.ChangeType<char[]>();
+        }
+
         [STAThread]
         private static void Main(string[] args)
         {
@@ -93,6 +104,15 @@ namespace MarcelJoachimKloubert.Extensions.Tests
                                               .Distinct());
  
                 Clipboard.SetText(s); */
+
+                var actions = new List<Action>()
+                {
+                    Test1, Test2,
+                };
+
+                actions.Select(x => x.ToTask())
+                       .StartAll()
+                       .WaitForAll();
 
                 Console.WriteLine(methods.Length);
 

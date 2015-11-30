@@ -67,6 +67,9 @@
     <Compile Include="Extensions\Collections.Invert.cs">
       <DependentUpon>Collections.cs</DependentUpon>
     </Compile>
+    <Compile Include="Extensions\Collections.AsGeneric.cs">
+      <DependentUpon>Collections.cs</DependentUpon>
+    </Compile>
     <Compile Include="Extensions\Collections.NoNulls.cs">
       <DependentUpon>Collections.cs</DependentUpon>
     </Compile>
@@ -393,6 +396,9 @@
   <ItemGroup>
     <EmbeddedResource Include="..\LICENSE">
       <Link>LICENSE</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\README.md">
+      <Link>README.md</Link>
     </EmbeddedResource>
     <None Include="MarcelJoachimKloubert.Extensions.snk" />
   </ItemGroup>
