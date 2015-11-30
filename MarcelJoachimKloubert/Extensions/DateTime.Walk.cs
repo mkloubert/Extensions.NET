@@ -35,7 +35,7 @@ namespace MarcelJoachimKloubert.Extensions
     // Walk()
     static partial class MJKCoreExtensionMethods
     {
-        #region Methods (6)
+        #region Methods (12)
 
         /// <summary>
         /// Walks from the beginning of <paramref name="value" /> with a specific count of ticks.
@@ -45,7 +45,8 @@ namespace MarcelJoachimKloubert.Extensions
         /// <returns>The sequence of values.</returns>
         public static IEnumerable<DateTimeOffset> Walk(this DateTimeOffset value, long stepInTicks)
         {
-            return Walk(value, TimeSpan.FromTicks(stepInTicks));
+            return Walk(value,
+                        tickProvider: (cv) => stepInTicks);
         }
 
         /// <summary>
@@ -56,11 +57,57 @@ namespace MarcelJoachimKloubert.Extensions
         /// <returns>The sequence of values.</returns>
         public static IEnumerable<DateTimeOffset> Walk(this DateTimeOffset value, TimeSpan step)
         {
+            return Walk(value: value,
+                        stepProvider: (cv) => step);
+        }
+
+        /// <summary>
+        /// Walks from the beginning of <paramref name="value" /> with a specific step.
+        /// </summary>
+        /// <param name="value">The beginning value.</param>
+        /// <param name="tickProvider">The function to provides the number of ticks to walk.</param>
+        /// <returns>The sequence of values.</returns>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="tickProvider" /> is <see langword="null" />.
+        /// </exception>
+        public static IEnumerable<DateTimeOffset> Walk(this DateTimeOffset value, Func<DateTimeOffset, long> tickProvider)
+        {
+            if (tickProvider == null)
+            {
+                throw new ArgumentNullException("tickProvider");
+            }
+
+            if (tickProvider == null)
+            {
+                throw new ArgumentNullException("tickProvider");
+            }
+
+            return Walk(value: value,
+                        stepProvider: (cv) => TimeSpan.FromTicks(tickProvider(cv)));
+        }
+
+        /// <summary>
+        /// Walks from the beginning of <paramref name="value" /> with a specific step.
+        /// </summary>
+        /// <param name="value">The beginning value.</param>
+        /// <param name="stepProvider">The function that provides the step to walk.</param>
+        /// <returns>The sequence of values.</returns>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="stepProvider" /> is <see langword="null" />.
+        /// </exception>
+        public static IEnumerable<DateTimeOffset> Walk(this DateTimeOffset value, Func<DateTimeOffset, TimeSpan> stepProvider)
+        {
+            if (stepProvider == null)
+            {
+                throw new ArgumentNullException("stepProvider");
+            }
+
             var currentValue = value;
             while (true)
             {
                 yield return currentValue;
 
+                var step = stepProvider(currentValue);
                 try
                 {
                     currentValue = value.Add(step);
@@ -81,7 +128,7 @@ namespace MarcelJoachimKloubert.Extensions
         public static IEnumerable<DateTime> Walk(this DateTime value, long stepInTicks)
         {
             return Walk(value,
-                        TimeSpan.FromTicks(stepInTicks));
+                        tickProvider: (cv) => stepInTicks);
         }
 
         /// <summary>
@@ -92,11 +139,52 @@ namespace MarcelJoachimKloubert.Extensions
         /// <returns>The sequence of values.</returns>
         public static IEnumerable<DateTime> Walk(this DateTime value, TimeSpan step)
         {
+            return Walk(value: value,
+                        stepProvider: (cv) => step);
+        }
+
+        /// <summary>
+        /// Walks from the beginning of <paramref name="value" /> with a specific count of ticks.
+        /// </summary>
+        /// <param name="value">The beginning value.</param>
+        /// <param name="tickProvider">The function to provides the number of ticks to walk.</param>
+        /// <returns>The sequence of values.</returns>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="tickProvider" /> is <see langword="null" />.
+        /// </exception>
+        public static IEnumerable<DateTime> Walk(this DateTime value, Func<DateTime, long> tickProvider)
+        {
+            if (tickProvider == null)
+            {
+                throw new ArgumentNullException("tickProvider");
+            }
+
+            return Walk(value: value,
+                        stepProvider: (cv) => TimeSpan.FromTicks(tickProvider(cv)));
+        }
+
+        /// <summary>
+        /// Walks from the beginning of <paramref name="value" /> with a specific step.
+        /// </summary>
+        /// <param name="value">The beginning value.</param>
+        /// <param name="stepProvider">The function that provides the step to walk.</param>
+        /// <returns>The sequence of values.</returns>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="stepProvider" /> is <see langword="null" />.
+        /// </exception>
+        public static IEnumerable<DateTime> Walk(this DateTime value, Func<DateTime, TimeSpan> stepProvider)
+        {
+            if (stepProvider == null)
+            {
+                throw new ArgumentNullException("stepProvider");
+            }
+
             var currentValue = value;
             while (true)
             {
                 yield return currentValue;
 
+                var step = stepProvider(currentValue);
                 try
                 {
                     currentValue = value.Add(step);
@@ -117,7 +205,7 @@ namespace MarcelJoachimKloubert.Extensions
         public static IEnumerable<TimeSpan> Walk(this TimeSpan value, long stepInTicks)
         {
             return Walk(value,
-                        TimeSpan.FromTicks(stepInTicks));
+                        tickProvider: (cv) => stepInTicks);
         }
 
         /// <summary>
@@ -128,11 +216,52 @@ namespace MarcelJoachimKloubert.Extensions
         /// <returns>The sequence of values.</returns>
         public static IEnumerable<TimeSpan> Walk(this TimeSpan value, TimeSpan step)
         {
+            return Walk(value: value,
+                        stepProvider: (cv) => step);
+        }
+
+        /// <summary>
+        /// Walks from the beginning of <paramref name="value" /> with a specific count of ticks.
+        /// </summary>
+        /// /// <param name="value">The beginning value.</param>
+        /// <param name="tickProvider">The function to provides the number of ticks to walk.</param>
+        /// <returns>The sequence of values.</returns>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="tickProvider" /> is <see langword="null" />.
+        /// </exception>
+        public static IEnumerable<TimeSpan> Walk(this TimeSpan value, Func<TimeSpan, long> tickProvider)
+        {
+            if (tickProvider == null)
+            {
+                throw new ArgumentNullException("tickProvider");
+            }
+
+            return Walk(value: value,
+                        stepProvider: (cv) => TimeSpan.FromTicks(tickProvider(cv)));
+        }
+
+        /// <summary>
+        /// Walks from the beginning of <paramref name="value" /> with a specific step.
+        /// </summary>
+        /// <param name="value">The beginning value.</param>
+        /// <param name="stepProvider">The function that provides the step to walk.</param>
+        /// <returns>The sequence of values.</returns>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="stepProvider" /> is <see langword="null" />.
+        /// </exception>
+        public static IEnumerable<TimeSpan> Walk(this TimeSpan value, Func<TimeSpan, TimeSpan> stepProvider)
+        {
+            if (stepProvider == null)
+            {
+                throw new ArgumentNullException("stepProvider");
+            }
+
             var currentValue = value;
             while (true)
             {
                 yield return currentValue;
 
+                var step = stepProvider(currentValue);
                 try
                 {
                     currentValue = value.Add(step);
@@ -144,6 +273,6 @@ namespace MarcelJoachimKloubert.Extensions
             }
         }
 
-        #endregion Methods (6)
+        #endregion Methods (12)
     }
 }

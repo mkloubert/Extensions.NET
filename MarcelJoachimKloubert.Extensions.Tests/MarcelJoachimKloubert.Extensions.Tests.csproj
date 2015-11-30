@@ -34,6 +34,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,6 +47,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MarcelJoachimKloubert.Extensions.Data\MarcelJoachimKloubert.Extensions.Data.csproj">
+      <Project>{f3105324-c568-4ac8-b4fc-bc6a6120b570}</Project>
+      <Name>MarcelJoachimKloubert.Extensions.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MarcelJoachimKloubert.Extensions.Windows.Forms\MarcelJoachimKloubert.Extensions.Windows.Forms.csproj">
+      <Project>{ebae180b-49f5-4cf6-8b7a-a63ca9083fa3}</Project>
+      <Name>MarcelJoachimKloubert.Extensions.Windows.Forms</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MarcelJoachimKloubert\MarcelJoachimKloubert.csproj">
       <Project>{43710a35-b22f-4d86-b869-9de782d34f7f}</Project>
       <Name>MarcelJoachimKloubert</Name>
