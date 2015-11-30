@@ -56,6 +56,9 @@
     <Compile Include="Extensions\Collections.AsList.cs">
       <DependentUpon>Collections.cs</DependentUpon>
     </Compile>
+    <Compile Include="Extensions\Collections.Build.cs">
+      <DependentUpon>Collections.cs</DependentUpon>
+    </Compile>
     <Compile Include="Extensions\Collections.DisposeAll.cs">
       <DependentUpon>Collections.cs</DependentUpon>
     </Compile>
@@ -280,6 +283,9 @@
     </Compile>
     <Compile Include="Extensions\Strings.cs" />
     <Compile Include="Extensions\Strings.GetSimilarity.cs">
+      <DependentUpon>Strings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\Strings.MakePassword.cs">
       <DependentUpon>Strings.cs</DependentUpon>
     </Compile>
     <Compile Include="Extensions\TaskContext.cs" />
