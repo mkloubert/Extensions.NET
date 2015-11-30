@@ -33,6 +33,7 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+using MarcelJoachimKloubert.Extensions.Xml;
 
 namespace MarcelJoachimKloubert.Extensions.Tests
 {
@@ -73,13 +74,16 @@ namespace MarcelJoachimKloubert.Extensions.Tests
                 var i = typeof(int).CreateInstance<int>();
 
                 var methods = Enumerable.Empty<Type>()
-                                        .Concat(new Type[] { typeof(MJKCoreExtensionMethods) })
+                                        // .Concat(new Type[] { typeof(MJKCoreExtensionMethods) })
                                         // .Concat(new Type[] { typeof(MJKDataExtensionMethods) })
                                         // .Concat(new Type[] { typeof(MJKWinFormsExtensionMethods) })
+                                        .Concat(new Type[] { typeof(MJKXmlExtensionMethods) })
                                         .SelectMany(x => x.GetMethods(BindingFlags.Static | BindingFlags.Public))
                                         .Where(x => x.GetCustomAttributes(typeof(ExtensionAttribute), true).Length > 0)
                                         .OrderBy(x => x.Name, StringComparer.InvariantCultureIgnoreCase)
                                         .ToArray();
+
+                var s = string.Join("\n* ", methods.Select(x => x.Name).Distinct());
 
                 Console.WriteLine(methods.Length);
 

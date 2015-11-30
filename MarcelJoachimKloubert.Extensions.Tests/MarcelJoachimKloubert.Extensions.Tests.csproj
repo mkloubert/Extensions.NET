@@ -58,6 +58,10 @@
     <None Include="app.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MarcelJoachimKloubert.Extensions.Xml\MarcelJoachimKloubert.Extensions.Xml.csproj">
+      <Project>{d2eb3964-f5ac-44cb-b00c-e79d52659866}</Project>
+      <Name>MarcelJoachimKloubert.Extensions.Xml</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MarcelJoachimKloubert\MarcelJoachimKloubert.csproj">
       <Project>{e5c4be97-3c43-4968-9569-2598f765ee86}</Project>
       <Name>MarcelJoachimKloubert</Name>
