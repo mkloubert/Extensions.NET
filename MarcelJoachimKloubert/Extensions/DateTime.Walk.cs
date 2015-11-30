@@ -77,11 +77,6 @@ namespace MarcelJoachimKloubert.Extensions
                 throw new ArgumentNullException(nameof(tickProvider));
             }
 
-            if (tickProvider == null)
-            {
-                throw new ArgumentNullException(nameof(tickProvider));
-            }
-
             return Walk(value: value,
                         stepProvider: (cv) => TimeSpan.FromTicks(tickProvider(cv)));
         }
