@@ -65,6 +65,10 @@
       <Project>{ebae180b-49f5-4cf6-8b7a-a63ca9083fa3}</Project>
       <Name>MarcelJoachimKloubert.Extensions.Windows.Forms</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MarcelJoachimKloubert.Extensions.Xml\MarcelJoachimKloubert.Extensions.Xml.csproj">
+      <Project>{34c46f95-f22a-4e45-adeb-26b7372a8849}</Project>
+      <Name>MarcelJoachimKloubert.Extensions.Xml</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MarcelJoachimKloubert\MarcelJoachimKloubert.csproj">
       <Project>{43710a35-b22f-4d86-b869-9de782d34f7f}</Project>
       <Name>MarcelJoachimKloubert</Name>

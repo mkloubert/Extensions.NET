@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarcelJoachimKloubert.Exten
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarcelJoachimKloubert.Extensions.Drawing", "MarcelJoachimKloubert.Extensions.Drawing\MarcelJoachimKloubert.Extensions.Drawing.csproj", "{D298628B-EDC5-4E45-B038-E44C5130FBEB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarcelJoachimKloubert.Extensions.Xml", "MarcelJoachimKloubert.Extensions.Xml\MarcelJoachimKloubert.Extensions.Xml.csproj", "{34C46F95-F22A-4E45-ADEB-26B7372A8849}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{D298628B-EDC5-4E45-B038-E44C5130FBEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D298628B-EDC5-4E45-B038-E44C5130FBEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D298628B-EDC5-4E45-B038-E44C5130FBEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34C46F95-F22A-4E45-ADEB-26B7372A8849}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34C46F95-F22A-4E45-ADEB-26B7372A8849}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34C46F95-F22A-4E45-ADEB-26B7372A8849}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34C46F95-F22A-4E45-ADEB-26B7372A8849}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
