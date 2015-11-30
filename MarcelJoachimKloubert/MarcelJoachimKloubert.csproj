@@ -258,6 +258,7 @@
     <Compile Include="Extensions\Math.SinH.cs">
       <DependentUpon>Math.cs</DependentUpon>
     </Compile>
+    <Compile Include="Extensions\MethodWrapper.cs" />
     <Compile Include="Extensions\Net.SetBasicAuth.cs">
       <DependentUpon>Net.cs</DependentUpon>
     </Compile>
@@ -286,6 +287,9 @@
     <Compile Include="Extensions\Tasks.cs" />
     <Compile Include="Extensions\Tasks.StartNewTask.cs">
       <DependentUpon>Tasks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\Values.AsDynamic.cs">
+      <DependentUpon>Values.cs</DependentUpon>
     </Compile>
     <Compile Include="Extensions\Values.AsString.cs">
       <DependentUpon>Values.cs</DependentUpon>

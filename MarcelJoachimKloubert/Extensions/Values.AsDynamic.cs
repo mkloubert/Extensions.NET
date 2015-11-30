@@ -28,88 +28,116 @@
  **********************************************************************************************************************/
 
 using System;
-using System.Linq;
+using System.Collections.Generic;
+using System.Dynamic;
 using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
 
-namespace MarcelJoachimKloubert.Extensions.Tests
+namespace MarcelJoachimKloubert.Extensions
 {
-    internal class Test
+    // AsDynamic()
+    static partial class MJKCoreExtensionMethods
     {
-        public string A = "1";
-        private string b = "2";
+        #region Methods (2)
 
-        public void C()
+        /// <summary>
+        /// Returns an object as dynmaic object.
+        /// </summary>
+        /// <param name="obj">The input value.</param>
+        /// <returns>The output value.</returns>
+        public static dynamic AsDynamic(this object obj)
         {
-            Console.WriteLine("3");
-        }
-
-        private int D()
-        {
-            return 4;
-        }
-
-        private float E { get; set; }
-
-        public double F { get { return 6; } }
-
-        public int G(int a)
-        {
-            return a*2;
-        }
-    }
-
-    internal static class Program
-    {
-        #region Methods (1)
-
-        [STAThread]
-        private static void Main(string[] args)
-        {
-            try
+            if (obj == null)
             {
-                var i = typeof(int).CreateInstance<int>();
+                return null;
+            }
 
-                var methods = Enumerable.Empty<Type>()
-                                        .Concat(new Type[] { typeof(MJKCoreExtensionMethods) })
-                                        // .Concat(new Type[] { typeof(MJKDataExtensionMethods) })
-                                        // .Concat(new Type[] { typeof(MJKWinFormsExtensionMethods) })
-                                        .SelectMany(x => x.GetMethods(BindingFlags.Static | BindingFlags.Public))
-                                        .Where(x => x.GetCustomAttributes(typeof(ExtensionAttribute), true).Length > 0)
-                                        .OrderBy(x => x.Name, StringComparer.InvariantCultureIgnoreCase)
-                                        .ToArray();
-
-                Console.WriteLine(methods.Length);
-
-                var t = new Test().AsDynamic();
-
-                Console.WriteLine(t.A);
-                t.A = "11";
-                Console.WriteLine(t.A);
-
-                t.C();
-                Console.WriteLine(t.G(20));
-
-                var taskCtx = Task.Factory.StartNewTask((ctx) =>
-                    {
-                        if (ctx != null)
+            var items = obj as IEnumerable<KeyValuePair<string, object>>;
+            if (items == null)
+            {
+                var temp = new Dictionary<string, object>();
+                {
+                    var wrapMethod = new Func<MethodInfo, MethodWrapper>((m) =>
                         {
+                            return (args) =>
+                                {
+                                    args = args ?? new object[] { null };
+                                    if (args.Length < 1)
+                                    {
+                                        args = null;
+                                    }
+
+                                    return m.Invoke(obj: obj,
+                                                    parameters: args);
+                                };
+                        });
+
+                    // fields
+                    foreach (var f in obj.GetType().GetFields(BindingFlags.Public | BindingFlags.Instance))
+                    {
+                        temp.Add(f.Name,
+                                 f.GetValue(obj));
+                    }
+
+                    // properties
+                    foreach (var p in obj.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance))
+                    {
+                        if (p.GetIndexParameters().Length > 0)
+                        {
+                            continue;
                         }
-                    }, actionState: 12);
+
+                        var getter = p.GetGetMethod();
+                        if (getter == null)
+                        {
+                            continue;
+                        }
+
+                        temp.Add(p.Name,
+                                 p.GetValue(obj: obj, index: null));
+                    }
+
+                    // methods
+                    foreach (var m in obj.GetType().GetMethods(BindingFlags.Public | BindingFlags.Instance))
+                    {
+                        temp.Add(m.Name,
+                                 wrapMethod(m));
+                    }
+                }
+
+                items = temp;
             }
-            catch (Exception ex)
+
+            var dict = items as IDictionary<string, object>;
+            if (dict == null)
             {
-                Console.WriteLine("[ERROR!]: {0}", ex.GetBaseException());
+                dict = new Dictionary<string, object>();
+
+                using (var e = items.GetEnumerator())
+                {
+                    while (e.MoveNext())
+                    {
+                        dict.Add(e.Current);
+                    }
+                }
             }
 
-            Console.WriteLine();
-            Console.WriteLine();
+            var result = dict as ExpandoObject;
+            if (result == null)
+            {
+                result = new ExpandoObject();
 
-            Console.WriteLine("===== ENTER =====");
-            Console.ReadLine();
+                using (var e = dict.GetEnumerator())
+                {
+                    while (e.MoveNext())
+                    {
+                        ((IDictionary<string, object>)result).Add(e.Current);
+                    }
+                }
+            }
+
+            return result;
         }
 
-        #endregion Methods (1)
+        #endregion Methods (2)
     }
 }

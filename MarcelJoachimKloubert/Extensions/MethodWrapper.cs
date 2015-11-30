@@ -27,89 +27,12 @@
  *                                                                                                                    *
  **********************************************************************************************************************/
 
-using System;
-using System.Linq;
-using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
-
-namespace MarcelJoachimKloubert.Extensions.Tests
+namespace MarcelJoachimKloubert.Extensions
 {
-    internal class Test
-    {
-        public string A = "1";
-        private string b = "2";
-
-        public void C()
-        {
-            Console.WriteLine("3");
-        }
-
-        private int D()
-        {
-            return 4;
-        }
-
-        private float E { get; set; }
-
-        public double F { get { return 6; } }
-
-        public int G(int a)
-        {
-            return a*2;
-        }
-    }
-
-    internal static class Program
-    {
-        #region Methods (1)
-
-        [STAThread]
-        private static void Main(string[] args)
-        {
-            try
-            {
-                var i = typeof(int).CreateInstance<int>();
-
-                var methods = Enumerable.Empty<Type>()
-                                        .Concat(new Type[] { typeof(MJKCoreExtensionMethods) })
-                                        // .Concat(new Type[] { typeof(MJKDataExtensionMethods) })
-                                        // .Concat(new Type[] { typeof(MJKWinFormsExtensionMethods) })
-                                        .SelectMany(x => x.GetMethods(BindingFlags.Static | BindingFlags.Public))
-                                        .Where(x => x.GetCustomAttributes(typeof(ExtensionAttribute), true).Length > 0)
-                                        .OrderBy(x => x.Name, StringComparer.InvariantCultureIgnoreCase)
-                                        .ToArray();
-
-                Console.WriteLine(methods.Length);
-
-                var t = new Test().AsDynamic();
-
-                Console.WriteLine(t.A);
-                t.A = "11";
-                Console.WriteLine(t.A);
-
-                t.C();
-                Console.WriteLine(t.G(20));
-
-                var taskCtx = Task.Factory.StartNewTask((ctx) =>
-                    {
-                        if (ctx != null)
-                        {
-                        }
-                    }, actionState: 12);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("[ERROR!]: {0}", ex.GetBaseException());
-            }
-
-            Console.WriteLine();
-            Console.WriteLine();
-
-            Console.WriteLine("===== ENTER =====");
-            Console.ReadLine();
-        }
-
-        #endregion Methods (1)
-    }
+    /// <summary>
+    /// A general method wrapper.
+    /// </summary>
+    /// <param name="args">The arguments for the method to wrap.</param>
+    /// <returns>The result of the wrapped method.</returns>
+    public delegate object MethodWrapper(params object[] args);
 }
