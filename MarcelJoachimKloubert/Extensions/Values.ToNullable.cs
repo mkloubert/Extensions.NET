@@ -27,45 +27,25 @@
  *                                                                                                                    *
  **********************************************************************************************************************/
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MarcelJoachimKloubert.Extensions;
-
-namespace MarcelJoachimKloubert.Extensions.Tests
+namespace MarcelJoachimKloubert.Extensions
 {
-    internal static class Program
+    // ToNullable()
+    static partial class MJKCoreExtensionMethods
     {
         #region Methods (1)
 
-        private static void Main(string[] args)
+        /// <summary>
+        /// Converts a struct to a nullable struct.
+        /// </summary>
+        /// <typeparam name="T">Type of the value.</typeparam>
+        /// <param name="value">The value to convert.</param>
+        /// <returns>The converted value.</returns>
+        public static T? ToNullable<T>(this T value)
+            where T : struct
         {
-            try
-            {
-                var i = typeof (int).CreateInstance<int>();
-
-                var taskCtx = Task.Factory.StartNewTask((ctx) =>
-                    {
-                        if (ctx != null)
-                        {
-                            
-                        }
-                    }, actionState: 12);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("[ERROR!]: {0}", ex.GetBaseException());
-            }
-
-            Console.WriteLine();
-            Console.WriteLine();
-
-            Console.WriteLine("===== ENTER =====");
-            Console.ReadLine();
+            return value;
         }
 
-        #endregion
+        #endregion Methods (1)
     }
 }
