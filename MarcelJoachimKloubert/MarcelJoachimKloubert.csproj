@@ -349,7 +349,9 @@
     <Compile Include="Extensions\Values.IsTrue.cs">
       <DependentUpon>Values.cs</DependentUpon>
     </Compile>
-    <Compile Include="Extensions\Values.ToNullable.cs" />
+    <Compile Include="Extensions\Values.ToNullable.cs">
+      <DependentUpon>Values.cs</DependentUpon>
+    </Compile>
     <Compile Include="Extensions\Values.ToYesNoString.cs">
       <DependentUpon>Values.cs</DependentUpon>
     </Compile>
