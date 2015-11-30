@@ -45,11 +45,21 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TestForm.Designer.cs">
+      <DependentUpon>TestForm.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MarcelJoachimKloubert.Extensions.Data\MarcelJoachimKloubert.Extensions.Data.csproj">
       <Project>{f3105324-c568-4ac8-b4fc-bc6a6120b570}</Project>
       <Name>MarcelJoachimKloubert.Extensions.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MarcelJoachimKloubert.Extensions.Drawing\MarcelJoachimKloubert.Extensions.Drawing.csproj">
+      <Project>{d298628b-edc5-4e45-b038-e44c5130fbeb}</Project>
+      <Name>MarcelJoachimKloubert.Extensions.Drawing</Name>
     </ProjectReference>
     <ProjectReference Include="..\MarcelJoachimKloubert.Extensions.Windows.Forms\MarcelJoachimKloubert.Extensions.Windows.Forms.csproj">
       <Project>{ebae180b-49f5-4cf6-8b7a-a63ca9083fa3}</Project>
@@ -64,6 +74,15 @@
     <EmbeddedResource Include="..\LICENSE">
       <Link>LICENSE</Link>
     </EmbeddedResource>
+    <EmbeddedResource Include="TestForm.resx">
+      <DependentUpon>TestForm.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Licenses.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Edward_Snowden_2013-10-9_%281%29_%28cropped%29.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

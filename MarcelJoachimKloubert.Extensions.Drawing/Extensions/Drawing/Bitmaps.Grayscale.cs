@@ -27,114 +27,59 @@
  *                                                                                                                    *
  **********************************************************************************************************************/
 
-using MarcelJoachimKloubert.Extensions.Data;
-using MarcelJoachimKloubert.Extensions.Drawing;
-using MarcelJoachimKloubert.Extensions.Windows.Forms;
-using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using System.Drawing.Imaging;
 
-namespace MarcelJoachimKloubert.Extensions.Tests
+namespace MarcelJoachimKloubert.Extensions.Drawing
 {
-    internal class Test
-    {
-        public string A = "1";
-        private string b = "2";
-
-        public void C()
-        {
-            Console.WriteLine("3");
-        }
-
-        private int D()
-        {
-            return 4;
-        }
-
-        private float E { get; set; }
-
-        public double F { get { return 6; } }
-
-        public int G(int a)
-        {
-            return a * 2;
-        }
-    }
-
-    internal static class Program
+    // Grayscale()
+    static partial class MJKDrawingExtensionMethods
     {
         #region Methods (1)
 
-        [STAThread]
-        private static void Main(string[] args)
+        /// <summary>
+        /// Converts a <see cref="Bitmap" /> to its grayscale version.
+        /// </summary>
+        /// <param name="input">The input bitmap.</param>
+        /// <returns>The converted bitmap or <see langword="null" /> if <paramref name="input" /> is also <see langword="null" />.</returns>
+        public static Bitmap Grayscale(this Bitmap input)
         {
+            if (input == null)
+            {
+                return null;
+            }
+
+            var result = new Bitmap(input.Width, input.Height);
             try
             {
-                var i = typeof(int).CreateInstance<int>();
-
-                var methods = Enumerable.Empty<Type>()
-                                        .Concat(new Type[] { typeof(MJKCoreExtensionMethods) })
-                                        .Concat(new Type[] { typeof(MJKDataExtensionMethods) })
-                                        .Concat(new Type[] { typeof(MJKWinFormsExtensionMethods) })
-                                        .SelectMany(x => x.GetMethods(BindingFlags.Static | BindingFlags.Public))
-                                        .Where(x => x.GetCustomAttributes(typeof(ExtensionAttribute), true).Length > 0)
-                                        .OrderBy(x => x.Name, StringComparer.InvariantCultureIgnoreCase)
-                                        .ToArray();
-
-                Console.WriteLine(methods.Length);
-
-                var t = new Test().AsDynamic();
-
-                Console.WriteLine(t.A);
-                t.A = "11";
-                Console.WriteLine(t.A);
-
-                t.C();
-                Console.WriteLine(t.G(20));
-
-                var dict = new Dictionary<string, object>();
-                dict["a"] = "45dnjdsank";
-
-                var o = dict.Build(d =>
+                using (var g = Graphics.FromImage(result))
+                {
+                    var colorMatrix = new ColorMatrix(new float[][]
                     {
-                        return new Test()
-                        {
-                            A = (string)d["a"],
-                        };
+                       new float[] { .3f, .3f, .3f, 0, 0 },
+                       new float[] { .59f, .59f, .59f, 0, 0 },
+                       new float[] { .11f, .11f, .11f, 0, 0 },
+                       new float[] { 0, 0, 0, 1, 0 },
+                       new float[] { 0, 0, 0, 0, 1 },
                     });
 
-                var taskCtx = Task.Factory.StartNewTask((ctx) =>
+                    using (var attributes = new ImageAttributes())
                     {
-                        if (ctx != null)
-                        {
-                        }
-                    }, actionState: 12);
+                        attributes.SetColorMatrix(colorMatrix);
 
-                using (var es = Assembly.GetExecutingAssembly()
-                                        .GetManifestResourceImage(typeof(Program), "Edward_Snowden_2013-10-9_(1)_(cropped).jpg"))
-                {
-                    var frm = new TestForm();
-                    frm.PictureBox_Main.Image = ((Bitmap) es).Grayscale();
-                    frm.StartPosition = FormStartPosition.CenterScreen;
-
-                    Application.Run(frm);
+                        g.DrawImage(input, new Rectangle(0, 0, input.Width, input.Height),
+                                    0, 0, input.Width, input.Height, GraphicsUnit.Pixel, attributes);
+                    }
                 }
             }
-            catch (Exception ex)
+            catch
             {
-                Console.WriteLine("[ERROR!]: {0}", ex.GetBaseException());
+                result.Dispose();
+
+                throw;
             }
 
-            Console.WriteLine();
-            Console.WriteLine();
-
-            Console.WriteLine("===== ENTER =====");
-            Console.ReadLine();
+            return result;
         }
 
         #endregion Methods (1)

@@ -27,116 +27,88 @@
  *                                                                                                                    *
  **********************************************************************************************************************/
 
-using MarcelJoachimKloubert.Extensions.Data;
-using MarcelJoachimKloubert.Extensions.Drawing;
-using MarcelJoachimKloubert.Extensions.Windows.Forms;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
 using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
-namespace MarcelJoachimKloubert.Extensions.Tests
+namespace MarcelJoachimKloubert.Extensions.Drawing
 {
-    internal class Test
+    // GetManifestResourceImage()
+    static partial class MJKDrawingExtensionMethods
     {
-        public string A = "1";
-        private string b = "2";
+        #region Methods (3)
 
-        public void C()
+        /// <summary>
+        /// Returns an embedded resource inside an <see cref="Assembly" /> as a bitmap.
+        /// </summary>
+        /// <typeparam name="T">The type that is used for the namespace of the resource.</typeparam>
+        /// <param name="asm">The assembly where the resource is stored.</param>
+        /// <param name="name">The name / relative path of the resource.</param>
+        /// <returns>The image or <see langword="null" /> if not found.</returns>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="asm" /> is <see langword="null" />.
+        /// </exception>
+        public static Image GetManifestResourceImage<T>(this Assembly asm, string name)
         {
-            Console.WriteLine("3");
+            return GetManifestResourceImage(asm: asm,
+                                            type: typeof(T),
+                                            name: name);
         }
 
-        private int D()
+        /// <summary>
+        /// Returns an embedded resource inside an <see cref="Assembly" /> as a bitmap.
+        /// </summary>
+        /// <param name="asm">The assembly where the resource is stored.</param>
+        /// <param name="name">The name / relative path of the resource.</param>
+        /// <returns>The image or <see langword="null" /> if not found.</returns>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="asm" /> is <see langword="null" />.
+        /// </exception>
+        public static Image GetManifestResourceImage(this Assembly asm, string name)
         {
-            return 4;
-        }
-
-        private float E { get; set; }
-
-        public double F { get { return 6; } }
-
-        public int G(int a)
-        {
-            return a * 2;
-        }
-    }
-
-    internal static class Program
-    {
-        #region Methods (1)
-
-        [STAThread]
-        private static void Main(string[] args)
-        {
-            try
+            if (asm == null)
             {
-                var i = typeof(int).CreateInstance<int>();
-
-                var methods = Enumerable.Empty<Type>()
-                                        .Concat(new Type[] { typeof(MJKCoreExtensionMethods) })
-                                        .Concat(new Type[] { typeof(MJKDataExtensionMethods) })
-                                        .Concat(new Type[] { typeof(MJKWinFormsExtensionMethods) })
-                                        .SelectMany(x => x.GetMethods(BindingFlags.Static | BindingFlags.Public))
-                                        .Where(x => x.GetCustomAttributes(typeof(ExtensionAttribute), true).Length > 0)
-                                        .OrderBy(x => x.Name, StringComparer.InvariantCultureIgnoreCase)
-                                        .ToArray();
-
-                Console.WriteLine(methods.Length);
-
-                var t = new Test().AsDynamic();
-
-                Console.WriteLine(t.A);
-                t.A = "11";
-                Console.WriteLine(t.A);
-
-                t.C();
-                Console.WriteLine(t.G(20));
-
-                var dict = new Dictionary<string, object>();
-                dict["a"] = "45dnjdsank";
-
-                var o = dict.Build(d =>
-                    {
-                        return new Test()
-                        {
-                            A = (string)d["a"],
-                        };
-                    });
-
-                var taskCtx = Task.Factory.StartNewTask((ctx) =>
-                    {
-                        if (ctx != null)
-                        {
-                        }
-                    }, actionState: 12);
-
-                using (var es = Assembly.GetExecutingAssembly()
-                                        .GetManifestResourceImage(typeof(Program), "Edward_Snowden_2013-10-9_(1)_(cropped).jpg"))
-                {
-                    var frm = new TestForm();
-                    frm.PictureBox_Main.Image = ((Bitmap) es).Grayscale();
-                    frm.StartPosition = FormStartPosition.CenterScreen;
-
-                    Application.Run(frm);
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("[ERROR!]: {0}", ex.GetBaseException());
+                throw new ArgumentNullException("asm");
             }
 
-            Console.WriteLine();
-            Console.WriteLine();
+            var stream = asm.GetManifestResourceStream(name);
+            if (stream == null)
+            {
+                return null;
+            }
 
-            Console.WriteLine("===== ENTER =====");
-            Console.ReadLine();
+            using (stream)
+            {
+                return Image.FromStream(stream);
+            }
         }
 
-        #endregion Methods (1)
+        /// <summary>
+        /// Returns an embedded resource inside an <see cref="Assembly" /> as a bitmap.
+        /// </summary>
+        /// <param name="asm">The assembly where the resource is stored.</param>
+        /// <param name="type">The type that is used for the namespace of the resource.</param>
+        /// <param name="name">The name / relative path of the resource.</param>
+        /// <returns>The image or <see langword="null" /> if not found.</returns>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="asm" /> and/or <paramref name="type" /> are <see langword="null" />.
+        /// </exception>
+        public static Image GetManifestResourceImage(this Assembly asm, Type type, string name)
+        {
+            if (type == null)
+            {
+                throw new ArgumentNullException("type");
+            }
+
+            var ns = type.Namespace;
+            name = string.IsNullOrEmpty(ns) ? name
+                                            : string.Format("{0}.{1}",
+                                                            ns, name);
+
+            return GetManifestResourceImage(asm: asm,
+                                            name: name);
+        }
+
+        #endregion Methods (3)
     }
 }
