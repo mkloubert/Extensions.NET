@@ -361,10 +361,22 @@
     </Compile>
     <Compile Include="Extensions\TaskContext.cs" />
     <Compile Include="Extensions\TaskExecutionContext.cs" />
+    <Compile Include="Extensions\Tasks.StartAll.cs">
+      <DependentUpon>Tasks.cs</DependentUpon>
+    </Compile>
     <Compile Include="Extensions\Tasks.StartNewTask.cs">
       <DependentUpon>Tasks.cs</DependentUpon>
     </Compile>
     <Compile Include="Extensions\Tasks.cs" />
+    <Compile Include="Extensions\Tasks.ToTask.cs">
+      <DependentUpon>Tasks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\Tasks.WaitForAny.cs">
+      <DependentUpon>Tasks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\Tasks.WaitForAll.cs">
+      <DependentUpon>Tasks.cs</DependentUpon>
+    </Compile>
     <Compile Include="Extensions\Values.AsDynamic.cs">
       <DependentUpon>Values.cs</DependentUpon>
     </Compile>
