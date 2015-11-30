@@ -3,6 +3,8 @@ Set of useful extensions methods written in C#.
 
 ## Methods
 
+### MarcelJoachimKloubert.Extensions
+
 * Abs
 * ACos
 * AddRange
@@ -18,7 +20,6 @@ Set of useful extensions methods written in C#.
 * ATan2
 * BigMul
 * Build
-* BuildAll
 * Ceiling
 * ChangeType
 * Cos
@@ -26,21 +27,17 @@ Set of useful extensions methods written in C#.
 * CreateInstance
 * CreateUnwrappedInstanceOf
 * DisposeAll
-* EnumerateControls
 * Exp
 * Floor
 * ForAll
-* FromDbValue
 * GetManifestResourceBlob
 * GetManifestResourceString
 * GetSimilarity
 * GUnzip
 * GZip
 * Hash
-* HideTabs
 * IEEERemainder
 * InvokeForStream
-* InvokeForTransaction
 * InvokeSafe
 * IsBetween
 * IsEmpty
@@ -76,12 +73,10 @@ Set of useful extensions methods written in C#.
 * RemoveWhere
 * Round
 * SelectEntries
-* SendMessage
 * SetBasicAuth
 * SHA256
 * SHA384
 * SHA512
-* ShowTabs
 * Shuffle
 * Sign
 * Sin
@@ -92,10 +87,7 @@ Set of useful extensions methods written in C#.
 * Tan
 * TanH
 * ToByte
-* ToDbValue
 * ToDecimal
-* ToDictionaries
-* ToDictionary
 * ToDouble
 * ToGuid
 * ToInt16
@@ -120,3 +112,28 @@ Set of useful extensions methods written in C#.
 * Walk
 * Without
 
+### MarcelJoachimKloubert.Extensions.Data
+
+* Build
+* BuildAll
+* FromDbValue
+* InvokeForTransaction
+* ToDbValue
+* ToDictionaries
+* ToDictionary
+
+### MarcelJoachimKloubert.Extensions.Drawing
+
+* GetManifestResourceImage
+* Grayscale
+
+### MarcelJoachimKloubert.Extensions.Windows.Forms
+
+* EnumerateControls
+* HideTabs
+* SendMessage
+* ShowTabs
+
+### MarcelJoachimKloubert.Extensions.Xml
+
+* AsString
