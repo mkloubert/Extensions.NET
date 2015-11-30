@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MarcelJoachimKloubert.Extensions
 {
@@ -57,7 +58,7 @@ namespace MarcelJoachimKloubert.Extensions
                 return null;
             }
 
-            var result = new AggregateException(innerExceptions: exceptions);
+            var result = new AggregateException(innerExceptions: exceptions.Where(x => x != null));
 
             if (@throw)
             {
