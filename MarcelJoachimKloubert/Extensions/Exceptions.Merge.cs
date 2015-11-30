@@ -46,7 +46,8 @@ namespace MarcelJoachimKloubert.Extensions
         /// <returns>The merged exception.</returns>
         /// <exception cref="AggregateException">
         /// <paramref name="exceptions" /> is NOT <see langword="null" /> and
-        /// <paramref name="throw" /> is <see langword="false" />.
+        /// <paramref name="throw" /> is <see langword="true" /> and
+        /// <paramref name="exceptions" /> contains exceptions.
         /// </exception>
         /// <remarks>
         /// Result is <see langword="null" /> if <paramref name="exceptions" /> is also <see langword="null" />.
@@ -60,7 +61,8 @@ namespace MarcelJoachimKloubert.Extensions
 
             var result = new AggregateException(innerExceptions: exceptions.Where(x => x != null));
 
-            if (@throw)
+            if (@throw &&
+                result.InnerExceptions.Count > 0)
             {
                 throw result;
             }
