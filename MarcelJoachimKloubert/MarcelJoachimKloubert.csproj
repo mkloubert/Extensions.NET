@@ -161,6 +161,24 @@
     <Compile Include="Extensions\Collections.TryPop.cs">
       <DependentUpon>Collections.cs</DependentUpon>
     </Compile>
+    <Compile Include="Extensions\DateTime.Days.cs">
+      <DependentUpon>DateTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\DateTime.Hours.cs">
+      <DependentUpon>DateTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\DateTime.Milliseconds.cs">
+      <DependentUpon>DateTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\DateTime.Minutes.cs">
+      <DependentUpon>DateTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\DateTime.Seconds.cs">
+      <DependentUpon>DateTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\DateTime.Ticks.cs">
+      <DependentUpon>DateTime.cs</DependentUpon>
+    </Compile>
     <Compile Include="Extensions\DateTime.Walk.cs">
       <DependentUpon>DateTime.cs</DependentUpon>
     </Compile>

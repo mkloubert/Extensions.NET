@@ -35,6 +35,7 @@ Set of useful extensions methods written in C#.
 * Cos
 * CosH
 * CreateInstance
+* Days
 * DisposeAll
 * Exp
 * Floor
@@ -42,6 +43,7 @@ Set of useful extensions methods written in C#.
 * GetManifestResourceBlob
 * GetManifestResourceString
 * GetSimilarity
+* Hours
 * IEEERemainder
 * InvokeForStream
 * IsBetween
@@ -62,7 +64,9 @@ Set of useful extensions methods written in C#.
 * MakePassword
 * Max
 * Merge
+* Milliseconds
 * Min
+* Minutes
 * Negate
 * NoNulls
 * PeekOrDefault
@@ -76,6 +80,7 @@ Set of useful extensions methods written in C#.
 * ReadSingleByte
 * RemoveWhere
 * Round
+* Seconds
 * SelectEntries
 * SetBasicAuth
 * Shuffle
@@ -87,6 +92,7 @@ Set of useful extensions methods written in C#.
 * StartNewTask
 * Tan
 * TanH
+* Ticks
 * ToByte
 * ToDecimal
 * ToDouble
