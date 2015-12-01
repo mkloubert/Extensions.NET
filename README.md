@@ -36,6 +36,7 @@ Set of useful extensions methods written in C#.
 * CosH
 * CreateInstance
 * CreateUnwrappedInstanceOf
+* Days
 * DisposeAll
 * Exp
 * Floor
@@ -46,6 +47,7 @@ Set of useful extensions methods written in C#.
 * GUnzip
 * GZip
 * Hash
+* Hours
 * IEEERemainder
 * InvokeForStream
 * InvokeSafe
@@ -68,7 +70,9 @@ Set of useful extensions methods written in C#.
 * Max
 * MD5
 * Merge
+* Milliseconds
 * Min
+* Minutes
 * Negate
 * NoNulls
 * PeekOrDefault
@@ -82,6 +86,7 @@ Set of useful extensions methods written in C#.
 * ReadSingleByte
 * RemoveWhere
 * Round
+* Seconds
 * SelectEntries
 * SetBasicAuth
 * SHA256
@@ -96,6 +101,7 @@ Set of useful extensions methods written in C#.
 * StartNewTask
 * Tan
 * TanH
+* Ticks
 * ToByte
 * ToDecimal
 * ToDouble
