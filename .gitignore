@@ -5,8 +5,8 @@
 /MarcelJoachimKloubert/project.lock.json
 /MarcelJoachimKloubert.sln.DotSettings.user
 /.vs/MarcelJoachimKloubert/v14/.suo
-/MarcelJoachimKloubert.Extensions.Tests/obj
-/MarcelJoachimKloubert.Extensions.Tests/bin
+/MarcelJoachimKloubert.Extensions.UnitTests/obj
+/MarcelJoachimKloubert.Extensions.UnitTests/bin
 /MarcelJoachimKloubert.Extensions.Data/obj
 /MarcelJoachimKloubert.Extensions.Data/bin
 /MarcelJoachimKloubert.Extensions.Data/MarcelJoachimKloubert.Extensions.Data.csproj.user
@@ -19,6 +19,3 @@
 /MarcelJoachimKloubert.Extensions.Xml/bin
 /MarcelJoachimKloubert.Extensions.Xml/MarcelJoachimKloubert.Extensions.Xml.csproj.user
 /MarcelJoachimKloubert.Extensions.Xml/project.lock.json
-/MarcelJoachimKloubert.Extensions.Tests/MarcelJoachimKloubert.Extensions.Tests.csproj.user
-/MarcelJoachimKloubert.Extensions.Tests/MarcelJoachimKloubert.Extensions.Tests_TemporaryKey.pfx
-/MarcelJoachimKloubert.Extensions.Tests/project.lock.json
