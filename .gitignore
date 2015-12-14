@@ -19,3 +19,5 @@
 /MarcelJoachimKloubert.Extensions.Xml/bin
 /MarcelJoachimKloubert.Extensions.Xml/MarcelJoachimKloubert.Extensions.Xml.csproj.user
 /MarcelJoachimKloubert.Extensions.Xml/project.lock.json
+/MarcelJoachimKloubert.Extensions.Tests/obj
+/MarcelJoachimKloubert.Extensions.Tests/bin
