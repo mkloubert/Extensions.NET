@@ -22,3 +22,5 @@
 /MarcelJoachimKloubert.Extensions.Tests/MarcelJoachimKloubert.Extensions.Tests.csproj.user
 /MarcelJoachimKloubert.Extensions.Tests/MarcelJoachimKloubert.Extensions.Tests_TemporaryKey.pfx
 /MarcelJoachimKloubert.Extensions.Tests/project.lock.json
+/MarcelJoachimKloubert.Extensions.UnitTests/bin
+/MarcelJoachimKloubert.Extensions.UnitTests/obj
