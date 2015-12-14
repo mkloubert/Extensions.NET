@@ -17,6 +17,7 @@ Set of useful extensions methods written in C#.
 * Abs
 * ACos
 * AddRange
+* AsAggregate
 * AsArray
 * AsChars
 * AsCollection
