@@ -39,6 +39,7 @@ Set of useful extensions methods written in C#.
 * CreateUnwrappedInstanceOf
 * Days
 * DisposeAll
+* DistinctBy
 * Exp
 * Floor
 * ForAll
