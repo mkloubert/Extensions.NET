@@ -28,56 +28,75 @@
  **********************************************************************************************************************/
 
 using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Security.Cryptography;
 
 namespace MarcelJoachimKloubert.Extensions
 {
-    // SHA384()
+    // Invoke()
     static partial class MJKCoreExtensionMethods
     {
         #region Methods
 
         /// <summary>
-        /// Hashes binary data with SHA-384.
+        /// Invokes a delegate.
         /// </summary>
-        /// <param name="data">The data to hash.</param>
-        /// <returns>The hash or <see langword="null" /> if <paramref name="data" /> is <see langword="null" />.</returns>
-        public static byte[] SHA384(this IEnumerable<byte> data)
+        /// <param name="delegate">The delegate to invoke.</param>
+        /// <param name="args">The arguments for the invocation.</param>
+        /// <returns>The result of the invocation.</returns>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="delegate" /> is <see langword="null" />.
+        /// </exception>
+        /// <exception cref="InvalidCastException">
+        /// At least one value in <paramref name="args" /> could not be used as
+        /// parameter for <paramref name="delegate" />.
+        /// </exception>
+        public static object Invoke(this Delegate @delegate,
+                                    params object[] args)
         {
-            if (data == null)
+            if (@delegate == null)
             {
-                return null;
+                throw new ArgumentNullException("delegate");
             }
 
-            using (var temp = new MemoryStream(data as byte[] ?? data.ToArray(),
-                                               false))
+            var method = @delegate.Method;
+            var @params = method.GetParameters();
+
+            args = (args ?? new object[] { null }).ToArray();
+            if (args.Length != @params.Length)
             {
-                return SHA384(temp);
+                throw new ArgumentOutOfRangeException("args");
             }
+
+            for (var i = 0; i < args.Length; i++)
+            {
+                args[i] = ConvertObject(args[i],
+                                        @params[i].ParameterType);
+            }
+
+            return InvokeMethodInfo(method, args,
+                                    @delegate.Target);
         }
 
         /// <summary>
-        /// Hashes a stream with SHA-384.
+        /// Invokes a delegate.
         /// </summary>
-        /// <param name="stream">The stream to hash.</param>
-        /// <returns>The hash.</returns>
+        /// <typeparam name="TResult">Type of the result.</typeparam>
+        /// <param name="delegate">The delegate to invoke.</param>
+        /// <param name="args">The arguments for the invocation.</param>
+        /// <returns>The result of the invocation.</returns>
         /// <exception cref="ArgumentNullException">
-        /// <paramref name="stream" /> is <see langword="null" />.
+        /// <paramref name="delegate" /> is <see langword="null" />.
         /// </exception>
-        public static byte[] SHA384(this Stream stream)
+        /// <exception cref="InvalidCastException">
+        /// Cannot convert result to <typeparamref name="TResult" /> --or--
+        /// at least one value in <paramref name="args" /> could not be used as
+        /// parameter for <paramref name="delegate" />.
+        /// </exception>
+        public static TResult Invoke<TResult>(this Delegate @delegate,
+                                              params object[] args)
         {
-            if (stream == null)
-            {
-                throw new ArgumentNullException("stream");
-            }
-
-            using (var hasher = new SHA384CryptoServiceProvider())
-            {
-                return hasher.ComputeHash(stream);
-            }
+            return ConvertObject<TResult>(Invoke(@delegate: @delegate,
+                                                 args: args));
         }
 
         #endregion Methods

@@ -328,6 +328,9 @@
     <Compile Include="Extensions\Reflection.GetManifestResourceString.cs">
       <DependentUpon>Reflection.cs</DependentUpon>
     </Compile>
+    <Compile Include="Extensions\Reflection.Invoke.cs">
+      <DependentUpon>Reflection.cs</DependentUpon>
+    </Compile>
     <Compile Include="Extensions\Strings.AsChars.cs">
       <DependentUpon>Strings.cs</DependentUpon>
     </Compile>

@@ -50,6 +50,7 @@ Set of useful extensions methods written in C#.
 * Hash
 * Hours
 * IEEERemainder
+* Invoke
 * InvokeForStream
 * InvokeSafe
 * IsBetween

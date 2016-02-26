@@ -27,6 +27,10 @@
  *                                                                                                                    *
  **********************************************************************************************************************/
 
+using System;
+using System.Reflection;
+using System.Text;
+
 namespace MarcelJoachimKloubert.Extensions
 {
     /// <summary>
@@ -34,5 +38,62 @@ namespace MarcelJoachimKloubert.Extensions
     /// </summary>
     public static partial class MJKCoreExtensionMethods
     {
+        #region Methods
+
+        private static TTarget ConvertObject<TTarget>(object obj)
+        {
+            return (TTarget)ConvertObject(obj, typeof(TTarget));
+        }
+
+        private static object ConvertObject(object obj, Type targetType)
+        {
+            if (obj != null)
+            {
+                if (!targetType.IsInstanceOfType(obj))
+                {
+                    if (targetType == typeof(string))
+                    {
+                        return obj.ToString();
+                    }
+
+                    if (targetType == typeof(StringBuilder))
+                    {
+                        return new StringBuilder(obj.ToString());
+                    }
+
+                    return Convert.ChangeType(obj, targetType);
+                }
+            }
+            else
+            {
+                if (targetType.IsValueType)
+                {
+                    return Activator.CreateInstance(targetType);
+                }
+            }
+
+            return obj;
+        }
+
+        private static object InvokeMethodInfo(MethodInfo method, object[] args, object obj = null)
+        {
+            try
+            {
+                args = args ?? new object[] { null };
+                if (args.Length < 1)
+                {
+                    args = null;
+                }
+
+                return method.Invoke(obj: obj,
+                                     parameters: args);
+            }
+            catch (Exception ex)
+            {
+                throw ex.GetBaseException();
+            }
+        }
+
+        #endregion Methods
     }
 }

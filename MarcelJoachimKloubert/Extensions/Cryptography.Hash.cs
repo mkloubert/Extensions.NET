@@ -38,7 +38,7 @@ namespace MarcelJoachimKloubert.Extensions
     // Hash()
     static partial class MJKCoreExtensionMethods
     {
-        #region Methods (4)
+        #region Methods
 
         /// <summary>
         /// Hashes binary data.
@@ -78,13 +78,8 @@ namespace MarcelJoachimKloubert.Extensions
                 return null;
             }
 
-            var blob = data as byte[];
-            if (blob == null)
-            {
-                blob = data.ToArray();
-            }
-
-            using (var temp = new MemoryStream(blob, false))
+            using (var temp = new MemoryStream(data as byte[] ?? data.ToArray(),
+                                               false))
             {
                 return Hash(temp, algorithm);
             }
@@ -142,6 +137,6 @@ namespace MarcelJoachimKloubert.Extensions
             }
         }
 
-        #endregion Methods (4)
+        #endregion Methods
     }
 }

@@ -38,7 +38,7 @@ namespace MarcelJoachimKloubert.Extensions
     // SHA256()
     static partial class MJKCoreExtensionMethods
     {
-        #region Methods (2)
+        #region Methods
 
         /// <summary>
         /// Hashes binary data with SHA-256.
@@ -52,13 +52,8 @@ namespace MarcelJoachimKloubert.Extensions
                 return null;
             }
 
-            var blob = data as byte[];
-            if (blob == null)
-            {
-                blob = data.ToArray();
-            }
-
-            using (var temp = new MemoryStream(blob, false))
+            using (var temp = new MemoryStream(data as byte[] ?? data.ToArray(),
+                                               false))
             {
                 return SHA256(temp);
             }
@@ -85,6 +80,6 @@ namespace MarcelJoachimKloubert.Extensions
             }
         }
 
-        #endregion Methods (2)
+        #endregion Methods
     }
 }
