@@ -28,71 +28,76 @@
  **********************************************************************************************************************/
 
 using System;
-using System.Globalization;
+using System.Linq;
 using System.Reflection;
-using System.Text;
 
 namespace MarcelJoachimKloubert.Extensions
 {
-    /// <summary>
-    /// Core extension methods.
-    /// </summary>
-    public static partial class MJKCoreExtensionMethods
+    // Invoke()
+    static partial class MJKCoreExtensionMethods
     {
         #region Methods
 
-        private static TTarget ConvertObject<TTarget>(object obj)
+        /// <summary>
+        /// Invokes a delegate.
+        /// </summary>
+        /// <param name="delegate">The delegate to invoke.</param>
+        /// <param name="args">The arguments for the invocation.</param>
+        /// <returns>The result of the invocation.</returns>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="delegate" /> is <see langword="null" />.
+        /// </exception>
+        /// <exception cref="InvalidCastException">
+        /// At least one value in <paramref name="args" /> could not be used as
+        /// parameter for <paramref name="delegate" />.
+        /// </exception>
+        public static object Invoke(this Delegate @delegate,
+                                    params object[] args)
         {
-            return (TTarget)ConvertObject(obj, typeof(TTarget));
+            if (@delegate == null)
+            {
+                throw new ArgumentNullException(nameof(@delegate));
+            }
+
+            var method = @delegate.GetMethodInfo();
+            var @params = method.GetParameters();
+
+            args = (args ?? new object[] { null }).ToArray();
+            if (args.Length != @params.Length)
+            {
+                throw new ArgumentOutOfRangeException(nameof(args));
+            }
+
+            for (var i = 0; i < args.Length; i++)
+            {
+                args[i] = ConvertObject(args[i],
+                                        @params[i].ParameterType);
+            }
+
+            return InvokeMethodInfo(method, args,
+                                    @delegate.Target);
         }
 
-        private static object ConvertObject(object obj, Type targetType)
+        /// <summary>
+        /// Invokes a delegate.
+        /// </summary>
+        /// <typeparam name="TResult">Type of the result.</typeparam>
+        /// <param name="delegate">The delegate to invoke.</param>
+        /// <param name="args">The arguments for the invocation.</param>
+        /// <returns>The result of the invocation.</returns>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="delegate" /> is <see langword="null" />.
+        /// </exception>
+        /// <exception cref="InvalidCastException">
+        /// Cannot convert result to <typeparamref name="TResult" /> --or--
+        /// at least one value in <paramref name="args" /> could not be used as
+        /// parameter for <paramref name="delegate" />.
+        /// </exception>
+        public static TResult Invoke<TResult>(this Delegate @delegate,
+                                              params object[] args)
         {
-            if (obj != null)
-            {
-                if (!targetType.IsInstanceOfType(obj))
-                {
-                    if (targetType == typeof(string))
-                    {
-                        return obj.ToString();
-                    }
-
-                    if (targetType == typeof(StringBuilder))
-                    {
-                        return new StringBuilder(obj.ToString());
-                    }
-
-                    return Convert.ChangeType(obj, targetType);
-                }
-            }
-            else
-            {
-                if (typeof(global::System.ValueType).IsAssignableFrom(targetType))
-                {
-                    return Activator.CreateInstance(targetType);
-                }
-            }
-
-            return obj;
-        }
-
-        private static object InvokeMethodInfo(MethodInfo method, object[] args, object obj = null)
-        {
-            try
-            {
-                args = args ?? new object[] { null };
-                if (args.Length < 1)
-                {
-                    args = null;
-                }
-
-                return method.Invoke(obj: obj,
-                                     parameters: args);
-            }
-            catch (Exception ex)
-            {
-                throw ex.GetBaseException();
-            }
+            return ConvertObject<TResult>(Invoke(@delegate: @delegate,
+                                                 args: args));
         }
 
         #endregion Methods

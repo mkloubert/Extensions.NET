@@ -1362,9 +1362,16 @@ namespace MarcelJoachimKloubert.Extensions
                     var d = (Delegate)taskArgs[0];
                     var a = (object[])taskArgs[1];
 
-                    return (TResult)d.GetMethodInfo()
-                                     .Invoke(obj: d.Target,
-                                             parameters: a);
+                    try
+                    {
+                        return (TResult)d.GetMethodInfo()
+                                         .Invoke(obj: d.Target,
+                                                 parameters: a);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex.GetBaseException();
+                    }
                 },
                 state: new object[] { @delegate, args },
                 creationOptions: creationOptions);

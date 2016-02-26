@@ -28,71 +28,40 @@
  **********************************************************************************************************************/
 
 using System;
-using System.Globalization;
-using System.Reflection;
-using System.Text;
+using System.Collections.Generic;
 
 namespace MarcelJoachimKloubert.Extensions
 {
-    /// <summary>
-    /// Core extension methods.
-    /// </summary>
-    public static partial class MJKCoreExtensionMethods
+    internal class DelegateComparer<T> : IEqualityComparer<T>
     {
+        #region Fields
+
+        private readonly Func<T, T, bool> _EQUALS;
+        private readonly Func<T, int> _GET_HASH_CODE;
+
+        #endregion Fields
+
+        #region Constructors
+
+        internal DelegateComparer(Func<T, T, bool> equalsPredicate = null,
+                                  Func<T, int> getHashCodeFunc = null)
+        {
+            _EQUALS = equalsPredicate ?? EqualityComparer<T>.Default.Equals;
+            _GET_HASH_CODE = getHashCodeFunc ?? EqualityComparer<T>.Default.GetHashCode;
+        }
+
+        #endregion Constructors
+
         #region Methods
 
-        private static TTarget ConvertObject<TTarget>(object obj)
+        public bool Equals(T x, T y)
         {
-            return (TTarget)ConvertObject(obj, typeof(TTarget));
+            return _EQUALS(x, y);
         }
 
-        private static object ConvertObject(object obj, Type targetType)
+        public int GetHashCode(T obj)
         {
-            if (obj != null)
-            {
-                if (!targetType.IsInstanceOfType(obj))
-                {
-                    if (targetType == typeof(string))
-                    {
-                        return obj.ToString();
-                    }
-
-                    if (targetType == typeof(StringBuilder))
-                    {
-                        return new StringBuilder(obj.ToString());
-                    }
-
-                    return Convert.ChangeType(obj, targetType);
-                }
-            }
-            else
-            {
-                if (typeof(global::System.ValueType).IsAssignableFrom(targetType))
-                {
-                    return Activator.CreateInstance(targetType);
-                }
-            }
-
-            return obj;
-        }
-
-        private static object InvokeMethodInfo(MethodInfo method, object[] args, object obj = null)
-        {
-            try
-            {
-                args = args ?? new object[] { null };
-                if (args.Length < 1)
-                {
-                    args = null;
-                }
-
-                return method.Invoke(obj: obj,
-                                     parameters: args);
-            }
-            catch (Exception ex)
-            {
-                throw ex.GetBaseException();
-            }
+            return _GET_HASH_CODE(obj);
         }
 
         #endregion Methods

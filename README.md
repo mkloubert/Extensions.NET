@@ -37,6 +37,7 @@ Set of useful extensions methods written in C#.
 * CreateInstance
 * Days
 * DisposeAll
+* DistinctBy
 * Exp
 * Floor
 * ForAll
@@ -47,6 +48,7 @@ Set of useful extensions methods written in C#.
 * GZip
 * Hours
 * IEEERemainder
+* Invoke
 * InvokeForStream
 * IsBetween
 * IsEmpty
