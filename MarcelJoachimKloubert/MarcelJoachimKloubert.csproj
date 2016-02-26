@@ -71,6 +71,9 @@
     <Compile Include="Extensions\Collections.DisposeAll.cs">
       <DependentUpon>Collections.cs</DependentUpon>
     </Compile>
+    <Compile Include="Extensions\Collections.DistinctBy.cs">
+      <DependentUpon>Collections.cs</DependentUpon>
+    </Compile>
     <Compile Include="Extensions\Collections.Invert.cs">
       <DependentUpon>Collections.cs</DependentUpon>
     </Compile>
@@ -182,6 +185,7 @@
     <Compile Include="Extensions\DateTime.Walk.cs">
       <DependentUpon>DateTime.cs</DependentUpon>
     </Compile>
+    <Compile Include="Extensions\DelegateComparer.cs" />
     <Compile Include="Extensions\Exceptions.AsAggregate.cs">
       <DependentUpon>Exceptions.cs</DependentUpon>
     </Compile>
@@ -306,6 +310,9 @@
       <DependentUpon>Reflection.cs</DependentUpon>
     </Compile>
     <Compile Include="Extensions\Reflection.GetManifestResourceString.cs">
+      <DependentUpon>Reflection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\Reflection.Invoke.cs">
       <DependentUpon>Reflection.cs</DependentUpon>
     </Compile>
     <Compile Include="Extensions\Strings.AsChars.cs">

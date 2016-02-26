@@ -37,7 +37,7 @@ namespace MarcelJoachimKloubert.Extensions
     // ToTask
     static partial class MJKCoreExtensionMethods
     {
-        #region Methods (39)
+        #region Methods
 
         /// <summary>
         /// Converts an action to a <see cref="Task" />.
@@ -1361,14 +1361,21 @@ namespace MarcelJoachimKloubert.Extensions
                     var d = (Delegate)taskArgs[0];
                     var a = (object[])taskArgs[1];
 
-                    return (TResult)d.Method
-                                     .Invoke(obj: d.Target,
-                                             parameters: a);
+                    try
+                    {
+                        return (TResult)d.Method
+                                         .Invoke(obj: d.Target,
+                                                 parameters: a);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex.GetBaseException();
+                    }
                 },
                 state: new object[] { @delegate, args },
                 creationOptions: creationOptions);
         }
 
-        #endregion Methods (39)
+        #endregion Methods
     }
 }

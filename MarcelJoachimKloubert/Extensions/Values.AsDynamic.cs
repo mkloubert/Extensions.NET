@@ -58,17 +58,8 @@ namespace MarcelJoachimKloubert.Extensions
                 {
                     var wrapMethod = new Func<MethodInfo, MethodWrapper>((m) =>
                         {
-                            return (args) =>
-                                {
-                                    args = args ?? new object[] { null };
-                                    if (args.Length < 1)
-                                    {
-                                        args = null;
-                                    }
-
-                                    return m.Invoke(obj: obj,
-                                                    parameters: args);
-                                };
+                            return (args) => InvokeMethodInfo(m, args,
+                                                              obj);
                         });
 
                     // fields
