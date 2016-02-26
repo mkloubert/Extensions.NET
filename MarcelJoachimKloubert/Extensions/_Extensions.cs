@@ -61,7 +61,7 @@ namespace MarcelJoachimKloubert.Extensions
                         return new StringBuilder(obj.ToString());
                     }
 
-                    return Convert.ChangeType(obj, targetType);
+                    return Convert.ChangeType(obj, targetType, null);
                 }
             }
             else
