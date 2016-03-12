@@ -85,6 +85,9 @@
     <Compile Include="Extensions\Collections.RemoveWhere.cs">
       <DependentUpon>Collections.cs</DependentUpon>
     </Compile>
+    <Compile Include="Extensions\Collections.SkipLast.cs">
+      <DependentUpon>Collections.cs</DependentUpon>
+    </Compile>
     <Compile Include="Extensions\Collections.TryGetValue.cs">
       <DependentUpon>Collections.cs</DependentUpon>
     </Compile>
