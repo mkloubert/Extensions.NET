@@ -90,6 +90,7 @@ Set of useful extensions methods written in C#.
 * Sign
 * Sin
 * SinH
+* SkipLast
 * Sqrt
 * StartAll
 * StartNewTask
