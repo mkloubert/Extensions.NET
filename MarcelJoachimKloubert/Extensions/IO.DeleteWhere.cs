@@ -27,36 +27,68 @@
  *                                                                                                                    *
  **********************************************************************************************************************/
 
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+
 namespace MarcelJoachimKloubert.Extensions
 {
-    /// <summary>
-    /// List of sign types for a number value.
-    /// </summary>
-    public enum NumberSign : sbyte
+    // DeleteWhere()
+    static partial class MJKCoreExtensionMethods
     {
-        /// <summary>
-        /// Infinite (negative)
-        /// </summary>
-        NegativeInfinity = -2,
+        #region Methods
 
         /// <summary>
-        /// Less than 0
+        /// Deletes all items of a directory that satify a condition.
         /// </summary>
-        Negative = -1,
+        /// <param name="dir">The directory.</param>
+        /// <param name="predicate">The predicate to use.</param>
+        /// <param name="throwOnFirstError">Throw first exception or not.</param>
+        /// <exception cref="AggregateException">One or more error occured.</exception>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="dir" /> and/or <paramref name="predicate" /> is <see langword="null" />.
+        /// </exception>
+        public static void DeleteWhere(this DirectoryInfo dir, Func<FileSystemInfo, bool> predicate, bool throwOnFirstError = true)
+        {
+            if (dir == null)
+            {
+                throw new ArgumentNullException(nameof(dir));
+            }
 
-        /// <summary>
-        /// 0
-        /// </summary>
-        Zero = 0,
+            if (predicate == null)
+            {
+                throw new ArgumentNullException(nameof(predicate));
+            }
 
-        /// <summary>
-        /// Greater than 0
-        /// </summary>
-        Positive = 1,
+            var exceptions = new List<Exception>();
 
-        /// <summary>
-        /// Infinite (positive)
-        /// </summary>
-        PositiveInfinity = 2,
+            using (var e = dir.EnumerateFileSystemInfos().Where(predicate).GetEnumerator())
+            {
+                while (e.MoveNext())
+                {
+                    try
+                    {
+                        e.Current.Delete();
+                    }
+                    catch (Exception ex)
+                    {
+                        if (throwOnFirstError)
+                        {
+                            throw new AggregateException(ex);
+                        }
+
+                        exceptions.Add(ex);
+                    }
+                }
+            }
+
+            if (exceptions.Count > 0)
+            {
+                throw new AggregateException(exceptions);
+            }
+        }
+
+        #endregion Methods
     }
 }

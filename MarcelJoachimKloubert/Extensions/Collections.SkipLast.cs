@@ -57,7 +57,7 @@ namespace MarcelJoachimKloubert.Extensions
             {
                 bool hasRemainingItems;
                 var isFirst = true;
-                T item = default(T);
+                var item = default(T);
 
                 do
                 {

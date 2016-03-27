@@ -27,36 +27,60 @@
  *                                                                                                                    *
  **********************************************************************************************************************/
 
+using System;
+using System.IO;
+
 namespace MarcelJoachimKloubert.Extensions
 {
-    /// <summary>
-    /// List of sign types for a number value.
-    /// </summary>
-    public enum NumberSign : sbyte
+    // ToByteArray()
+    static partial class MJKCoreExtensionMethods
     {
-        /// <summary>
-        /// Infinite (negative)
-        /// </summary>
-        NegativeInfinity = -2,
+        #region Methods
 
         /// <summary>
-        /// Less than 0
+        /// Returns the content of a stream as byte array.
         /// </summary>
-        Negative = -1,
+        /// <param name="stream">The stream.</param>
+        /// <param name="bufferSize">The custom buffer size to use.</param>
+        /// <returns><paramref name="stream" /> as byte array.</returns>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="stream" /> is <see langword="null" />.
+        /// </exception>
+        /// <exception cref="ArgumentOutOfRangeException">
+        /// <paramref name="bufferSize" /> is invalid.
+        /// </exception>
+        public static byte[] ToByteArray(this Stream stream, int? bufferSize = null)
+        {
+            if (stream == null)
+            {
+                throw new ArgumentNullException(nameof(stream));
+            }
 
-        /// <summary>
-        /// 0
-        /// </summary>
-        Zero = 0,
+            if (bufferSize < 1)
+            {
+                throw new ArgumentOutOfRangeException(nameof(stream), bufferSize, "Must be 1 at least!");
+            }
 
-        /// <summary>
-        /// Greater than 0
-        /// </summary>
-        Positive = 1,
+            if (stream is MemoryStream)
+            {
+                return ((MemoryStream)stream).ToArray();
+            }
 
-        /// <summary>
-        /// Infinite (positive)
-        /// </summary>
-        PositiveInfinity = 2,
+            using (var temp = new MemoryStream())
+            {
+                if (bufferSize.HasValue)
+                {
+                    stream.CopyTo(temp, bufferSize.Value);
+                }
+                else
+                {
+                    stream.CopyTo(temp);
+                }
+
+                return temp.ToArray();
+            }
+        }
+
+        #endregion Methods
     }
 }

@@ -27,36 +27,54 @@
  *                                                                                                                    *
  **********************************************************************************************************************/
 
+using System.Collections.Generic;
+using System.Text;
+
 namespace MarcelJoachimKloubert.Extensions
 {
-    /// <summary>
-    /// List of sign types for a number value.
-    /// </summary>
-    public enum NumberSign : sbyte
+    // GetBytes()
+    static partial class MJKCoreExtensionMethods
     {
-        /// <summary>
-        /// Infinite (negative)
-        /// </summary>
-        NegativeInfinity = -2,
+        #region Methods
 
         /// <summary>
-        /// Less than 0
+        /// Returns a string as byte array.
         /// </summary>
-        Negative = -1,
+        /// <param name="str">The string.</param>
+        /// <param name="enc">The custom encoding to use (default: <see cref="Encoding.UTF8" />).</param>
+        /// <returns><paramref name="str" /> as byte array.</returns>
+        /// <remarks>
+        /// Returns <see langword="null" /> if <paramref name="str" /> is also <see langword="null" />.
+        /// </remarks>
+        public static byte[] GetBytes(this string str, Encoding enc = null)
+        {
+            if (str == null)
+            {
+                return null;
+            }
+
+            return (enc ?? Encoding.UTF8).GetBytes(str);
+        }
 
         /// <summary>
-        /// 0
+        /// Returns a char sequence as byte array.
         /// </summary>
-        Zero = 0,
+        /// <param name="chars">The char sequence.</param>
+        /// <param name="enc">The custom encoding to use (default: <see cref="Encoding.UTF8" />).</param>
+        /// <returns><paramref name="chars" /> as byte array.</returns>
+        /// <remarks>
+        /// Returns <see langword="null" /> if <paramref name="chars" /> is also <see langword="null" />.
+        /// </remarks>
+        public static byte[] GetBytes(this IEnumerable<char> chars, Encoding enc = null)
+        {
+            if (chars == null)
+            {
+                return null;
+            }
 
-        /// <summary>
-        /// Greater than 0
-        /// </summary>
-        Positive = 1,
+            return (enc ?? Encoding.UTF8).GetBytes(AsArray(chars));
+        }
 
-        /// <summary>
-        /// Infinite (positive)
-        /// </summary>
-        PositiveInfinity = 2,
+        #endregion Methods
     }
 }

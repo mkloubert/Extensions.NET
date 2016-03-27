@@ -261,6 +261,15 @@
       <DependentUpon>Exceptions.cs</DependentUpon>
     </Compile>
     <Compile Include="Extensions\Exceptions.cs" />
+    <Compile Include="Extensions\IO.DeleteDirectoriesWhere.cs">
+      <DependentUpon>IO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\IO.DeleteFilesWhere.cs">
+      <DependentUpon>IO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\IO.DeleteWhere.cs">
+      <DependentUpon>IO.cs</DependentUpon>
+    </Compile>
     <Compile Include="Extensions\IO.GUnzip.cs">
       <DependentUpon>IO.cs</DependentUpon>
     </Compile>
@@ -278,6 +287,9 @@
       <DependentUpon>IO.cs</DependentUpon>
     </Compile>
     <Compile Include="Extensions\IO.ReadSingleByte.cs">
+      <DependentUpon>IO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\IO.ToByteArray.cs">
       <DependentUpon>IO.cs</DependentUpon>
     </Compile>
     <Compile Include="Extensions\ITaskContext.cs" />
@@ -390,6 +402,9 @@
       <DependentUpon>Strings.cs</DependentUpon>
     </Compile>
     <Compile Include="Extensions\Strings.cs" />
+    <Compile Include="Extensions\Strings.GetBytes.cs">
+      <DependentUpon>Strings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Extensions\Strings.GetSimilarity.cs">
       <DependentUpon>Strings.cs</DependentUpon>
     </Compile>
