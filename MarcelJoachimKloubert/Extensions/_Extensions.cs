@@ -75,6 +75,11 @@ namespace MarcelJoachimKloubert.Extensions
             return obj;
         }
 
+        private static Encoding GetEncodingSafe(Encoding enc)
+        {
+            return enc ?? Encoding.UTF8;
+        }
+
         private static object InvokeMethodInfo(MethodInfo method, object[] args, object obj = null)
         {
             try

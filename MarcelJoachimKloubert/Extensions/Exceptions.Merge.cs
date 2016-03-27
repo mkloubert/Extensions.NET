@@ -36,7 +36,7 @@ namespace MarcelJoachimKloubert.Extensions
     // Merge()
     static partial class MJKCoreExtensionMethods
     {
-        #region Methods (1)
+        #region Methods
 
         /// <summary>
         /// Merges a list of exceptions to one <see cref="AggregateException" />.
@@ -70,6 +70,6 @@ namespace MarcelJoachimKloubert.Extensions
             return result;
         }
 
-        #endregion Methods (1)
+        #endregion Methods
     }
 }

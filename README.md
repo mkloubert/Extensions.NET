@@ -23,9 +23,12 @@ Set of useful extensions methods written in C#.
 * AsCollection
 * AsDictionary
 * AsDynamic
+* AsFileStream
 * AsGeneric
 * ASin
+* AsKeyValuePairs
 * AsList
+* AsMemoryStream
 * AsString
 * ATan
 * ATan2
@@ -46,6 +49,7 @@ Set of useful extensions methods written in C#.
 * GetManifestResourceBlob
 * GetManifestResourceString
 * GetSimilarity
+* GetString
 * Hours
 * IEEERemainder
 * Invoke

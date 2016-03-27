@@ -27,52 +27,76 @@
  *                                                                                                                    *
  **********************************************************************************************************************/
 
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace MarcelJoachimKloubert.Extensions
 {
-    // GetBytes()
+    // GetString()
     static partial class MJKCoreExtensionMethods
     {
         #region Methods
 
         /// <summary>
-        /// Returns a string as byte array.
+        /// Returns a byte array as string.
         /// </summary>
-        /// <param name="str">The string.</param>
+        /// <param name="blob">The byte array.</param>
         /// <param name="enc">The custom encoding to use (default: <see cref="Encoding.UTF8" />).</param>
-        /// <returns><paramref name="str" /> as byte array.</returns>
+        /// <returns><paramref name="blob" /> as string.</returns>
         /// <remarks>
-        /// Returns <see langword="null" /> if <paramref name="str" /> is also <see langword="null" />.
+        /// Returns <see langword="null" /> if <paramref name="blob" /> is also <see langword="null" />.
         /// </remarks>
-        public static byte[] GetBytes(this string str, Encoding enc = null)
+        public static string GetString(this IEnumerable<byte> blob, Encoding enc = null)
         {
-            if (str == null)
+            if (blob == null)
             {
                 return null;
             }
 
-            return GetEncodingSafe(enc).GetBytes(str);
+            var array = AsArray(blob);
+            return GetEncodingSafe(enc).GetString(array, 0, array.Length);
         }
 
         /// <summary>
-        /// Returns a char sequence as byte array.
+        /// Returns a the content of a stream as string.
         /// </summary>
-        /// <param name="chars">The char sequence.</param>
+        /// <param name="stream">The stream.</param>
         /// <param name="enc">The custom encoding to use (default: <see cref="Encoding.UTF8" />).</param>
-        /// <returns><paramref name="chars" /> as byte array.</returns>
-        /// <remarks>
-        /// Returns <see langword="null" /> if <paramref name="chars" /> is also <see langword="null" />.
-        /// </remarks>
-        public static byte[] GetBytes(this IEnumerable<char> chars, Encoding enc = null)
+        /// <param name="bufferSize">The custom buffer size to use.</param>
+        /// <returns>Content of <paramref name="stream" /> as string.</returns>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="stream" /> is <see langword="null" />.
+        /// </exception>
+        /// <exception cref="ArgumentOutOfRangeException">
+        /// <paramref name="bufferSize" /> is invalid.
+        /// </exception>
+        public static string GetString(this Stream stream, Encoding enc = null, int? bufferSize = null)
         {
-            if (chars == null)
+            if (stream == null)
             {
-                return null;
+                throw new ArgumentNullException("stream");
             }
 
-            return GetEncodingSafe(enc).GetBytes(AsArray(chars));
+            if (bufferSize < 1)
+            {
+                throw new ArgumentOutOfRangeException("bufferSize", "Must be 1 at least!");
+            }
+
+            using (var temp = new MemoryStream())
+            {
+                if (bufferSize.HasValue)
+                {
+                    stream.CopyTo(temp, bufferSize.Value);
+                }
+                else
+                {
+                    stream.CopyTo(temp);
+                }
+
+                return GetString(temp.ToArray(), enc);
+            }
         }
 
         #endregion Methods
