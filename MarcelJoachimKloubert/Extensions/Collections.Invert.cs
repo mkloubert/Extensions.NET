@@ -47,7 +47,7 @@ namespace MarcelJoachimKloubert.Extensions
         /// <remarks>
         /// Result is <see langword="null" /> if <paramref name="dict" /> is also <see langword="null" />.
         /// </remarks>
-        public static IDictionary Invert(IDictionary dict,
+        public static IDictionary Invert(this IDictionary dict,
                                          IEqualityComparer<object> keyComparer = null)
         {
             if (dict == null)
@@ -71,7 +71,7 @@ namespace MarcelJoachimKloubert.Extensions
         /// <remarks>
         /// Result is <see langword="null" /> if <paramref name="items" /> is also <see langword="null" />.
         /// </remarks>
-        public static IDictionary<TValue, TKey> Invert<TKey, TValue>(IEnumerable<KeyValuePair<TKey, TValue>> items,
+        public static IDictionary<TValue, TKey> Invert<TKey, TValue>(this IEnumerable<KeyValuePair<TKey, TValue>> items,
                                                                      IEqualityComparer<TValue> keyComparer = null)
         {
             return InvertInner<TKey, TValue>(items: items,

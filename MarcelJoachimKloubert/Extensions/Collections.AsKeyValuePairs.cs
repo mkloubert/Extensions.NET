@@ -27,66 +27,41 @@
  *                                                                                                                    *
  **********************************************************************************************************************/
 
-using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 
 namespace MarcelJoachimKloubert.Extensions
 {
-    // DeleteFilesWhere()
+    // AsKeyValuePairs()
     static partial class MJKCoreExtensionMethods
     {
         #region Methods
 
         /// <summary>
-        /// Deletes all files of a directory that satify a condition.
+        /// Returns a dictionary as sequence of key/value pairs.
         /// </summary>
-        /// <param name="dir">The directory.</param>
-        /// <param name="predicate">The predicate to use.</param>
-        /// <param name="throwOnFirstError">Throw first exception or not.</param>
-        /// <exception cref="AggregateException">One or more error occured.</exception>
-        /// <exception cref="ArgumentNullException">
-        /// <paramref name="dir" /> and/or <paramref name="predicate" /> is <see langword="null" />.
-        /// </exception>
-        public static void DeleteFilesWhere(this DirectoryInfo dir, Func<FileInfo, bool> predicate, bool throwOnFirstError = true)
+        /// <param name="dict">The dictionary.</param>
+        /// <returns><paramref name="dict" /> as sequence of key/value pairs.</returns>
+        /// <remarks>
+        /// If <paramref name="dict" /> is already an <see cref="IList{T}" /> object it is simply casted.
+        /// </remarks>
+        public static IEnumerable<KeyValuePair<object, object>> AsKeyValuePairs(this IDictionary dict)
         {
-            if (dir == null)
+            if (dict == null)
             {
-                throw new ArgumentNullException(nameof(dir));
+                return null;
             }
 
-            if (predicate == null)
+            var result = dict as IEnumerable<KeyValuePair<object, object>>;
+
+            if (result == null)
             {
-                throw new ArgumentNullException(nameof(predicate));
+                result = dict.Cast<DictionaryEntry>()
+                             .Select(x => new KeyValuePair<object, object>(x.Key, x.Value));
             }
 
-            var exceptions = new List<Exception>();
-
-            using (var e = dir.EnumerateFiles().Where(predicate).GetEnumerator())
-            {
-                while (e.MoveNext())
-                {
-                    try
-                    {
-                        e.Current.Delete();
-                    }
-                    catch (Exception ex)
-                    {
-                        if (throwOnFirstError)
-                        {
-                            throw AsAggregate(ex);
-                        }
-
-                        exceptions.Add(ex);
-                    }
-                }
-            }
-
-            if (exceptions.Count > 0)
-            {
-                throw new AggregateException(exceptions);
-            }
+            return result;
         }
 
         #endregion Methods

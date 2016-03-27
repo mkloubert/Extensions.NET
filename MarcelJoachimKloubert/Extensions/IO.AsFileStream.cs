@@ -28,65 +28,67 @@
  **********************************************************************************************************************/
 
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 
 namespace MarcelJoachimKloubert.Extensions
 {
-    // DeleteFilesWhere()
+    // AsFileStream()
     static partial class MJKCoreExtensionMethods
     {
         #region Methods
 
         /// <summary>
-        /// Deletes all files of a directory that satify a condition.
+        /// Returns a <see cref="Stream" /> as a <see cref="FileStream" />.
         /// </summary>
-        /// <param name="dir">The directory.</param>
-        /// <param name="predicate">The predicate to use.</param>
-        /// <param name="throwOnFirstError">Throw first exception or not.</param>
-        /// <exception cref="AggregateException">One or more error occured.</exception>
-        /// <exception cref="ArgumentNullException">
-        /// <paramref name="dir" /> and/or <paramref name="predicate" /> is <see langword="null" />.
-        /// </exception>
-        public static void DeleteFilesWhere(this DirectoryInfo dir, Func<FileInfo, bool> predicate, bool throwOnFirstError = true)
+        /// <param name="stream">The stream to cast / convert.</param>
+        /// <param name="moveToBeginning">Move cursor of result stream to beginning or not.</param>
+        /// <returns>The result stream.</returns>
+        /// <remarks>
+        /// <see langword="null" /> is returned if <paramref name="stream" /> is also <see langword="null" />.
+        /// </remarks>
+        /// <remarks>
+        /// If <paramref name="stream" /> is already a file stream it is simply casted; otherwise a temprary file
+        /// with <see cref="FileAccess.ReadWrite" /> access is created.
+        /// </remarks>
+        public static FileStream AsFileStream(this Stream stream, bool moveToBeginning = false)
         {
-            if (dir == null)
-            {
-                throw new ArgumentNullException(nameof(dir));
-            }
+            var result = stream as FileStream;
 
-            if (predicate == null)
+            if (result == null && stream != null)
             {
-                throw new ArgumentNullException(nameof(predicate));
-            }
-
-            var exceptions = new List<Exception>();
-
-            using (var e = dir.EnumerateFiles().Where(predicate).GetEnumerator())
-            {
-                while (e.MoveNext())
+                result = new FileStream(path: Path.GetTempFileName(),
+                                        mode: FileMode.Create, access: FileAccess.ReadWrite);
+                try
                 {
+                    stream.CopyTo(result);
+
+                    result.Flush();
+                }
+                catch (Exception)
+                {
+                    result.Dispose();
                     try
                     {
-                        e.Current.Delete();
+                        File.Delete(result.Name);
                     }
-                    catch (Exception ex)
+                    catch
                     {
-                        if (throwOnFirstError)
-                        {
-                            throw AsAggregate(ex);
-                        }
-
-                        exceptions.Add(ex);
+                        // ignore
                     }
+
+                    throw;
                 }
             }
 
-            if (exceptions.Count > 0)
+            if (result != null)
             {
-                throw new AggregateException(exceptions);
+                if (moveToBeginning)
+                {
+                    result.Position = 0;
+                }
             }
+
+            return result;
         }
 
         #endregion Methods

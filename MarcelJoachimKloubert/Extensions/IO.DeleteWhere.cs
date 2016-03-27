@@ -75,7 +75,7 @@ namespace MarcelJoachimKloubert.Extensions
                     {
                         if (throwOnFirstError)
                         {
-                            throw new AggregateException(ex);
+                            throw AsAggregate(ex);
                         }
 
                         exceptions.Add(ex);

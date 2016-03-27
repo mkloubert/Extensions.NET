@@ -27,66 +27,54 @@
  *                                                                                                                    *
  **********************************************************************************************************************/
 
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 
 namespace MarcelJoachimKloubert.Extensions
 {
-    // DeleteFilesWhere()
+    // AsMemoryStream()
     static partial class MJKCoreExtensionMethods
     {
         #region Methods
 
         /// <summary>
-        /// Deletes all files of a directory that satify a condition.
+        /// Returns a <see cref="Stream" /> as a <see cref="MemoryStream" />.
         /// </summary>
-        /// <param name="dir">The directory.</param>
-        /// <param name="predicate">The predicate to use.</param>
-        /// <param name="throwOnFirstError">Throw first exception or not.</param>
-        /// <exception cref="AggregateException">One or more error occured.</exception>
-        /// <exception cref="ArgumentNullException">
-        /// <paramref name="dir" /> and/or <paramref name="predicate" /> is <see langword="null" />.
-        /// </exception>
-        public static void DeleteFilesWhere(this DirectoryInfo dir, Func<FileInfo, bool> predicate, bool throwOnFirstError = true)
+        /// <param name="stream">The stream to cast / convert.</param>
+        /// <param name="moveToBeginning">Move cursor of result stream to beginning or not.</param>
+        /// <returns>The result stream.</returns>
+        /// <remarks>
+        /// <see langword="null" /> is returned if <paramref name="stream" /> is also <see langword="null" />.
+        /// </remarks>
+        /// <remarks>
+        /// If <paramref name="stream" /> is already a memory stream it is simply casted.
+        /// </remarks>
+        public static MemoryStream AsMemoryStream(this Stream stream, bool moveToBeginning = true)
         {
-            if (dir == null)
-            {
-                throw new ArgumentNullException(nameof(dir));
-            }
+            var result = stream as MemoryStream;
 
-            if (predicate == null)
+            if (result == null && stream != null)
             {
-                throw new ArgumentNullException(nameof(predicate));
-            }
-
-            var exceptions = new List<Exception>();
-
-            using (var e = dir.EnumerateFiles().Where(predicate).GetEnumerator())
-            {
-                while (e.MoveNext())
+                result = new MemoryStream();
+                try
                 {
-                    try
-                    {
-                        e.Current.Delete();
-                    }
-                    catch (Exception ex)
-                    {
-                        if (throwOnFirstError)
-                        {
-                            throw AsAggregate(ex);
-                        }
-
-                        exceptions.Add(ex);
-                    }
+                    stream.CopyTo(result);
+                }
+                catch
+                {
+                    result.Dispose();
+                    throw;
                 }
             }
 
-            if (exceptions.Count > 0)
+            if (result != null)
             {
-                throw new AggregateException(exceptions);
+                if (moveToBeginning)
+                {
+                    result.Position = 0;
+                }
             }
+
+            return result;
         }
 
         #endregion Methods

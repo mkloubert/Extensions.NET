@@ -53,7 +53,7 @@ namespace MarcelJoachimKloubert.Extensions
                 return null;
             }
 
-            return (enc ?? Encoding.UTF8).GetBytes(str);
+            return GetEncodingSafe(enc).GetBytes(str);
         }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace MarcelJoachimKloubert.Extensions
                 return null;
             }
 
-            return (enc ?? Encoding.UTF8).GetBytes(AsArray(chars));
+            return GetEncodingSafe(enc).GetBytes(AsArray(chars));
         }
 
         #endregion Methods

@@ -30,62 +30,71 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
+using System.Text;
 
 namespace MarcelJoachimKloubert.Extensions
 {
-    // DeleteFilesWhere()
+    // GetString()
     static partial class MJKCoreExtensionMethods
     {
         #region Methods
 
         /// <summary>
-        /// Deletes all files of a directory that satify a condition.
+        /// Returns a byte array as string.
         /// </summary>
-        /// <param name="dir">The directory.</param>
-        /// <param name="predicate">The predicate to use.</param>
-        /// <param name="throwOnFirstError">Throw first exception or not.</param>
-        /// <exception cref="AggregateException">One or more error occured.</exception>
-        /// <exception cref="ArgumentNullException">
-        /// <paramref name="dir" /> and/or <paramref name="predicate" /> is <see langword="null" />.
-        /// </exception>
-        public static void DeleteFilesWhere(this DirectoryInfo dir, Func<FileInfo, bool> predicate, bool throwOnFirstError = true)
+        /// <param name="blob">The byte array.</param>
+        /// <param name="enc">The custom encoding to use (default: <see cref="Encoding.UTF8" />).</param>
+        /// <returns><paramref name="blob" /> as string.</returns>
+        /// <remarks>
+        /// Returns <see langword="null" /> if <paramref name="blob" /> is also <see langword="null" />.
+        /// </remarks>
+        public static string GetString(this IEnumerable<byte> blob, Encoding enc = null)
         {
-            if (dir == null)
+            if (blob == null)
             {
-                throw new ArgumentNullException(nameof(dir));
+                return null;
             }
 
-            if (predicate == null)
+            return GetEncodingSafe(enc).GetString(AsArray(blob));
+        }
+
+        /// <summary>
+        /// Returns a the content of a stream as string.
+        /// </summary>
+        /// <param name="stream">The stream.</param>
+        /// <param name="enc">The custom encoding to use (default: <see cref="Encoding.UTF8" />).</param>
+        /// <param name="bufferSize">The custom buffer size to use.</param>
+        /// <returns>Content of <paramref name="stream" /> as string.</returns>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="stream" /> is <see langword="null" />.
+        /// </exception>
+        /// <exception cref="ArgumentOutOfRangeException">
+        /// <paramref name="bufferSize" /> is invalid.
+        /// </exception>
+        public static string GetString(this Stream stream, Encoding enc = null, int? bufferSize = null)
+        {
+            if (stream == null)
             {
-                throw new ArgumentNullException(nameof(predicate));
+                throw new ArgumentNullException("stream");
             }
 
-            var exceptions = new List<Exception>();
-
-            using (var e = dir.EnumerateFiles().Where(predicate).GetEnumerator())
+            if (bufferSize < 1)
             {
-                while (e.MoveNext())
+                throw new ArgumentOutOfRangeException("bufferSize", bufferSize, "Must be 1 at least!");
+            }
+
+            using (var temp = new MemoryStream())
+            {
+                if (bufferSize.HasValue)
                 {
-                    try
-                    {
-                        e.Current.Delete();
-                    }
-                    catch (Exception ex)
-                    {
-                        if (throwOnFirstError)
-                        {
-                            throw AsAggregate(ex);
-                        }
-
-                        exceptions.Add(ex);
-                    }
+                    stream.CopyTo(temp, bufferSize.Value);
                 }
-            }
+                else
+                {
+                    stream.CopyTo(temp);
+                }
 
-            if (exceptions.Count > 0)
-            {
-                throw new AggregateException(exceptions);
+                return GetString(temp.ToArray(), enc);
             }
         }
 
