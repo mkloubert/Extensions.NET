@@ -27,59 +27,52 @@
  *                                                                                                                    *
  **********************************************************************************************************************/
 
-using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace MarcelJoachimKloubert.Extensions
 {
-    // SkipLast()
+    // GetBytes()
     static partial class MJKCoreExtensionMethods
     {
         #region Methods
 
         /// <summary>
-        /// Takes all elements but the last one.
+        /// Returns a string as byte array.
         /// </summary>
-        /// <typeparam name="T">Type of the items.</typeparam>
-        /// <param name="seq">The input sequence.</param>
-        /// <returns>The new sequence.</returns>
-        /// <exception cref="ArgumentNullException">
-        /// <paramref name="seq" /> is <see langword="null" />.
-        /// </exception>
-        public static IEnumerable<T> SkipLast<T>(this IEnumerable<T> seq)
+        /// <param name="str">The string.</param>
+        /// <param name="enc">The custom encoding to use (default: <see cref="Encoding.UTF8" />).</param>
+        /// <returns><paramref name="str" /> as byte array.</returns>
+        /// <remarks>
+        /// Returns <see langword="null" /> if <paramref name="str" /> is also <see langword="null" />.
+        /// </remarks>
+        public static byte[] GetBytes(this string str, Encoding enc = null)
         {
-            if (seq == null)
+            if (str == null)
             {
-                throw new ArgumentNullException("seq");
+                return null;
             }
 
-            using (var e = seq.GetEnumerator())
+            return (enc ?? Encoding.UTF8).GetBytes(str);
+        }
+
+        /// <summary>
+        /// Returns a char sequence as byte array.
+        /// </summary>
+        /// <param name="chars">The char sequence.</param>
+        /// <param name="enc">The custom encoding to use (default: <see cref="Encoding.UTF8" />).</param>
+        /// <returns><paramref name="chars" /> as byte array.</returns>
+        /// <remarks>
+        /// Returns <see langword="null" /> if <paramref name="chars" /> is also <see langword="null" />.
+        /// </remarks>
+        public static byte[] GetBytes(this IEnumerable<char> chars, Encoding enc = null)
+        {
+            if (chars == null)
             {
-                bool hasRemainingItems;
-                var isFirst = true;
-                var item = default(T);
-
-                do
-                {
-                    hasRemainingItems = e.MoveNext();
-                    if (!hasRemainingItems)
-                    {
-                        continue;
-                    }
-
-                    if (!isFirst)
-                    {
-                        yield return item;
-                    }
-                    else
-                    {
-                        isFirst = false;
-                    }
-
-                    item = e.Current;
-                }
-                while (hasRemainingItems);
+                return null;
             }
+
+            return (enc ?? Encoding.UTF8).GetBytes(AsArray(chars));
         }
 
         #endregion Methods

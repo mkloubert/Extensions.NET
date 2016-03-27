@@ -29,56 +29,63 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 
 namespace MarcelJoachimKloubert.Extensions
 {
-    // SkipLast()
+    // DeleteDirectoriesWhere()
     static partial class MJKCoreExtensionMethods
     {
         #region Methods
 
         /// <summary>
-        /// Takes all elements but the last one.
+        /// Deletes all sub directories of a directory that satify a condition.
         /// </summary>
-        /// <typeparam name="T">Type of the items.</typeparam>
-        /// <param name="seq">The input sequence.</param>
-        /// <returns>The new sequence.</returns>
+        /// <param name="dir">The directory.</param>
+        /// <param name="predicate">The predicate to use.</param>
+        /// <param name="throwOnFirstError">Throw first exception or not.</param>
+        /// <exception cref="AggregateException">One or more error occured.</exception>
         /// <exception cref="ArgumentNullException">
-        /// <paramref name="seq" /> is <see langword="null" />.
+        /// <paramref name="dir" /> and/or <paramref name="predicate" /> is <see langword="null" />.
         /// </exception>
-        public static IEnumerable<T> SkipLast<T>(this IEnumerable<T> seq)
+        public static void DeleteDirectoriesWhere(this DirectoryInfo dir, Func<DirectoryInfo, bool> predicate, bool throwOnFirstError = true)
         {
-            if (seq == null)
+            if (dir == null)
             {
-                throw new ArgumentNullException("seq");
+                throw new ArgumentNullException("dir");
             }
 
-            using (var e = seq.GetEnumerator())
+            if (predicate == null)
             {
-                bool hasRemainingItems;
-                var isFirst = true;
-                var item = default(T);
+                throw new ArgumentNullException("predicate");
+            }
 
-                do
+            var exceptions = new List<Exception>();
+
+            using (var e = dir.EnumerateDirectories().Where(predicate).GetEnumerator())
+            {
+                while (e.MoveNext())
                 {
-                    hasRemainingItems = e.MoveNext();
-                    if (!hasRemainingItems)
+                    try
                     {
-                        continue;
+                        e.Current.Delete();
                     }
+                    catch (Exception ex)
+                    {
+                        if (throwOnFirstError)
+                        {
+                            throw new AggregateException(ex);
+                        }
 
-                    if (!isFirst)
-                    {
-                        yield return item;
+                        exceptions.Add(ex);
                     }
-                    else
-                    {
-                        isFirst = false;
-                    }
-
-                    item = e.Current;
                 }
-                while (hasRemainingItems);
+            }
+
+            if (exceptions.Count > 0)
+            {
+                throw new AggregateException(exceptions);
             }
         }
 

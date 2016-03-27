@@ -38,11 +38,15 @@ Set of useful extensions methods written in C#.
 * CreateInstance
 * CreateUnwrappedInstanceOf
 * Days
+* DeleteDirectoriesWhere
+* DeleteFilesWhere
+* DeleteWhere
 * DisposeAll
 * DistinctBy
 * Exp
 * Floor
 * ForAll
+* GetBytes
 * GetManifestResourceBlob
 * GetManifestResourceString
 * GetSimilarity
@@ -107,6 +111,7 @@ Set of useful extensions methods written in C#.
 * TanH
 * Ticks
 * ToByte
+* ToByteArray
 * ToDecimal
 * ToDouble
 * ToGuid

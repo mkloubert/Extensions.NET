@@ -28,57 +28,56 @@
  **********************************************************************************************************************/
 
 using System;
-using System.Collections.Generic;
+using System.IO;
 
 namespace MarcelJoachimKloubert.Extensions
 {
-    // SkipLast()
+    // ToByteArray()
     static partial class MJKCoreExtensionMethods
     {
         #region Methods
 
         /// <summary>
-        /// Takes all elements but the last one.
+        /// Returns the content of a stream as byte array.
         /// </summary>
-        /// <typeparam name="T">Type of the items.</typeparam>
-        /// <param name="seq">The input sequence.</param>
-        /// <returns>The new sequence.</returns>
+        /// <param name="stream">The stream.</param>
+        /// <param name="bufferSize">The custom buffer size to use.</param>
+        /// <returns><paramref name="stream" /> as byte array.</returns>
         /// <exception cref="ArgumentNullException">
-        /// <paramref name="seq" /> is <see langword="null" />.
+        /// <paramref name="stream" /> is <see langword="null" />.
         /// </exception>
-        public static IEnumerable<T> SkipLast<T>(this IEnumerable<T> seq)
+        /// <exception cref="ArgumentOutOfRangeException">
+        /// <paramref name="bufferSize" /> is invalid.
+        /// </exception>
+        public static byte[] ToByteArray(this Stream stream, int? bufferSize = null)
         {
-            if (seq == null)
+            if (stream == null)
             {
-                throw new ArgumentNullException("seq");
+                throw new ArgumentNullException("stream");
             }
 
-            using (var e = seq.GetEnumerator())
+            if (bufferSize < 1)
             {
-                bool hasRemainingItems;
-                var isFirst = true;
-                var item = default(T);
+                throw new ArgumentOutOfRangeException("stream", bufferSize, "Must be 1 at least!");
+            }
 
-                do
+            if (stream is MemoryStream)
+            {
+                return ((MemoryStream)stream).ToArray();
+            }
+
+            using (var temp = new MemoryStream())
+            {
+                if (bufferSize.HasValue)
                 {
-                    hasRemainingItems = e.MoveNext();
-                    if (!hasRemainingItems)
-                    {
-                        continue;
-                    }
-
-                    if (!isFirst)
-                    {
-                        yield return item;
-                    }
-                    else
-                    {
-                        isFirst = false;
-                    }
-
-                    item = e.Current;
+                    stream.CopyTo(temp, bufferSize.Value);
                 }
-                while (hasRemainingItems);
+                else
+                {
+                    stream.CopyTo(temp);
+                }
+
+                return temp.ToArray();
             }
         }
 
