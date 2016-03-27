@@ -55,7 +55,7 @@ namespace MarcelJoachimKloubert.Extensions
         Positive = 1,
 
         /// <summary>
-        /// Positive (negative)
+        /// Infinite (positive)
         /// </summary>
         PositiveInfinity = 2,
     }

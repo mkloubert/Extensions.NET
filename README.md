@@ -42,6 +42,7 @@ Set of useful extensions methods written in C#.
 * Exp
 * Floor
 * ForAll
+* GetBytes
 * GetManifestResourceBlob
 * GetManifestResourceString
 * GetSimilarity
@@ -98,6 +99,7 @@ Set of useful extensions methods written in C#.
 * TanH
 * Ticks
 * ToByte
+* ToByteArray
 * ToDecimal
 * ToDouble
 * ToGuid

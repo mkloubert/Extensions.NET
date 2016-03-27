@@ -209,6 +209,9 @@
     <Compile Include="Extensions\IO.ReadSingleByte.cs">
       <DependentUpon>IO.cs</DependentUpon>
     </Compile>
+    <Compile Include="Extensions\IO.ToByteArray.cs">
+      <DependentUpon>IO.cs</DependentUpon>
+    </Compile>
     <Compile Include="Extensions\ITaskContext.cs" />
     <Compile Include="Extensions\ITaskExecutionContext.cs" />
     <Compile Include="Extensions\Math.ACos.cs">
@@ -322,6 +325,9 @@
       <DependentUpon>Strings.cs</DependentUpon>
     </Compile>
     <Compile Include="Extensions\Strings.cs" />
+    <Compile Include="Extensions\Strings.GetBytes.cs">
+      <DependentUpon>Strings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Extensions\Strings.GetSimilarity.cs">
       <DependentUpon>Strings.cs</DependentUpon>
     </Compile>

@@ -44,7 +44,7 @@ namespace MarcelJoachimKloubert.Extensions
         /// <param name="list">The list that should be shuffled.</param>
         /// <param name="rand">The custom random number generator to use.</param>
         /// <exception cref="ArgumentNullException">
-        /// <paramref name="list" /> and/or <paramref name="rand" /> is <see langword="null" />.
+        /// <paramref name="list" /> is <see langword="null" />.
         /// </exception>
         public static void Shuffle<T>(this IList<T> list, Random rand = null)
         {
