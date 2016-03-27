@@ -27,52 +27,41 @@
  *                                                                                                                    *
  **********************************************************************************************************************/
 
+using System.Collections;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 
 namespace MarcelJoachimKloubert.Extensions
 {
-    // GetBytes()
+    // AsKeyValuePairs()
     static partial class MJKCoreExtensionMethods
     {
         #region Methods
 
         /// <summary>
-        /// Returns a string as byte array.
+        /// Returns a dictionary as sequence of key/value pairs.
         /// </summary>
-        /// <param name="str">The string.</param>
-        /// <param name="enc">The custom encoding to use (default: <see cref="Encoding.UTF8" />).</param>
-        /// <returns><paramref name="str" /> as byte array.</returns>
+        /// <param name="dict">The dictionary.</param>
+        /// <returns><paramref name="dict" /> as sequence of key/value pairs.</returns>
         /// <remarks>
-        /// Returns <see langword="null" /> if <paramref name="str" /> is also <see langword="null" />.
+        /// If <paramref name="dict" /> is already an <see cref="IList{T}" /> object it is simply casted.
         /// </remarks>
-        public static byte[] GetBytes(this string str, Encoding enc = null)
+        public static IEnumerable<KeyValuePair<object, object>> AsKeyValuePairs(this IDictionary dict)
         {
-            if (str == null)
+            if (dict == null)
             {
                 return null;
             }
 
-            return GetEncodingSafe(enc).GetBytes(str);
-        }
+            var result = dict as IEnumerable<KeyValuePair<object, object>>;
 
-        /// <summary>
-        /// Returns a char sequence as byte array.
-        /// </summary>
-        /// <param name="chars">The char sequence.</param>
-        /// <param name="enc">The custom encoding to use (default: <see cref="Encoding.UTF8" />).</param>
-        /// <returns><paramref name="chars" /> as byte array.</returns>
-        /// <remarks>
-        /// Returns <see langword="null" /> if <paramref name="chars" /> is also <see langword="null" />.
-        /// </remarks>
-        public static byte[] GetBytes(this IEnumerable<char> chars, Encoding enc = null)
-        {
-            if (chars == null)
+            if (result == null)
             {
-                return null;
+                result = dict.Cast<DictionaryEntry>()
+                             .Select(x => new KeyValuePair<object, object>(x.Key, x.Value));
             }
 
-            return GetEncodingSafe(enc).GetBytes(AsArray(chars));
+            return result;
         }
 
         #endregion Methods

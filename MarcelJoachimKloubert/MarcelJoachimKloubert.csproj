@@ -55,6 +55,9 @@
     <Compile Include="Extensions\Collections.AsDictionary.cs">
       <DependentUpon>Collections.cs</DependentUpon>
     </Compile>
+    <Compile Include="Extensions\Collections.AsKeyValuePairs.cs">
+      <DependentUpon>Collections.cs</DependentUpon>
+    </Compile>
     <Compile Include="Extensions\Collections.AsList.cs">
       <DependentUpon>Collections.cs</DependentUpon>
     </Compile>
@@ -210,6 +213,12 @@
       <DependentUpon>Exceptions.cs</DependentUpon>
     </Compile>
     <Compile Include="Extensions\Exceptions.cs" />
+    <Compile Include="Extensions\IO.AsFileStream.cs">
+      <DependentUpon>IO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\IO.AsMemoryStream.cs">
+      <DependentUpon>IO.cs</DependentUpon>
+    </Compile>
     <Compile Include="Extensions\IO.DeleteFilesWhere.cs">
       <DependentUpon>IO.cs</DependentUpon>
     </Compile>
@@ -217,6 +226,9 @@
       <DependentUpon>IO.cs</DependentUpon>
     </Compile>
     <Compile Include="Extensions\IO.DeleteDirectoriesWhere.cs">
+      <DependentUpon>IO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\IO.GetString.cs">
       <DependentUpon>IO.cs</DependentUpon>
     </Compile>
     <Compile Include="Extensions\IO.GUnzip.cs">

@@ -27,52 +27,68 @@
  *                                                                                                                    *
  **********************************************************************************************************************/
 
-using System.Collections.Generic;
-using System.Text;
+using System;
+using System.IO;
 
 namespace MarcelJoachimKloubert.Extensions
 {
-    // GetBytes()
+    // AsFileStream()
     static partial class MJKCoreExtensionMethods
     {
         #region Methods
 
         /// <summary>
-        /// Returns a string as byte array.
+        /// Returns a <see cref="Stream" /> as a <see cref="FileStream" />.
         /// </summary>
-        /// <param name="str">The string.</param>
-        /// <param name="enc">The custom encoding to use (default: <see cref="Encoding.UTF8" />).</param>
-        /// <returns><paramref name="str" /> as byte array.</returns>
+        /// <param name="stream">The stream to cast / convert.</param>
+        /// <param name="moveToBeginning">Move cursor of result stream to beginning or not.</param>
+        /// <returns>The result stream.</returns>
         /// <remarks>
-        /// Returns <see langword="null" /> if <paramref name="str" /> is also <see langword="null" />.
+        /// <see langword="null" /> is returned if <paramref name="stream" /> is also <see langword="null" />.
         /// </remarks>
-        public static byte[] GetBytes(this string str, Encoding enc = null)
+        /// <remarks>
+        /// If <paramref name="stream" /> is already a file stream it is simply casted; otherwise a temprary file
+        /// with <see cref="FileAccess.ReadWrite" /> access is created.
+        /// </remarks>
+        public static FileStream AsFileStream(this Stream stream, bool moveToBeginning = false)
         {
-            if (str == null)
+            var result = stream as FileStream;
+
+            if (result == null && stream != null)
             {
-                return null;
+                result = new FileStream(path: Path.GetTempFileName(),
+                                        mode: FileMode.Create, access: FileAccess.ReadWrite);
+                try
+                {
+                    stream.CopyTo(result);
+
+                    result.Flush();
+                }
+                catch (Exception)
+                {
+                    result.Dispose();
+                    try
+                    {
+                        File.Delete(result.Name);
+                    }
+                    catch
+                    {
+                        // ignore
+                    }
+
+                    throw;
+                }
             }
 
-            return GetEncodingSafe(enc).GetBytes(str);
-        }
-
-        /// <summary>
-        /// Returns a char sequence as byte array.
-        /// </summary>
-        /// <param name="chars">The char sequence.</param>
-        /// <param name="enc">The custom encoding to use (default: <see cref="Encoding.UTF8" />).</param>
-        /// <returns><paramref name="chars" /> as byte array.</returns>
-        /// <remarks>
-        /// Returns <see langword="null" /> if <paramref name="chars" /> is also <see langword="null" />.
-        /// </remarks>
-        public static byte[] GetBytes(this IEnumerable<char> chars, Encoding enc = null)
-        {
-            if (chars == null)
+            if (result != null)
             {
-                return null;
+                if (moveToBeginning)
+                {
+                    result.Position = 0;
+                }
             }
 
-            return GetEncodingSafe(enc).GetBytes(AsArray(chars));
+            return result;
         }
 
         #endregion Methods

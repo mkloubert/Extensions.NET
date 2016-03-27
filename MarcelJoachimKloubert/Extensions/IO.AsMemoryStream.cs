@@ -27,52 +27,54 @@
  *                                                                                                                    *
  **********************************************************************************************************************/
 
-using System.Collections.Generic;
-using System.Text;
+using System.IO;
 
 namespace MarcelJoachimKloubert.Extensions
 {
-    // GetBytes()
+    // AsMemoryStream()
     static partial class MJKCoreExtensionMethods
     {
         #region Methods
 
         /// <summary>
-        /// Returns a string as byte array.
+        /// Returns a <see cref="Stream" /> as a <see cref="MemoryStream" />.
         /// </summary>
-        /// <param name="str">The string.</param>
-        /// <param name="enc">The custom encoding to use (default: <see cref="Encoding.UTF8" />).</param>
-        /// <returns><paramref name="str" /> as byte array.</returns>
+        /// <param name="stream">The stream to cast / convert.</param>
+        /// <param name="moveToBeginning">Move cursor of result stream to beginning or not.</param>
+        /// <returns>The result stream.</returns>
         /// <remarks>
-        /// Returns <see langword="null" /> if <paramref name="str" /> is also <see langword="null" />.
+        /// <see langword="null" /> is returned if <paramref name="stream" /> is also <see langword="null" />.
         /// </remarks>
-        public static byte[] GetBytes(this string str, Encoding enc = null)
+        /// <remarks>
+        /// If <paramref name="stream" /> is already a memory stream it is simply casted.
+        /// </remarks>
+        public static MemoryStream AsMemoryStream(this Stream stream, bool moveToBeginning = true)
         {
-            if (str == null)
+            var result = stream as MemoryStream;
+
+            if (result == null && stream != null)
             {
-                return null;
+                result = new MemoryStream();
+                try
+                {
+                    stream.CopyTo(result);
+                }
+                catch
+                {
+                    result.Dispose();
+                    throw;
+                }
             }
 
-            return GetEncodingSafe(enc).GetBytes(str);
-        }
-
-        /// <summary>
-        /// Returns a char sequence as byte array.
-        /// </summary>
-        /// <param name="chars">The char sequence.</param>
-        /// <param name="enc">The custom encoding to use (default: <see cref="Encoding.UTF8" />).</param>
-        /// <returns><paramref name="chars" /> as byte array.</returns>
-        /// <remarks>
-        /// Returns <see langword="null" /> if <paramref name="chars" /> is also <see langword="null" />.
-        /// </remarks>
-        public static byte[] GetBytes(this IEnumerable<char> chars, Encoding enc = null)
-        {
-            if (chars == null)
+            if (result != null)
             {
-                return null;
+                if (moveToBeginning)
+                {
+                    result.Position = 0;
+                }
             }
 
-            return GetEncodingSafe(enc).GetBytes(AsArray(chars));
+            return result;
         }
 
         #endregion Methods

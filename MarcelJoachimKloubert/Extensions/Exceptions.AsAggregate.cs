@@ -34,7 +34,7 @@ namespace MarcelJoachimKloubert.Extensions
     // AsAggregate()
     static partial class MJKCoreExtensionMethods
     {
-        #region Methods (1)
+        #region Methods
 
         /// <summary>
         /// Returns an <see cref="Exception" /> as <see cref="AggregateException" />.
@@ -57,6 +57,6 @@ namespace MarcelJoachimKloubert.Extensions
             return ex as AggregateException ?? new AggregateException(ex);
         }
 
-        #endregion Methods (1)
+        #endregion Methods
     }
 }
