@@ -69,6 +69,10 @@
       <Project>{d298628b-edc5-4e45-b038-e44c5130fbeb}</Project>
       <Name>MarcelJoachimKloubert.Extensions.Drawing</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MarcelJoachimKloubert.Extensions.JSON\MarcelJoachimKloubert.Extensions.JSON.csproj">
+      <Project>{d2755e35-8c55-492b-9cdb-30a1168f76f5}</Project>
+      <Name>MarcelJoachimKloubert.Extensions.JSON</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MarcelJoachimKloubert.Extensions.Windows.Forms\MarcelJoachimKloubert.Extensions.Windows.Forms.csproj">
       <Project>{ebae180b-49f5-4cf6-8b7a-a63ca9083fa3}</Project>
       <Name>MarcelJoachimKloubert.Extensions.Windows.Forms</Name>
