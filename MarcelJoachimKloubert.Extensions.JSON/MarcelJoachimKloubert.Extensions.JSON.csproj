@@ -43,10 +43,22 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
+    <EmbeddedResource Include="..\LICENSE">
+      <Link>LICENSE</Link>
+    </EmbeddedResource>
     <None Include="MarcelJoachimKloubert.Extensions.JSON.snk" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\JSON\Deserialize.cs" />
+    <Compile Include="Extensions\JSON\Deserialize.FromJson.cs">
+      <DependentUpon>Deserialize.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\JSON\Serialize.cs" />
+    <Compile Include="Extensions\JSON\Serialize.ToJson.cs">
+      <DependentUpon>Serialize.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\JSON\_Extensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

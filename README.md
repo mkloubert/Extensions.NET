@@ -128,6 +128,11 @@ Set of useful extensions methods written in C#.
 * Walk
 * Without
 
+### MarcelJoachimKloubert.Extensions.JSON
+
+* FromJson
+* ToJson
+
 ### MarcelJoachimKloubert.Extensions.Xml
 
 * AsString
