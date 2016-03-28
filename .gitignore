@@ -24,3 +24,7 @@
 /MarcelJoachimKloubert.Extensions.Tests/project.lock.json
 /MarcelJoachimKloubert.Extensions.UnitTests/bin
 /MarcelJoachimKloubert.Extensions.UnitTests/obj
+/MarcelJoachimKloubert.Extensions.JSON/obj
+/MarcelJoachimKloubert.Extensions.JSON/bin
+/MarcelJoachimKloubert.Extensions.JSON/project.lock.json
+/packages
