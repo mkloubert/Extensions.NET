@@ -65,6 +65,10 @@
     <None Include="_libs\nunit.framework.dll" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MarcelJoachimKloubert.Extensions.JSON\MarcelJoachimKloubert.Extensions.JSON.csproj">
+      <Project>{5d04be9a-82d9-414c-8cec-9b1dc1a63f32}</Project>
+      <Name>MarcelJoachimKloubert.Extensions.JSON</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MarcelJoachimKloubert.Extensions.Xml\MarcelJoachimKloubert.Extensions.Xml.csproj">
       <Project>{d2eb3964-f5ac-44cb-b00c-e79d52659866}</Project>
       <Name>MarcelJoachimKloubert.Extensions.Xml</Name>
