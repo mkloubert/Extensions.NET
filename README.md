@@ -142,6 +142,11 @@ Set of useful extensions methods written in C#.
 * ToDictionaries
 * ToDictionary
 
+### MarcelJoachimKloubert.Extensions.JSON
+
+* FromJson
+* ToJson
+
 ### MarcelJoachimKloubert.Extensions.Xml
 
 * AsString

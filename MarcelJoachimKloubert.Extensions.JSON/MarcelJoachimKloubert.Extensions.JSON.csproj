@@ -107,10 +107,22 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <EmbeddedResource Include="..\LICENSE">
+      <Link>LICENSE</Link>
+    </EmbeddedResource>
     <None Include="MarcelJoachimKloubert.Extensions.JSON.snk" />
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\JSON\Deserialize.cs" />
+    <Compile Include="Extensions\JSON\Deserialize.FromJson.cs">
+      <DependentUpon>Deserialize.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\JSON\Serialize.cs" />
+    <Compile Include="Extensions\JSON\Serialize.ToJson.cs">
+      <DependentUpon>Serialize.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\JSON\_Extensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\MarcelJoachimKloubert.Extensions.JSON.rd.xml" />
   </ItemGroup>

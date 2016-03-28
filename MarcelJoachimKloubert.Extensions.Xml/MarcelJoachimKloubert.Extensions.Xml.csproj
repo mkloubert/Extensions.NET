@@ -107,11 +107,14 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <EmbeddedResource Include="..\LICENSE">
+      <Link>LICENSE</Link>
+    </EmbeddedResource>
     <None Include="MarcelJoachimKloubert.Extensions.Xml.snk" />
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
-  <Compile Include="Extensions\Xml\Strings.AsString.cs">
+    <Compile Include="Extensions\Xml\Strings.AsString.cs">
       <DependentUpon>Strings.cs</DependentUpon>
     </Compile>
     <Compile Include="Extensions\Xml\Strings.cs" />
