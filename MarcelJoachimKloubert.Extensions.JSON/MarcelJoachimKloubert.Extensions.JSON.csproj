@@ -45,22 +45,28 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\JSON\Deserialize.cs" />
+    <Compile Include="Extensions\JSON\Deserialize.FromJson.cs">
+      <DependentUpon>Deserialize.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\JSON\Serialize.ToJson.cs">
+      <DependentUpon>Serialize.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\JSON\Serialize.cs" />
+    <Compile Include="Extensions\JSON\_Extensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="..\LICENSE">
+      <Link>LICENSE</Link>
+    </EmbeddedResource>
     <None Include="MarcelJoachimKloubert.Extensions.JSON.snk" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Extensions\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

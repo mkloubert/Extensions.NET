@@ -156,6 +156,11 @@ Set of useful extensions methods written in C#.
 * GetManifestResourceImage
 * Grayscale
 
+### MarcelJoachimKloubert.Extensions.JSON
+
+* FromJson
+* ToJson
+
 ### MarcelJoachimKloubert.Extensions.Windows.Forms
 
 * EnumerateControls
