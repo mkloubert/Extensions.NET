@@ -44,6 +44,7 @@ namespace MarcelJoachimKloubert.Extensions
         /// Compresses data via GZIP.
         /// </summary>
         /// <param name="data">The uncompressed data.</param>
+        /// <param name="level">The custom compression level to use.</param>
         /// <param name="bufferSize">The buffer size to use.</param>
         /// <returns>
         /// The compressed data or <see langword="null" /> if <paramref name="data" /> is also <see langword="null" />.
@@ -51,7 +52,7 @@ namespace MarcelJoachimKloubert.Extensions
         /// <exception cref="ArgumentOutOfRangeException">
         /// <paramref name="bufferSize" /> is less than 1.
         /// </exception>
-        public static byte[] GZip(this IEnumerable<byte> data, int? bufferSize = null)
+        public static byte[] GZip(this IEnumerable<byte> data, CompressionLevel level = CompressionLevel.Optimal, int? bufferSize = null)
         {
             if (data == null)
             {
@@ -60,7 +61,7 @@ namespace MarcelJoachimKloubert.Extensions
 
             using (var dest = new MemoryStream())
             {
-                GZip(data, dest, bufferSize);
+                GZip(data, dest, level, bufferSize);
 
                 return dest.ToArray();
             }
@@ -71,6 +72,7 @@ namespace MarcelJoachimKloubert.Extensions
         /// </summary>
         /// <param name="data">The uncompressed data.</param>
         /// <param name="dest">The stream where to write the compressed data to.</param>
+        /// <param name="level">The custom compression level to use.</param>
         /// <param name="bufferSize">The buffer size to use.</param>
         /// <exception cref="ArgumentNullException">
         /// <paramref name="dest" /> is <see langword="null" />.
@@ -78,7 +80,7 @@ namespace MarcelJoachimKloubert.Extensions
         /// <exception cref="ArgumentOutOfRangeException">
         /// <paramref name="bufferSize" /> is less than 1.
         /// </exception>
-        public static void GZip(this IEnumerable<byte> data, Stream dest, int? bufferSize = null)
+        public static void GZip(this IEnumerable<byte> data, Stream dest, CompressionLevel level = CompressionLevel.Optimal, int? bufferSize = null)
         {
             if (data == null)
             {
@@ -90,7 +92,7 @@ namespace MarcelJoachimKloubert.Extensions
 
             using (var src = new MemoryStream(blob))
             {
-                GZip(src, dest, bufferSize);
+                GZip(src, dest, level, bufferSize);
             }
         }
 
@@ -98,6 +100,7 @@ namespace MarcelJoachimKloubert.Extensions
         /// Compresses data via GZIP.
         /// </summary>
         /// <param name="src">The uncompressed data.</param>
+        /// <param name="level">The custom compression level to use.</param>
         /// <param name="bufferSize">The buffer size to use.</param>
         /// <returns>The compressed data.</returns>
         /// <exception cref="ArgumentNullException">
@@ -106,11 +109,11 @@ namespace MarcelJoachimKloubert.Extensions
         /// <exception cref="ArgumentOutOfRangeException">
         /// <paramref name="bufferSize" /> is less than 1.
         /// </exception>
-        public static byte[] GZip(this Stream src, int? bufferSize = null)
+        public static byte[] GZip(this Stream src, CompressionLevel level = CompressionLevel.Optimal, int? bufferSize = null)
         {
             using (var dest = new MemoryStream())
             {
-                GZip(src, dest, bufferSize);
+                GZip(src, dest, level, bufferSize);
 
                 return dest.ToArray();
             }
@@ -121,6 +124,7 @@ namespace MarcelJoachimKloubert.Extensions
         /// </summary>
         /// <param name="src">The uncompressed data.</param>
         /// <param name="dest">The stream where to write the compressed data to.</param>
+        /// <param name="level">The custom compression level to use.</param>
         /// <param name="bufferSize">The buffer size to use.</param>
         /// <exception cref="ArgumentNullException">
         /// <paramref name="src" /> and/or <paramref name="dest" /> is <see langword="null" />.
@@ -128,7 +132,7 @@ namespace MarcelJoachimKloubert.Extensions
         /// <exception cref="ArgumentOutOfRangeException">
         /// <paramref name="bufferSize" /> is less than 1.
         /// </exception>
-        public static void GZip(this Stream src, Stream dest, int? bufferSize = null)
+        public static void GZip(this Stream src, Stream dest, CompressionLevel level = CompressionLevel.Optimal, int? bufferSize = null)
         {
             if (src == null)
             {
@@ -145,7 +149,7 @@ namespace MarcelJoachimKloubert.Extensions
                 throw new ArgumentOutOfRangeException(nameof(bufferSize), bufferSize, "Must be 1 at least!");
             }
 
-            using (var gzip = new GZipStream(dest, CompressionMode.Compress, true))
+            using (var gzip = new GZipStream(dest, level, true))
             {
                 try
                 {
