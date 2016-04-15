@@ -28,114 +28,75 @@
  **********************************************************************************************************************/
 
 using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace MarcelJoachimKloubert.Extensions
 {
-    // StartAll()
+    // ToBinary
     static partial class MJKCoreExtensionMethods
     {
-        #region Methods (2)
+        #region Methods
 
         /// <summary>
-        /// Starts a list of tasks.
+        /// Serializes an object to binary data.
         /// </summary>
-        /// <param name="tasks">The tasks to start.</param>
-        /// <param name="scheduler">The custom scheduler to use.</param>
+        /// <param name="obj">The object to serialize.</param>
+        /// <param name="dbNullAsNull">Handle <see cref="DBNull" /> object as <see langword="null" /> reference or not.</param>
         /// <returns>
-        /// The started tasks or <see langword="null" /> if <paramref name="tasks" /> is also <see langword="null" />.
+        /// The serialized data or <see langword="null" /> id <paramref name="obj" /> is also <see langword="null" />.
         /// </returns>
-        /// <exception cref="AggregateException">
-        /// At least one task could not be started.
-        /// </exception>
-        public static Task[] StartAll(
-            this IEnumerable<Task> tasks,
-            TaskScheduler scheduler = null)
+        public static byte[] ToBinary(this object obj, bool dbNullAsNull = true)
         {
-            AggregateException exceptions;
-            var result = StartAll(tasks: tasks,
-                                  exceptions: out exceptions,
-                                  scheduler: scheduler);
-
-            if (exceptions != null)
+            if (DBNull.Value.Equals(obj) &&
+                   dbNullAsNull)
             {
-                throw exceptions;
+                obj = null;
             }
 
-            return result;
-        }
-
-        /// <summary>
-        /// Starts a list of tasks.
-        /// </summary>
-        /// <param name="tasks">The tasks to start.</param>
-        /// <param name="exceptions">The variable where to write the occurred exceptions to.</param>
-        /// <param name="scheduler">The custom scheduler to use.</param>
-        /// <returns>
-        /// The started tasks or <see langword="null" /> if <paramref name="tasks" /> is also <see langword="null" />.
-        /// </returns>
-        public static Task[] StartAll(
-            this IEnumerable<Task> tasks,
-            out AggregateException exceptions,
-            TaskScheduler scheduler = null)
-        {
-            exceptions = null;
-
-            if (tasks == null)
+            if (obj == null)
             {
                 return null;
             }
 
-            var occurredExceptions = new List<Exception>();
-
-            var startedTasks = new List<Task>();
-
-            try
+            using (var temp = new MemoryStream())
             {
-                using (var e = tasks.GetEnumerator())
-                {
-                    while (e.MoveNext())
-                    {
-                        try
-                        {
-                            var t = e.Current;
-                            if (t == null)
-                            {
-                                continue;
-                            }
+                ToBinary(obj, temp, dbNullAsNull);
 
-                            if (scheduler == null)
-                            {
-                                t.Start();
-                            }
-                            else
-                            {
-                                t.Start(scheduler);
-                            }
-
-                            startedTasks.Add(t);
-                        }
-                        catch (Exception ex)
-                        {
-                            occurredExceptions.Add(ex);
-                        }
-                    }
-                }
+                return temp.ToArray();
             }
-            catch (Exception ex)
-            {
-                occurredExceptions.Add(ex);
-            }
-
-            if (occurredExceptions.Count > 0)
-            {
-                exceptions = new AggregateException(occurredExceptions);
-            }
-
-            return startedTasks.ToArray();
         }
 
-        #endregion Methods (2)
+        /// <summary>
+        /// Serializes an object to binary data.
+        /// </summary>
+        /// <param name="obj">The object to serialize.</param>
+        /// <param name="stream">The stream where to write the data to.</param>
+        /// <param name="dbNullAsNull">Handle <see cref="DBNull" /> object as <see langword="null" /> reference or not.</param>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="stream" /> is <see langword="null" />.
+        /// </exception>
+        public static void ToBinary(this object obj, Stream stream, bool dbNullAsNull = true)
+        {
+            if (stream == null)
+            {
+                throw new ArgumentNullException("stream");
+            }
+
+            if (DBNull.Value.Equals(obj) &&
+                dbNullAsNull)
+            {
+                obj = null;
+            }
+
+            if (obj == null)
+            {
+                return;
+            }
+
+            new BinaryFormatter().Serialize(stream, obj);
+        }
+
+        #endregion Methods
     }
 }

@@ -28,143 +28,139 @@
  **********************************************************************************************************************/
 
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.IO.Compression;
-using System.Linq;
+using System.Xml;
+using System.Xml.Serialization;
 
-namespace MarcelJoachimKloubert.Extensions
+namespace MarcelJoachimKloubert.Extensions.Xml
 {
-    // GZip()
-    static partial class MJKCoreExtensionMethods
+    // FromXml
+    static partial class MJKXmlExtensionMethods
     {
-        #region Methods (4)
+        #region Methods
 
         /// <summary>
-        /// Uncompresses data via GZIP.
+        /// Deserializes XML data to an object.
         /// </summary>
-        /// <param name="data">The compressed data.</param>
-        /// <param name="bufferSize">The buffer size to use.</param>
-        /// <returns>
-        /// The uncompressed data or <see langword="null" /> if <paramref name="data" /> is also <see langword="null" />.
-        /// </returns>
-        /// <exception cref="ArgumentOutOfRangeException">
-        /// <paramref name="bufferSize" /> is less than 1.
-        /// </exception>
-        public static byte[] GUnzip(this IEnumerable<byte> data, int? bufferSize = null)
+        /// <typeparam name="TTarget">The target type.</typeparam>
+        /// <param name="xml">The XML data.</param>
+        /// <returns>The deserialized object.</returns>
+        public static TTarget FromXml<TTarget>(this string xml)
         {
-            if (data == null)
+            if (string.IsNullOrWhiteSpace(xml))
+            {
+                return default(TTarget);
+            }
+
+            using (var reader = new StringReader(xml))
+            {
+                return FromXml<TTarget>(reader);
+            }
+        }
+
+        /// <summary>
+        /// Deserializes XML data to an object.
+        /// </summary>
+        /// <param name="xml">The XML data.</param>
+        /// <param name="targetType">The target type.</param>
+        /// <returns>The deserialized object.</returns>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="targetType" /> is <see langword="null" />.
+        /// </exception>
+        public static object FromXml(this string xml, Type targetType)
+        {
+            if (targetType == null)
+            {
+                throw new ArgumentNullException("targetType");
+            }
+
+            if (string.IsNullOrWhiteSpace(xml))
             {
                 return null;
             }
 
-            using (var dest = new MemoryStream())
+            using (var reader = new StringReader(xml))
             {
-                GUnzip(data, dest, bufferSize);
-
-                return dest.ToArray();
+                return FromXml(reader, targetType);
             }
         }
 
         /// <summary>
-        /// Uncompresses data via GZIP.
+        /// Deserializes XML data to an object.
         /// </summary>
-        /// <param name="data">The compressed data.</param>
-        /// <param name="dest">The stream where to write the uncompressed data to.</param>
-        /// <param name="bufferSize">The buffer size to use.</param>
+        /// <typeparam name="TTarget">The target type.</typeparam>
+        /// <param name="reader">The reader that contains the data.</param>
+        /// <returns>The deserialized object.</returns>
         /// <exception cref="ArgumentNullException">
-        /// <paramref name="dest" /> is <see langword="null" />.
+        /// <paramref name="reader" /> is <see langword="null" />.
         /// </exception>
-        /// <exception cref="ArgumentOutOfRangeException">
-        /// <paramref name="bufferSize" /> is less than 1.
-        /// </exception>
-        public static void GUnzip(this IEnumerable<byte> data, Stream dest, int? bufferSize = null)
+        public static TTarget FromXml<TTarget>(this TextReader reader)
         {
-            if (data == null)
-            {
-                return;
-            }
-
-            var blob = data as byte[] ??
-                       data.ToArray();
-
-            using (var src = new MemoryStream(blob))
-            {
-                GUnzip(src, dest, bufferSize);
-            }
+            return (TTarget)FromXml(reader, typeof(TTarget));
         }
 
         /// <summary>
-        /// Uncompresses data via GZIP.
+        /// Deserializes XML data to an object.
         /// </summary>
-        /// <param name="src">The compressed data.</param>
-        /// <param name="bufferSize">The buffer size to use.</param>
-        /// <returns>The uncompressed data.</returns>
+        /// <param name="reader">The reader that contains the data.</param>
+        /// <param name="targetType">The target type.</param>
+        /// <returns>The deserialized object.</returns>
         /// <exception cref="ArgumentNullException">
-        /// <paramref name="src" /> is <see langword="null" />.
+        /// <paramref name="reader" /> is <see langword="null" />.
         /// </exception>
-        /// <exception cref="ArgumentOutOfRangeException">
-        /// <paramref name="bufferSize" /> is less than 1.
-        /// </exception>
-        public static byte[] GUnzip(this Stream src, int? bufferSize = null)
+        public static object FromXml(this TextReader reader, Type targetType)
         {
-            using (var dest = new MemoryStream())
+            if (reader == null)
             {
-                GUnzip(src, dest, bufferSize);
-
-                return dest.ToArray();
+                throw new ArgumentNullException("reader");
             }
+
+            if (targetType == null)
+            {
+                throw new ArgumentNullException("targetType");
+            }
+
+            return new XmlSerializer(targetType).Deserialize(reader);
         }
 
         /// <summary>
-        /// Uncompresses data via GZIP.
+        /// Deserializes XML data to an object.
         /// </summary>
-        /// <param name="src">The compressed data.</param>
-        /// <param name="dest">The stream where to write the uncompressed data to.</param>
-        /// <param name="bufferSize">The buffer size to use.</param>
+        /// <typeparam name="TTarget">The target type.</typeparam>
+        /// <param name="xmlReader">The reader that contains the data.</param>
+        /// <returns>The deserialized object.</returns>
         /// <exception cref="ArgumentNullException">
-        /// <paramref name="src" /> and/or <paramref name="dest" /> is <see langword="null" />.
+        /// <paramref name="xmlReader" /> is <see langword="null" />.
         /// </exception>
-        /// <exception cref="ArgumentOutOfRangeException">
-        /// <paramref name="bufferSize" /> is less than 1.
-        /// </exception>
-        public static void GUnzip(this Stream src, Stream dest, int? bufferSize = null)
+        public static TTarget FromXml<TTarget>(this XmlReader xmlReader)
         {
-            if (src == null)
-            {
-                throw new ArgumentNullException("src");
-            }
-
-            if (dest == null)
-            {
-                throw new ArgumentNullException("dest");
-            }
-
-            if (bufferSize < 1)
-            {
-                throw new ArgumentOutOfRangeException("bufferSize", bufferSize, "Must be 1 at least!");
-            }
-
-            try
-            {
-                using (var gzip = new GZipStream(src, CompressionMode.Decompress, true))
-                {
-                    if (bufferSize.HasValue)
-                    {
-                        gzip.CopyTo(dest, bufferSize.Value);
-                    }
-                    else
-                    {
-                        gzip.CopyTo(dest);
-                    }
-                }
-            }
-            finally
-            {
-                dest.Flush();
-            }
+            return (TTarget)FromXml(xmlReader, typeof(TTarget));
         }
 
-        #endregion Methods (4)
+        /// <summary>
+        /// Deserializes XML data to an object.
+        /// </summary>
+        /// <param name="xmlReader">The reader that contains the data.</param>
+        /// <param name="targetType">The target type.</param>
+        /// <returns>The deserialized object.</returns>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="xmlReader" /> is <see langword="null" />.
+        /// </exception>
+        public static object FromXml(this XmlReader xmlReader, Type targetType)
+        {
+            if (xmlReader == null)
+            {
+                throw new ArgumentNullException("xmlReader");
+            }
+
+            if (targetType == null)
+            {
+                throw new ArgumentNullException("targetType");
+            }
+
+            return new XmlSerializer(targetType).Deserialize(xmlReader);
+        }
+
+        #endregion Methods
     }
 }

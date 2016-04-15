@@ -30,141 +30,81 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.IO.Compression;
-using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace MarcelJoachimKloubert.Extensions
 {
-    // GZip()
+    // FromBinary()
     static partial class MJKCoreExtensionMethods
     {
-        #region Methods (4)
+        #region Methods
 
         /// <summary>
-        /// Uncompresses data via GZIP.
+        /// Deserializes an object from binary data.
         /// </summary>
-        /// <param name="data">The compressed data.</param>
-        /// <param name="bufferSize">The buffer size to use.</param>
-        /// <returns>
-        /// The uncompressed data or <see langword="null" /> if <paramref name="data" /> is also <see langword="null" />.
-        /// </returns>
-        /// <exception cref="ArgumentOutOfRangeException">
-        /// <paramref name="bufferSize" /> is less than 1.
-        /// </exception>
-        public static byte[] GUnzip(this IEnumerable<byte> data, int? bufferSize = null)
+        /// <typeparam name="TTarget">The target type.</typeparam>
+        /// <param name="blob">The data.</param>
+        /// <returns>The deserialized object.</returns>
+        public static TTarget FromBinary<TTarget>(this IEnumerable<byte> blob)
         {
-            if (data == null)
+            if (blob == null)
             {
-                return null;
+                return default(TTarget);
             }
 
-            using (var dest = new MemoryStream())
-            {
-                GUnzip(data, dest, bufferSize);
-
-                return dest.ToArray();
-            }
+            return (TTarget)FromBinary(blob);
         }
 
         /// <summary>
-        /// Uncompresses data via GZIP.
+        /// Deserializes an object from binary data.
         /// </summary>
-        /// <param name="data">The compressed data.</param>
-        /// <param name="dest">The stream where to write the uncompressed data to.</param>
-        /// <param name="bufferSize">The buffer size to use.</param>
-        /// <exception cref="ArgumentNullException">
-        /// <paramref name="dest" /> is <see langword="null" />.
-        /// </exception>
-        /// <exception cref="ArgumentOutOfRangeException">
-        /// <paramref name="bufferSize" /> is less than 1.
-        /// </exception>
-        public static void GUnzip(this IEnumerable<byte> data, Stream dest, int? bufferSize = null)
+        /// <param name="blob">The data.</param>
+        /// <returns>The deserialized object.</returns>
+        public static object FromBinary(this IEnumerable<byte> blob)
         {
-            if (data == null)
+            using (var temp = new MemoryStream(AsArray(blob, true), false))
             {
-                return;
-            }
-
-            var blob = data as byte[] ??
-                       data.ToArray();
-
-            using (var src = new MemoryStream(blob))
-            {
-                GUnzip(src, dest, bufferSize);
-            }
-        }
-
-        /// <summary>
-        /// Uncompresses data via GZIP.
-        /// </summary>
-        /// <param name="src">The compressed data.</param>
-        /// <param name="bufferSize">The buffer size to use.</param>
-        /// <returns>The uncompressed data.</returns>
-        /// <exception cref="ArgumentNullException">
-        /// <paramref name="src" /> is <see langword="null" />.
-        /// </exception>
-        /// <exception cref="ArgumentOutOfRangeException">
-        /// <paramref name="bufferSize" /> is less than 1.
-        /// </exception>
-        public static byte[] GUnzip(this Stream src, int? bufferSize = null)
-        {
-            using (var dest = new MemoryStream())
-            {
-                GUnzip(src, dest, bufferSize);
-
-                return dest.ToArray();
-            }
-        }
-
-        /// <summary>
-        /// Uncompresses data via GZIP.
-        /// </summary>
-        /// <param name="src">The compressed data.</param>
-        /// <param name="dest">The stream where to write the uncompressed data to.</param>
-        /// <param name="bufferSize">The buffer size to use.</param>
-        /// <exception cref="ArgumentNullException">
-        /// <paramref name="src" /> and/or <paramref name="dest" /> is <see langword="null" />.
-        /// </exception>
-        /// <exception cref="ArgumentOutOfRangeException">
-        /// <paramref name="bufferSize" /> is less than 1.
-        /// </exception>
-        public static void GUnzip(this Stream src, Stream dest, int? bufferSize = null)
-        {
-            if (src == null)
-            {
-                throw new ArgumentNullException("src");
-            }
-
-            if (dest == null)
-            {
-                throw new ArgumentNullException("dest");
-            }
-
-            if (bufferSize < 1)
-            {
-                throw new ArgumentOutOfRangeException("bufferSize", bufferSize, "Must be 1 at least!");
-            }
-
-            try
-            {
-                using (var gzip = new GZipStream(src, CompressionMode.Decompress, true))
+                if (temp.Length < 1)
                 {
-                    if (bufferSize.HasValue)
-                    {
-                        gzip.CopyTo(dest, bufferSize.Value);
-                    }
-                    else
-                    {
-                        gzip.CopyTo(dest);
-                    }
+                    return null;
                 }
-            }
-            finally
-            {
-                dest.Flush();
+
+                return FromBinary(temp);
             }
         }
 
-        #endregion Methods (4)
+        /// <summary>
+        /// Deserializes an object from binary data.
+        /// </summary>
+        /// <typeparam name="TTarget">The target type.</typeparam>
+        /// <param name="stream">The stream that contains the data.</param>
+        /// <returns>The deserialized object.</returns>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="stream" /> is <see langword="null" />.
+        /// </exception>
+        public static TTarget FromBinary<TTarget>(this Stream stream)
+        {
+            return (TTarget)FromBinary(stream);
+        }
+
+        /// <summary>
+        /// Deserializes an object from binary data.
+        /// </summary>
+        /// <param name="stream">The stream that contains the data.</param>
+        /// <returns>The deserialized object.</returns>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="stream" /> is <see langword="null" />.
+        /// </exception>
+        public static object FromBinary(this Stream stream)
+        {
+            if (stream == null)
+            {
+                throw new ArgumentNullException("stream");
+            }
+
+            return new BinaryFormatter().Deserialize(stream);
+        }
+
+        #endregion Methods
     }
 }
