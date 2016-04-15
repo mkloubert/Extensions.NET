@@ -28,114 +28,59 @@
  **********************************************************************************************************************/
 
 using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+using System.IO;
+using System.Xml.Serialization;
 
-namespace MarcelJoachimKloubert.Extensions
+namespace MarcelJoachimKloubert.Extensions.Xml
 {
-    // StartAll()
-    static partial class MJKCoreExtensionMethods
+    // ToXml()
+    static partial class MJKXmlExtensionMethods
     {
-        #region Methods (2)
+        #region Methods
 
         /// <summary>
-        /// Starts a list of tasks.
+        /// Serializes an object to an XML string.
         /// </summary>
-        /// <param name="tasks">The tasks to start.</param>
-        /// <param name="scheduler">The custom scheduler to use.</param>
-        /// <returns>
-        /// The started tasks or <see langword="null" /> if <paramref name="tasks" /> is also <see langword="null" />.
-        /// </returns>
-        /// <exception cref="AggregateException">
-        /// At least one task could not be started.
-        /// </exception>
-        public static Task[] StartAll(
-            this IEnumerable<Task> tasks,
-            TaskScheduler scheduler = null)
+        /// <param name="obj">The object to serialize.</param>
+        /// <returns>The XML string.</returns>
+        public static string ToXml(this object obj)
         {
-            AggregateException exceptions;
-            var result = StartAll(tasks: tasks,
-                                  exceptions: out exceptions,
-                                  scheduler: scheduler);
-
-            if (exceptions != null)
-            {
-                throw exceptions;
-            }
-
-            return result;
-        }
-
-        /// <summary>
-        /// Starts a list of tasks.
-        /// </summary>
-        /// <param name="tasks">The tasks to start.</param>
-        /// <param name="exceptions">The variable where to write the occurred exceptions to.</param>
-        /// <param name="scheduler">The custom scheduler to use.</param>
-        /// <returns>
-        /// The started tasks or <see langword="null" /> if <paramref name="tasks" /> is also <see langword="null" />.
-        /// </returns>
-        public static Task[] StartAll(
-            this IEnumerable<Task> tasks,
-            out AggregateException exceptions,
-            TaskScheduler scheduler = null)
-        {
-            exceptions = null;
-
-            if (tasks == null)
+            if (obj == null)
             {
                 return null;
             }
 
-            var occurredExceptions = new List<Exception>();
-
-            var startedTasks = new List<Task>();
-
-            try
+            using (var writer = new StringWriter())
             {
-                using (var e = tasks.GetEnumerator())
-                {
-                    while (e.MoveNext())
-                    {
-                        try
-                        {
-                            var t = e.Current;
-                            if (t == null)
-                            {
-                                continue;
-                            }
+                ToXml(obj, writer);
 
-                            if (scheduler == null)
-                            {
-                                t.Start();
-                            }
-                            else
-                            {
-                                t.Start(scheduler);
-                            }
-
-                            startedTasks.Add(t);
-                        }
-                        catch (Exception ex)
-                        {
-                            occurredExceptions.Add(ex);
-                        }
-                    }
-                }
+                return writer.ToString();
             }
-            catch (Exception ex)
-            {
-                occurredExceptions.Add(ex);
-            }
-
-            if (occurredExceptions.Count > 0)
-            {
-                exceptions = new AggregateException(occurredExceptions);
-            }
-
-            return startedTasks.ToArray();
         }
 
-        #endregion Methods (2)
+        /// <summary>
+        /// Serializes an object to an XML string.
+        /// </summary>
+        /// <param name="obj">The object to serialize.</param>
+        /// <param name="writer">The writer where to write the XML data to.</param>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="writer" /> is <see langword="null" />.
+        /// </exception>
+        public static void ToXml(this object obj, TextWriter writer)
+        {
+            if (writer == null)
+            {
+                throw new ArgumentNullException("writer");
+            }
+
+            if (obj == null)
+            {
+                return;
+            }
+
+            new XmlSerializer(obj.GetType()).Serialize(writer, obj);
+        }
+
+        #endregion Methods
     }
 }

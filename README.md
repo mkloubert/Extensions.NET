@@ -45,6 +45,7 @@ Set of useful extensions methods written in C#.
 * Exp
 * Floor
 * ForAll
+* FromBinary
 * GetBytes
 * GetManifestResourceBlob
 * GetManifestResourceString
@@ -102,6 +103,7 @@ Set of useful extensions methods written in C#.
 * Tan
 * TanH
 * Ticks
+* ToBinary
 * ToByte
 * ToByteArray
 * ToDecimal
@@ -136,3 +138,5 @@ Set of useful extensions methods written in C#.
 ### MarcelJoachimKloubert.Extensions.Xml
 
 * AsString
+* FromXml
+* ToXml
