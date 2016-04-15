@@ -29,113 +29,82 @@
 
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace MarcelJoachimKloubert.Extensions
 {
-    // StartAll()
+    // FromBinary()
     static partial class MJKCoreExtensionMethods
     {
-        #region Methods (2)
+        #region Methods
 
         /// <summary>
-        /// Starts a list of tasks.
+        /// Deserializes an object from binary data.
         /// </summary>
-        /// <param name="tasks">The tasks to start.</param>
-        /// <param name="scheduler">The custom scheduler to use.</param>
-        /// <returns>
-        /// The started tasks or <see langword="null" /> if <paramref name="tasks" /> is also <see langword="null" />.
-        /// </returns>
-        /// <exception cref="AggregateException">
-        /// At least one task could not be started.
-        /// </exception>
-        public static Task[] StartAll(
-            this IEnumerable<Task> tasks,
-            TaskScheduler scheduler = null)
+        /// <typeparam name="TTarget">The target type.</typeparam>
+        /// <param name="blob">The data.</param>
+        /// <returns>The deserialized object.</returns>
+        public static TTarget FromBinary<TTarget>(this IEnumerable<byte> blob)
         {
-            AggregateException exceptions;
-            var result = StartAll(tasks: tasks,
-                                  exceptions: out exceptions,
-                                  scheduler: scheduler);
-
-            if (exceptions != null)
+            if (blob == null)
             {
-                throw exceptions;
+                return default(TTarget);
             }
 
-            return result;
+            return (TTarget)FromBinary(blob);
         }
 
         /// <summary>
-        /// Starts a list of tasks.
+        /// Deserializes an object from binary data.
         /// </summary>
-        /// <param name="tasks">The tasks to start.</param>
-        /// <param name="exceptions">The variable where to write the occurred exceptions to.</param>
-        /// <param name="scheduler">The custom scheduler to use.</param>
-        /// <returns>
-        /// The started tasks or <see langword="null" /> if <paramref name="tasks" /> is also <see langword="null" />.
-        /// </returns>
-        public static Task[] StartAll(
-            this IEnumerable<Task> tasks,
-            out AggregateException exceptions,
-            TaskScheduler scheduler = null)
+        /// <param name="blob">The data.</param>
+        /// <returns>The deserialized object.</returns>
+        public static object FromBinary(this IEnumerable<byte> blob)
         {
-            exceptions = null;
-
-            if (tasks == null)
+            using (var temp = new MemoryStream(AsArray(blob, true), false))
             {
-                return null;
-            }
-
-            var occurredExceptions = new List<Exception>();
-
-            var startedTasks = new List<Task>();
-
-            try
-            {
-                using (var e = tasks.GetEnumerator())
+                if (temp.Length < 1)
                 {
-                    while (e.MoveNext())
-                    {
-                        try
-                        {
-                            var t = e.Current;
-                            if (t == null)
-                            {
-                                continue;
-                            }
-
-                            if (scheduler == null)
-                            {
-                                t.Start();
-                            }
-                            else
-                            {
-                                t.Start(scheduler);
-                            }
-
-                            startedTasks.Add(t);
-                        }
-                        catch (Exception ex)
-                        {
-                            occurredExceptions.Add(ex);
-                        }
-                    }
+                    return null;
                 }
-            }
-            catch (Exception ex)
-            {
-                occurredExceptions.Add(ex);
-            }
 
-            if (occurredExceptions.Count > 0)
-            {
-                exceptions = new AggregateException(occurredExceptions);
+                return FromBinary(temp);
             }
-
-            return startedTasks.ToArray();
         }
 
-        #endregion Methods (2)
+        /// <summary>
+        /// Deserializes an object from binary data.
+        /// </summary>
+        /// <typeparam name="TTarget">The target type.</typeparam>
+        /// <param name="stream">The stream that contains the data.</param>
+        /// <returns>The deserialized object.</returns>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="stream" /> is <see langword="null" />.
+        /// </exception>
+        public static TTarget FromBinary<TTarget>(this Stream stream)
+        {
+            return (TTarget)FromBinary(stream);
+        }
+
+        /// <summary>
+        /// Deserializes an object from binary data.
+        /// </summary>
+        /// <param name="stream">The stream that contains the data.</param>
+        /// <returns>The deserialized object.</returns>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="stream" /> is <see langword="null" />.
+        /// </exception>
+        public static object FromBinary(this Stream stream)
+        {
+            if (stream == null)
+            {
+                throw new ArgumentNullException("stream");
+            }
+
+            return new BinaryFormatter().Deserialize(stream);
+        }
+
+        #endregion Methods
     }
 }

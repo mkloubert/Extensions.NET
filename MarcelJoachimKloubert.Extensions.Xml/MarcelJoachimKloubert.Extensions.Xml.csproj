@@ -114,6 +114,14 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\Xml\Deserialize.cs" />
+    <Compile Include="Extensions\Xml\Deserialize.FromXml.cs">
+      <DependentUpon>Deserialize.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\Xml\Serialize.ToXml.cs">
+      <DependentUpon>Serialize.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\Xml\Serialize.cs" />
     <Compile Include="Extensions\Xml\Strings.AsString.cs">
       <DependentUpon>Strings.cs</DependentUpon>
     </Compile>
